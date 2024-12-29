@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery-ui</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+</head>
+<style>
+  .ui-menu {
+    width: fit-content;
+  }
+</style>
+<script>
+
+  $(() => {
+
+    $('#tabs').tabs()
+
+  })
+
+</script>
+
+<body>
+  <div id="tabs">
+    <ul>
+      <li><a href="#tab1">Tab1</a></li>
+      <li><a href="#tab2">Tab2</a></li>
+    </ul>
+    <div id="tab1">AAAAAAAAA</div>
+    <div id="tab2">BBBBBBBBB</div>
+  </div>
+</body>
+
+</html>

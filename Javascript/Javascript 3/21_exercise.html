@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<script>
+window.onload = () => {
+   const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/aqiv2.json'
+   fetch(url)
+   .then(response => response.json())
+   //map出所需資料，filter出台中市資料，return回來就已經會有[]
+   .then(jsonObj => {
+       const records = jsonObj.records.map(record => {
+           return {
+               sitename: record.sitename,
+               county: record.county,
+               aqi: parseInt(record.aqi)
+           }
+       }).filter(record => record.county == '臺中市')
+       console.log(records)
+
+       new Chart(mycanvas, {
+           type: 'bar',
+           data: {
+               labels: records.map(p => p.sitename),
+               datasets: [
+                   {
+                       label: 'AQI',
+                       data: records.map(p => p.aqi)
+                   }
+               ]
+           }
+       })
+   })
+}   
+</script>
+<style>
+.container {
+   width: 600px;
+   background-color:antiquewhite;
+}   
+</style>
+<body>
+<div class="container">
+   <canvas id="mycanvas"></canvas>
+</div>
+</body>
+</html>
+

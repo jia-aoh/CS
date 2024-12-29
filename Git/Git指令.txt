@@ -1,0 +1,77 @@
+Git指令:
+https://reurl.cc/Aj3VqQ
+
+---- GitHub ----
+
+Repository建立
+Terminal cd至目標資料夾
+git clone 網址
+
+git pull （拉新版本）
+git config pull.rebase false 用merge方式pull
+
+---- 工作目錄：新增、修改、刪除 ----
+
+＊git rm —cached 檔名(刪除)
+
+git status（紅）
+git diff（查更動細節）
+git add ., 檔名.副檔名, *.副檔名
+
+---- 暫存：讓git追蹤 ----
+
+git status(綠色)
+git diff --cached--staged（查更動細節）
+git commit -m “版本名稱”
+
+⬆ git revert -n 雜湊值（還原至暫存）⬆
+
+---- 本機倉庫:正式在.git資料夾產生新版本----
+
+git log —oneline（查看有沒有新版本）
+git remote -v （查詢名稱）
+git remote -v add 名稱 網址（設定名稱）
+git push origin main（推到GitHub）
+
+
+---- GitHub ----
+
+--------------------------------------
+branch
+新建: git branch 支名
+切換: git checkout 支名
+刪除: git branch -d 支名
+查看: git branch, git status
+--------------------------------------
+merge branch
+git checkout main（回主幹）
+git merge 支名（支併到主幹）
+git log —oneline（查看HEAD是否在main跟原分支）
+git push（將main推送）
+--------------------------------------
+xx1.版本差異在不同檔案：merge github與本機
+----vim編輯器----
+i
+設定版本名稱
+esc
+:wqa存檔離開
+--------------------------------------
+xx2.版本差異在相同檔案：手動合併
+git push(error)
+git pull
+手動合併
+git commit -m ”解決CONFLICT後的版本”
+git log —oneline（檢視提交成功與否）
+git push（推送）
+--------------------------------------
+xx3.總是先pull再push
+
+
+
+6.git log —oneline
+commit hash.value(HEAD->main)HEAD表示目前位置在main是版本提交的分支
+
+7.推到GitHub
+git push (repository:site or origin branch:main, origin/main是最新版本)
+
+8.use vim

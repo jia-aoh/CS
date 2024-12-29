@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+    <!-- 10. 在 HTML 寫下一個標籤，且該標籤有一個事件 onclick
+          請直接將要執行的程式碼寫在 onclick的等號右邊
+          * 上課討論使用，實際開發時請使用先前討論過的事件綁定方式 -->
+    <button onclick="console.log('it works!')">本來的</button>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+
+        // 15. 在 JSX 中 將步驟 10 所寫的標籤複製過來，確認是否可以正常運行
+        ReactDOM
+            .createRoot(root)
+            .render(<button onClick={()=>{console.log('JSX works!')}}>JSX的</button>)
+            //onClick={內要放function}
+
+        // 20. 在改寫的過程中如果有錯誤發生，請依照提示進行修正
+
+    </script>
+</body>
+
+</html>

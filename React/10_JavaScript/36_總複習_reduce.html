@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <script>
+        // 10. 請觀察底下的陣列
+        var list = ['蘋果', '香蕉', '蘋果', '木瓜'];
+
+        // 15. list 目前有一些重複的值，
+        //     請把重複的資料剔除/留下不重複的資料: '蘋果', 香蕉', '木瓜'
+        // 剔除不重複JS or SQL
+        // 法Ａ
+        // let newList = list.reduce((total, value) =>
+        //     total.indexOf(value) == -1 ? //若陣列含value
+        //         [...total, value] : total
+        //     , [])
+        // 法Ｂ
+        let newList = []
+        list.forEach((value) => {
+            console.log(newList.indexOf(value) == -1 && newList.push(value))
+        })
+        console.log(newList)
+
+
+
+        // 20. 請觀察底下的學生陣列，並且說明資料結構
+        var student = [{
+            sname: '野原新之助',
+            sage: 5,
+            scity: '春日部'
+        }, {
+            sname: '皮卡丘',
+            sage: 8,
+            scity: '真新鎮'
+        }, {
+            sname: '安妮亞',
+            sage: 45,
+            scity: '公園路128號'
+        }]
+
+        console.clear()
+        // 25.  使用 reduce 方法重組 student 陣列中的物件，
+        //      1. 將每個學生的姓名作為「新物件集合」的 key，
+        //      2. 上述key的值為 學生年齡 (sage) 和城市 (scity) 。
+
+        //方法1: 參照lab如何物件取值、新增
+        // let newStudent = {}
+        // student.forEach((obj)=>{
+        //     // console.log(obj)
+        //     newStudent[obj.sname] = {sage: obj.sage, scity: obj.sname}
+        // })
+
+        //方法2
+        // let newStudent = student.reduce((total, obj) => {
+        //     total[obj.sname] = { sage: obj.sage, scity: obj.scity }
+        //     return total
+        // }, {})
+        //方法3:解構obj, 物件名稱跟屬性名稱相同縮寫
+        // let newStudent = student.reduce((total, {sname, sage, scity}) => {
+        //     total[sname] = { sage, scity}
+        //     return total
+        // }, {})
+        //方法4:...壓縮，解壓縮
+        let newStudent = student.reduce((total, { sname, ...package}) => {
+            total[sname] = { ...package}
+            return total
+        }, {})
+        console.log(newStudent)
+
+    </script>
+
+</body>
+
+</html>

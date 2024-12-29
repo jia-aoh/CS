@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  //function必須放在呼叫前
+  window.onload = function () {
+    function f(i) {
+      console.log('f改前: '+ i)
+      i = 20
+      console.log('f改後: '+ i)
+      //i在這裡算完就消失了
+    }
+    bn.onclick = function () {
+      let i = 10 
+      f(i)
+      console.log('button: '+ i)
+      //i在button算完就不見了：區域變數
+    }
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

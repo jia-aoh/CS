@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = function () {
+    // 10_escape character \讓後面的符號變str一部份
+    //const str = "he'llo" or `he'llo` or 'he\'llo'
+    // \n:new line, \t:tab
+
+    //method
+    const str = `hello中文` //php單位會不一樣，一中文字3byte
+    console.log(str.length) //字長=7
+    console.log(str.substr(1, 2)) //substr(索引值,幾個字)=el
+    console.log(str.substring(1, 2)) //substring(索引值,不包含的索引值)=e
+    console.log(str.substr(0, 3)) //從頭取3個數=hel
+    console.log(str.replace('l', 'z')) //取代第一個''成''=hezlo中文
+    console.log(str.replaceAll('l', 'z')) //取代全部''成''=hezzo中文
+    console.log(str.toUpperCase()) //轉大寫=HELLO中文
+
+    const str1 = `\t  \t\n    hello    `
+    console.log(`[${str1}]`)
+    console.log(`[${str1.trim()}]`)//.trim去掉頭尾space
+    //字串分割
+    const str2 = 'a b c d c'
+    const splt1 = str2.split(' ')//空白鍵
+    console.log(splt1)
+
+    //字串搜尋 search,indexOf只找第一個, 
+    console.log(str2.search('c'))
+    console.log(str2.search('e'))
+    console.log(str2.indexOf('c'))
+    console.log(str2.indexOf('e'))
+    console.log(str2.indexOf('c', 4+1)) //從第一個索引值再往下找
+  }
+</script>
+
+<body>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+</head>
+
+<body>
+    <script>
+        let x = ['apple', 'bee'];
+        let y = ['cat', 'dog'];
+
+        let fish = [...x, ...y];
+        let rabbit = [...x, ...y];
+
+        // 10. 請確認 fish變數 和 rabbit變數 的內容是什麼
+        console.log(fish)
+        // 15. 該如何取得 fish陣列 的最後一個值 'dog'？
+        let x1 = fish[3]
+        let x2 = fish[fish.length - 1]
+        let [, , , x3] = fish
+        // 我要知道陣列中的最後幾個
+        let [x4] = fish.reverse()
+        let [x5] = [...rabbit].reverse()
+        console.log(x1)
+        console.log(x2)
+        console.log(x3)
+        console.log(x4)
+        console.log(fish)
+        console.log(x5)
+        console.log(rabbit)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    a = {
+      name: 'David', //key: value,
+      age: 30,  //key唯一
+      email: 'david@gmail.com',
+    }
+    //印出值
+    console.log(a.name)
+    //改變值
+    a.age += 1
+    console.log(a.age)
+    //加一個key
+    a.sex = 'M'
+    console.log(a.sex)
+    console.log(a)
+  }
+  //value用function，抓自己的key用this.
+  let b = {
+    firstname: 'David',
+    lastname: 'Wang',
+    name: function () {
+      return this.firstname + ' ' + this.lastname
+    }
+  }
+  console.log(b.name())
+</script>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 請執行程式，確認 兩個按鈕 可以正常運作
+        let MyComponentA = function (props) {
+            return <button onClick={() => { console.log('我是按鈕A'); }}>我是按鈕A</button>
+        }
+
+        // 20. 請觀察底下 MyComponentB 的渲染過程，並且設計出對應的程式碼
+        //      ** 讓按鈕點選後，主控台會出現 '我是按鈕B'
+        //      ** 等號右邊可以先全部清除，進行自己想要的規劃
+        let MyComponentB = ({ children, aaaaaaaaa }) => {
+            return <button onClick={aaaaaaaaa}>{children}</button>
+        }
+
+        myReactRoot.render(<div>
+            <button onClick={() => { console.log('我是按鈕(原本的)'); }}>我是按鈕(原本的)</button>
+            <hr />
+            <MyComponentA />
+            <hr />
+            <MyComponentB aaaaaaaaa={() => { console.log('我是按鈕B'); }}>我是按鈕B(請協助完成)</MyComponentB>
+        </div>);
+    </script>
+</body>
+
+</html>

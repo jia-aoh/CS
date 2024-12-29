@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <!-- jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+  $(() => {
+
+    //.first() 
+    //.last() 
+    //.slice(0, 3): 前3個 
+    //.slice(-2): 後2個 
+
+    //.eq(0): 第一個(eq是索引值)
+    //.parent()
+    //.children()
+
+    //.css('-','')
+
+    $('li')
+      .eq(0) //第一個: eq是索引值
+      .css('background-color', 'orange')
+      .parent()
+      .children()
+      .eq(3)
+      .css('background-color', 'yellow')
+      .parent() //到ul
+      .siblings()
+      .children()
+      .eq(2)
+      .css('background-color', 'green')
+
+
+  })
+</script>
+
+<body>
+  <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+
+  <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+</body>
+
+</html>

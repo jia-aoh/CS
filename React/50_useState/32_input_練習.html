@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<style>
+    /* #root{
+        --bg-color: #7fff00;
+    }
+    div>div>div{
+        background-color: var(--bg-color) ;
+    } */
+</style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // * 請根據說明創造出對應的元件 *
+        // 10. 元件名稱為： ColorPicker 
+        // 15. 讓使用者可以選取顏色，並且將使用者選取的顏色套用到 <div> 
+        //      a. div 的背景顏色顯示為使用者選取得顏色
+        //      b. div 的內容為使用者選取的顏色代碼
+        function ColorPicker() {
+            const[colorCode, setColorCode] = React.useState('#7fff00')
+            let handleChangeColor = () => {
+                setColorCode(event.target.value)
+
+            }
+            return <div>
+                <div style={{backgroundColor:colorCode}}>顏色顯示處{colorCode}</div>
+                <input type="color" value={colorCode} onChange={() => { handleChangeColor() }} />
+            </div>
+        }
+
+        myReactRoot.render(<ColorPicker />);
+    </script>
+</body>
+
+</html>

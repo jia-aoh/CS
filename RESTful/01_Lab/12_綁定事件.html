@@ -1,0 +1,32 @@
+<!-- 
+1. tag內onclick
+2. 扣id：
+  1. onclick
+  2. addEventListener 一click可以觸發多function
+  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="bn1">bn1</button>
+
+  <script>
+    function bee(){
+      alert('bee triggered')
+    }
+    function cat(){
+      alert('cat triggered')
+    }
+    bn1.onclick = bee() // ()立刻馬上執行，後蓋前
+    bn1.addEventListener('click', bee)
+    bn1.addEventListener('click', cat)
+  </script>
+</body>
+
+</html>

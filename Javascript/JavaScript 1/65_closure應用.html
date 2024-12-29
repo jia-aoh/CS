@@ -1,0 +1,26 @@
+<script>
+  // let zoo = ['lion', 'tiger', 'elephant', 'giraff']
+  let zoo = ['王獅子', '一老虎', '大象', '三長頸鹿']
+  let table = `<table border='1'>`
+  //JS陣列自帶回圈.forEach()
+  zoo //在句點地方斷行，並縮排
+    .sort((a, b) => a.localeCompare(b,'zh-Hant')) //按筆畫排
+  //數字就用剪的（a-b>0就換）
+    .forEach(animal => table += `<tr><td class="${animal}">${animal}</td></tr>`)
+  table += `</table>`
+  document.write(table)
+</script>
+<style>
+table tr:nth-child(1){
+  background-color: red;
+}
+table tr:nth-child(2){
+  background-color: orange;
+}
+table tr:nth-child(3){
+  background-color: yellow;
+}
+table tr:nth-child(4){
+  background-color: green;
+}
+</style>

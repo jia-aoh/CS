@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Button</title>
+  <meta name="keywords" content="Bootstrap, Badge">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  群組，功能，大小，排版，badge，
+  <!-- badge -->
+
+  <button class="btn btn-primary">Badge內&nbsp;<span class="badge text-bg-secondary">1</span>
+  </button>
+  <br>
+  <button class="btn btn-primary position-relative">
+    position-relative + absloute/ top-0/ start-100/ translate-middle/ rounded-5
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-5 bg-danger">
+      99+
+    </span>
+  </button>
+  <br>
+  <button class="btn btn-primary position-relative">
+    Profile + p-2/ border/ border-light/ rounded-5
+    <span
+      class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light border-2 rounded-circle"></span>
+  </button>
+
+  <hr>
+
+  <!-- color:btn btn-[color] btn-outline-[color] -->
+  <div class="btn-group">
+    <a class="btn btn-link" href="#">本頁章節超連結</a>
+    <a class="btn btn-light">Light</a>
+    <a class="btn btn-danger">Danger</a>
+    <a class="btn btn-warning">Warning</a>
+    <a class="btn btn-success">Success</a>
+    <input class="btn btn-info" type="reset" value="Info Reset"></input>
+    <input class="btn btn-primary" type="submit" value="Submit"></input>
+    <a class="btn btn-secondary">Secondary</a>
+    <a class="btn btn-dark">Dark</a>
+  </div>
+
+  <!-- type: type:"submit, reset, input, checkbox, (button)" -->
+  <div class="btn-group-vertical">
+    <button class="btn btn-outline-primary">Primary</button>
+    <button class="btn btn-outline-secondary">Secondary</button>
+    <button class="btn btn-outline-success">Success</button>
+    <button class="btn btn-outline-danger">Danger</button>
+    <button class="btn btn-outline-warning">Warning</button>
+    <button class="btn btn-outline-info">Info</button>
+    <button class="btn btn-outline-light">Light</button>
+    <button class="btn btn-outline-dark">Dark</button>
+    <button class="btn-close btn-close"></button>
+  </div>
+
+  <input type="checkbox" class="btn-check" id="btn1">
+  <label class="btn btn-outline-primary" for="btn1">checkbox</label>
+
+  <div class="btn-group-lg" role="group">
+    <input type="radio" class="btn-check" name="radio" id="btnradio1" checked>
+    <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+
+    <input type="radio" class="btn-check" name="radio" id="btnradio2">
+    <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+  </div>
+
+  <!-- size: btn-[sm,lg] style="--bs-btn-[padding, font-size]"-->
+  <button type="button" class="btn btn-primary"
+    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+    Custom button
+  </button>
+  <br>
+
+  <!-- RWD & align: 
+   1.大鈕 父層d-grid gap-2 (d-[md]-block | 
+   2.置中鈕 父層col-6 mx-auto | 
+   3.靠右 父層d-md-flex justify-content-[md]-[end]搭配子[me]-[md]-2) -->
+  <div class="d-grid gap-2 d-md-block">
+    <button class="btn btn-primary">Button</button>
+    <button class="btn btn-primary">Button</button>
+  </div>
+
+
+  <!-- custom 
+.btn-bd-primary {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet);
+  --bs-btn-border-color: var(--bd-violet);
+  --bs-btn-border-radius: .5rem;
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+  --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+}-->
+</body>
+
+
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+
+        // * 請根據說明創造出對應的元件 *
+        // 10. 元件名稱為 ： MyConponent
+        // 15. 元件回傳一個<input>以及一個<p>
+        // 20. <input> 輸入時 <p> 會顯示輸入的內容長度(使用者輸入幾個字了)
+        function MyConponent() {
+            const [strLength, setStrLength] = React.useState(0)
+            const [inputValue, setInputValue] = React.useState('')
+            let handleChangesInput = () => {
+                // setStrLength((event.inputType == 'deleteContentBackward')?strLength-1: strLength+1)
+                // console.log(event.target.value.length)
+                setStrLength(event.target.value.length)
+                setInputValue(event.target.value)
+            }
+
+            return <div>
+                <input onChange={() => { handleChangesInput() }}></input>
+                <p>str.length = {strLength} str</p>
+                <p>input.value = {inputValue}</p>
+
+            </div>
+        }
+
+
+        myReactRoot.render(<MyConponent />); 
+    </script>
+</body>
+
+</html>

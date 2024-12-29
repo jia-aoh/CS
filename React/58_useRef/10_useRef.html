@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="../_js/react.development.js"></script>
+    <script src="../_js/react-dom.development.js"></script>
+    <script src="../_js/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>useRef</h4>
+    <p><a href='https://react.dev/reference/react/useRef'>https://react.dev/reference/react/useRef</a></p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        /* 10. 使用 useRef 保存資料
+                * 建立 useRef:      const 名稱 = React.useRef(初始值)
+                * 設定 useRef 的值: 名稱.current = 值
+                * 使用 useRef 的值: 名稱.current
+        */
+
+        function MyComponent() {
+            const ref = React.useRef('初始值')
+            console.log(ref);
+            //觸發不會改變畫面 !=useState
+            let handleClick = () =>{
+                console.log('改前')
+                ref.current = 123
+                console.log(ref.current)
+                console.log('改後')
+            }
+            return (
+                <div>
+                    {ref.current}
+                    <button onClick={()=>{handleClick()}}>click</button>
+                </div>
+            );
+        }
+        myReactRoot.render(<MyComponent />);
+    </script>
+</body>
+
+</html>

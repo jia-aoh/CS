@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 總排行： -->
+    <!-- tag<::<class<:.class=[]<id<inline<!important -->
+
+    <!-- CSS可能失效原因 -->
+    <!-- 1.打錯字，大小寫 -->
+    <!-- 2.語法錯誤(property:value;) -->
+    <!-- 3.路徑錯誤（link要href） -->
+    <!-- 4.Specificity & Priority -->
+
+
+    <style>
+        /* tag name */
+        h1 {
+            background-color: red;
+        }
+
+        /* .class */
+        .pokemon {
+            background-color: orange;
+        }
+
+        /* #id */
+        #pikachu {
+            background-color: #ff0;
+            /* background-color: #ff0 !important; */
+        }
+
+        /* inline style */
+
+        /* !important */
+
+        /* 元素屬於兩個或兩個以上的類別 */
+        .ball {
+            background-color: blue
+        }
+    </style>
+
+</head>
+
+<body>
+    <p><a target="_blank" href="https://www.w3schools.com/css/css_specificity.asp">CSS Specificity</a></p>
+    <hr>
+
+    <h1 class="pokemon" id="pikachu" style="background-color: green;">皮卡丘</h1>
+    <h1 class="pokemon ball">卡比獸</h1>
+    <h1 class="ball pokemon">小火龍</h1>
+</body>
+
+</html>

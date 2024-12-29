@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="../_js/react.development.js"></script>
+    <script src="../_js/react-dom.development.js"></script>
+    <script src="../_js/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>Examples of referencing a value with useRef</h4>
+    <p><a href='https://react.dev/reference/react/useRef#examples-value'>https://react.dev/reference/react/useRef#examples-value</a></p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+
+        // 10. 底下程式碼來自官方範例「改寫」
+        //     請嘗試在程式中加入註解
+
+        // 20. 如果連續點兩次「Start」按鈕，就無法進行「Stop」的動作了
+        //     為什麼？ 程式碼如何修正？
+
+        function Stopwatch() {
+            const [startTime, setStartTime] = React.useState(null);
+            const [now, setNow] = React.useState(null);
+            const intervalRef = React.useRef(null);
+
+            //按開始
+            function handleStart() {
+                setStartTime(Date.now());
+                setNow(Date.now());
+
+                //要先清掉第一組id
+                clearInterval(intervalRef.current);
+
+                //10毫秒更新一次結束時間
+                intervalRef.current = setInterval(() => {
+                    setNow(Date.now());
+                }, 100);
+            }
+
+            //按結束
+            function handleStop() {
+                //停止碼表
+                clearInterval(intervalRef.current);
+                console.log(intervalRef.current)
+            }
+
+            //宣告秒數
+            let secondsPassed = 0;
+            //如果開始結束都有，就顯示結果
+            if (startTime != null && now != null) {
+                secondsPassed = (now - startTime) / 1000;
+            }
+            
+            //控制開始結束
+            return (
+                <div>
+                    <h1>Time passed: {secondsPassed.toFixed(3)}</h1>
+                    <button onClick={handleStart}>
+                        Start
+                    </button>
+                    <button onClick={handleStop}>
+                        Stop
+                    </button>
+                </div>
+            );
+        }
+
+        myReactRoot.render(<Stopwatch />);
+    </script>
+</body>
+
+</html>

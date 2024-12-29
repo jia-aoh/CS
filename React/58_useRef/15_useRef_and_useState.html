@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="../_js/react.development.js"></script>
+    <script src="../_js/react-dom.development.js"></script>
+    <script src="../_js/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 使用 useState 保存數值，並且設計按鈕在點擊後數值+1
+        // 20. 使用 useRef   保存數值，並且設計按鈕在點擊後數值+1
+
+        function MyComponent() {
+            const [number, setNumber] = React.useState(0)
+            const ref = React.useRef(0)
+
+            //動變數要更新畫面
+            let handleUsestate = () => {
+                setNumber(number + 1)
+            }
+            //動變數不想更新畫面
+            let handleUseref = () => {
+                ref.current += 1
+                console.log(ref.current)
+            }
+
+            return (
+                <div>
+                    <p>usestate: {number}</p>
+                    <button onClick={handleUsestate}>加</button>
+                    <p>useref: {ref.current}</p>
+                    <button onClick={handleUseref}>加</button>
+                </div>
+            );
+        }
+
+        myReactRoot.render(<MyComponent />);
+    </script>
+</body>
+
+</html>

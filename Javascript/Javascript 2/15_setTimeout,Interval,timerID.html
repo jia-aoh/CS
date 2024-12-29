@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    function div(a, b) {
+      return a / b
+    }
+    //反過來就不用等10分鐘
+    const result = div(5, 3)
+    console.log(result)
+    console.log('done')
+    
+    //setTimeout:只打算跑一次，1.延遲呼叫(closure,幾ms後呼叫)，或2.非同步呼叫(沒做完不等)
+    //setInterval會不段執行:可做動畫，連續性的事，顯示時間，一分鐘60000ms
+    //timerID加if就可以停
+    let i = 0
+    let timerID = null
+    bn.onclick = () => {
+      timerID = setInterval(() => {
+        console.log(i)
+        i += 1
+        if (i == 10){
+          clearInterval(timerID)
+        }
+      }, 1000)
+    }
+  }
+</script>
+
+<body>
+  
+</body>
+</html>

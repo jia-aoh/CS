@@ -1,0 +1,225 @@
+【前置作業】
+
+10. 已經透過 10_create_project.txt 確認過環境 OK
+
+15. 確認使用 Vite 進行專案建立完畢
+
+18. 請從 w3school 的 howto 獲得 導覽列 和 頁尾 的程式碼範例 
+
+    How TO - Top Navigation
+    https://www.w3schools.com/howto/howto_js_topnav.asp
+
+    How TO - Fixed Footer
+    https://www.w3schools.com/howto/howto_css_fixed_footer.asp
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+
+【建立元件】
+
+20. 建立資料夾以及元件 
+
+    a. 資料夾: src\components 
+
+    b. 元件: MyNavigation.jsx 、 MyFooter.jsx
+
+    c. 使用底下程式碼 取代 MyNavigation.js 的回傳值
+
+        return (
+            <div class="topnav">
+                <a href="/Home">Home</a>
+                <a href="/News">News</a>
+                <a href="/Contact">Contact</a>
+            </div>
+        )
+
+    d. MyFooter.jsx 直接從 w3school 複製過來即可
+
+
+23. w3school 的範例中包含 css 樣式，需要一併設定
+
+    a. 資料夾: src\css
+
+    b. 需要將目前專案原有的css引用註解掉
+
+
+25. 建立資料夾以及元件 - 首頁、最新消息、聯絡我們
+
+    a. 資料夾: src\pages 
+
+    b. 元件: Home.jsx 、 News.jsx 、 Contact.jsx
+
+    c. 生成元件雛型，稍後進行修改
+
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【建立 layout】
+
+
+30. 建立資料夾以及元件 - 版型
+
+    a. 資料夾: src\layouts 
+
+    b. 元件: MyLayout.jsx
+
+    c. 引用 MyNavigation 和 MyFooter
+
+    d. 安排接收 children
+
+    e. 使用下列程式碼取代元件的回傳值
+
+        return (
+            <>
+                <MyNavigation />
+                {children}
+                <MyFooter />
+            </>
+        )
+
+
+35. 修改 步驟25 所生成的三個元件
+
+    a. 引用 MyLayout.jsx
+
+    b. 使用下列程式碼取代元件的回傳值
+
+        return (
+            <MyLayout>
+                <div>Home</div>
+            </MyLayout>
+        )
+
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【路由】
+
+40. 確認專案內是否已經安裝 react-router-dom
+
+     npm list react-router-dom
+
+    * 若專案內沒有 react-router-dom，則執行下列指令安裝
+    
+        npm install react-router-dom
+
+
+45. 依照官方文件「Adding a Router」設置並解建立對應路由
+
+    https://reactrouter.com/en/main/start/tutorial#adding-a-router
+
+    a. 開啟 main.jsx
+
+    b. 在官方標示的位置加入對應的程式碼
+
+    c. 運行專案，觀察結果
+
+
+47. 調整 main.jsx
+
+    a. 加入引用，若資料夾、元件名稱不同，請自行調整
+    
+        import Home from './pages/Home.jsx'
+        import News from './pages/News.jsx'
+        import Contact from './pages/Contact.jsx'
+
+
+    b. 刪除現有 router變數，改以下列這段程式碼取代
+
+        const router = createBrowserRouter([
+            {
+                path: "/",
+                element: <App />
+            },
+            {
+                path: "/Home",
+                element: <Home />
+            },
+            {
+                path: "/News",
+                element: <News />
+            },
+            {
+                path: "/Contact",
+                element: <Contact />
+            },
+        ]);
+
+    c. 點擊導覽列，確認頁面是否可以正常切換
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【 取得路由參數 - useParams 】
+
+    * 實際開發時請不要使用 apple、bee 等變數名稱，依照需求命名
+
+
+50. 調整 router變數 加入 一組路由
+
+    { path: "/Home/:apple/:bee", element: <Home />},
+
+
+53. 修改 Home.jsx；
+
+    a. 取得 useParams
+
+        import { useParams } from 'react-router-dom';
+
+    b. 在元件內部呼叫 useParams
+
+        const { apple, bee } = useParams();
+
+    c. 回傳時資料帶入 apple 和 bee 
+
+        <div>Home - {apple} - {bee} </div>
+
+    d. 運行專案後，請使用下列URL進行測試
+
+        http://localhost:請填入專案運行時的port/Home
+        http://localhost:請填入專案運行時的port/Home/pika
+        http://localhost:請填入專案運行時的port/Home/pika/5566
+
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【比較 <a> 和 <Link> 】
+
+60. 確認 MyNavigation.jsx 元件的回傳值是否包含 <a>標籤 
+    
+    return (
+        <div className="topnav">
+            <a href="/Home">Home</a>
+            <a href="/News">News</a>
+            <a href="/Contact">Contact</a>
+        </div>
+    )
+
+63. 目前有三個 <a>標籤，請嘗試將其中一個換掉
+
+    a. 取得 Link元件
+
+        import { Link } from 'react-router-dom';
+
+
+    b. 修改回傳值
+
+        return (
+            <div className="topnav">
+                <a href="/Home">Home</a>
+                <a href="/News">News</a>
+                <Link to="/Contact">Contact</Link>
+            </div>
+        )
+
+
+65. 運行專案，點選導覽列
+
+    問題： 點選 Home 、 News 、 Contact 的時候，
+            除了畫面有呈現對應的內容外，還有什麼其他的現象？
+
+    答案：

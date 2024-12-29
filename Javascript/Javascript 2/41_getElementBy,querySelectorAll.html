@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<style>
+  .hint {
+    color: red;
+    visibility: hidden;
+  }
+</style>
+<script>
+  window.onload = () => {
+    //id可以用到保留字
+    document.getElementById('onclick').onclick = () => {
+      //用querySelectorAll()回傳陣列
+      document.querySelectorAll('label').forEach(label=>{
+        label.style.color = 'green'
+      })
+      document.querySelectorAll('#label2').forEach(label=>{
+        label.style.backgroudColor = 'green'
+      })
+    }
+  }
+</script>
+
+<body>
+  <button id="onclick">click</button>
+  <label id="label1" for="">AAA</label>
+  <label id="label2" for="">BBB</label>
+
+</body>
+
+</html>

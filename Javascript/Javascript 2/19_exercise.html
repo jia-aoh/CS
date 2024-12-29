@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<script>
+  window.onload = () => {
+    const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/user.json'
+    fetch(url)
+      .then(response => response.json())
+        //直接在response做json解析
+      .then((jsonObj) => {
+        let name = ''
+        jsonObj.forEach((user) => {
+          name += user.name + '<br>'
+        })
+        container.innerHTML = name
+        console.log('hello') //因為fetch是非同步所以先看到done，只要伺服器不掛網路不塞
+      })
+      .catch(reason => console.log(reason))
+      
+      console.log('done')
+  }
+</script>
+
+<body>
+  <div id="container"></div>
+</body>
+
+</html>

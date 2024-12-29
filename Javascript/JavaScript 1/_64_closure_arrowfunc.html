@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  // function ff1() {
+  //   return 'this is f1!'
+  // }
+
+  //具名函數
+  function ff2() {
+    return ('this is function pack!')
+  }
+  let f1 = ff2 //變數可以放程式碼
+  let f2 = ff2()//放入已執行完畢的結果
+
+  //匿名函數（主流）lambda，arrow function箭頭函數vs normal function
+  let f = () => {
+    return 'this is closure! code不止一行只能這樣寫'
+  }
+  let s = () => 'arrow func!若func只有一行，{ }return要一起省略'
+  let add0 = (a, b) => a + b
+  let ans = add0(5, 3)
+
+
+  function add(a, b) {
+    return a + b
+  }
+
+  function newadd(a, b, complete) {
+    const result = a + b
+    complete(result)
+  }
+  //分工1.直接return結果，但使用者體驗不好（程式碼正在算or當掉）
+  //分工2.主流寫法：有機會同時執行兩行程式碼
+
+  
+  window.onload = () => {
+    bn.onclick = () => {
+      newadd(4, 5, (ans) => { //如果closure只有一個參數，()可以省略=>ans
+        console.log(ans)
+        label.innerText = ans
+      })
+    }
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+  <label id="label"></label>
+</body>
+
+</html>

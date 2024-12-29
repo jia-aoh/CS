@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<body>
+  account: <input type="text"><br>
+  password: <input type="password"><br>
+  <button>Go</button>
+  <p></p>
+  <script>
+
+    // 按送出表單
+    $('button').click(function () {
+      // 指定url(我的phpserver)
+      const url = 'https://reqres.in/api/users'
+
+      let input1 = $('input[type="text"]').val()
+      let input2 = $('input[type="password"]').val()
+
+      // 用戶註冊資料(key英語資料庫吻合)
+      let obj = `account: "${input1}", password: "${input2}"`
+
+      
+      // 處理server回應信西
+      const response = function(data){
+        console.log(data)
+        $('p').text('註冊已送出')
+        // 差條件判斷
+      }
+      
+      // 把obj post到url, 用response處理server回應
+      $.post(url, obj, response)
+    })
+  </script>
+</body>
+
+</html>

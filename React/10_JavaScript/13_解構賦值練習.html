@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <script>
+        let pokemon = {
+            pname: '皮卡丘',
+            pcolor: '黃色',
+            pskill: ['電光一閃', '十萬伏特'],
+            ptest: {
+                apple: '蘋果',
+                bee: '蜜蜂'
+            }
+        }
+
+        // * 設計函式: 可以傳入 pokemon 物件，並在呼叫函式後於主控台顯示 皮卡丘 *
+        function showPname({ ptest: { bee } }) {
+            console.log(bee)
+        }
+        function showPname({ pname }) {
+            console.log(pname)
+        }
+
+        // 10. 函式宣告時，沒有使用解構賦值
+        // function showPname(obj) {
+        //     console.log(obj.pname)
+        // }
+
+        // 20. 函式宣告時，使用解構賦值
+        showPname(pokemon)
+
+    </script>
+</body>
+
+</html>

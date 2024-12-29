@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="test"></div>
+  <script>
+    // function no1() {
+    //   return <p>no1</p> // 報錯因為是關於react的語法
+    // }
+    // let no = no1()
+    // console.log(no)
+
+    let apple = {price: '一百塊'}
+    console.log(apple.price)
+    console.log(apple['price'])
+    //如果key不存在會立即新增
+    apple.dog = '狗'
+    console.log(apple)
+
+    //物件新增：1. apple.dog = 新的 ===>{price:100, dog:'新的'}
+    //物件取值：1. apple.price 2. apple['price']
+
+  </script>
+</body>
+
+</html>

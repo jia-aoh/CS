@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<style>
+</style>
+<script>
+  window.onload = () => {
+    // 選父類
+    //選子類
+    document
+      .getElementById('target')
+      .parentElement
+      .parentElement
+      .children[1]
+      .children[1]
+      .style
+      .background = 'aqua'
+  }
+
+
+</script>
+
+<body>
+  <!-- 減少id的量 -->
+  <!-- 從target目標BBBB -->
+  <ul>
+    <li id="target">AAA</li>
+    <li>BBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+  <ul>
+    <li>AAA</li>
+    <li>BBBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+</body>
+
+</html>

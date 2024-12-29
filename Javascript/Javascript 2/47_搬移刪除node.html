@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<style>
+</style>
+<script>
+  window.onload = () => {
+    const ul = document.querySelector('ul')
+    
+    
+    const li = document.createElement('li')
+    li.innerHTML = `<label style="color:red">EEE</label>`
+    // li.textContent = 'EEE'
+
+    const target = ul.firstElementChild
+    ul.insertBefore(li,target)
+
+    //AE對調
+    ul.insertBefore(
+      ul.children[0],
+      ul.children[2]
+    )
+    //E放到最後
+    ul.append(ul.children[1])
+
+    //C刪掉
+    ul.children[2].remove()
+  }
+</script>
+
+<body>
+  <ul>
+    <li>AAA</li>
+    <li>BBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+  <ul>
+    <li>AAA</li>
+    <li>BBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+</body>
+
+</html>

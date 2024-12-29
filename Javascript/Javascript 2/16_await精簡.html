@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    async function div(a, b) {
+      return a / b
+    }
+    async function inc(a) {
+      return a + 1
+    }
+
+    async function task() {
+      let n = 0
+      let result = await div(5,await inc(n))
+      console.log(result)
+    }
+    task()
+    console.log('done')
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+  <style>
+    main {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    main>div {
+      width: 45vw;
+    }
+
+    #example {
+      background-color: chartreuse;
+    }
+
+    #root1 {
+      background-color: pink;
+    }
+
+    #root2 {
+      background-color: lightcoral;
+    }
+
+    #root3 {
+      background-color: lightgreen;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div id="example">
+      <h1>1803教室裡面有</h1>
+      <h2>皮卡丘 28歲 住台中</h2>
+      <h3>正在讀</h3>
+      <p>海賊王</p>
+      <p>天竺鼠車車</p>
+    </div>
+    <div id="root1"></div>
+    <div id="root2">2</div>
+    <div id="root3">3</div>
+    <div id="root4">4</div>
+  </main>
+
+  <script type="text/babel">
+
+    ReactDOM
+      .createRoot(root1)
+      .render(
+        <div>
+          <h1>A1803教室裡面有</h1>
+          <h2>皮卡乓 28歲 住台中</h2>
+          <h3>正在讀</h3>
+          <p>海賊王</p>
+          <p>天竺鼠車車</p>
+        </div>
+      )
+
+    function Bfunc() {
+      return (
+        <div>
+          <B1 className='1804' />
+          <B2 studentName='皮卡乒' age='30' liveIn='台北' />
+          <h3>正在讀</h3>
+          <B3 bookNameArray={['書名2', '書名1']} />
+        </div>
+      )
+    }
+    function B1({ className }) {
+      return <h1>B{className}教室裡面有</h1>
+    }
+    function B2({ studentName, age, liveIn }) {
+      return <h2>{studentName} {age}歲 住{liveIn}</h2>
+    }
+    function B3({ bookNameArray }) {
+      //array
+      return bookNameArray.map((bookName)=>{return <p> {bookName} </p>})
+    }
+    ReactDOM
+      .createRoot(root2)
+      .render(<Bfunc />)
+    function Cfunc() {
+      return (
+        <React.Fragment>
+          <C1 className='1888'>
+            <C2 cname='皮卡兵' cage='28' clive='高雄'>
+              <C3>書4</C3>
+              <C3 bookName='書3'/>
+            </C2>
+          </C1>
+        </React.Fragment>
+      )
+    }
+    function C1({ className, children }) {
+      return <React.Fragment>
+        <h1>{className}教室裡面有</h1>
+        {children}</React.Fragment>
+    }
+    function C2({ cname, cage, clive, children }) {
+      return <React.Fragment>
+        <h2>{cname} {cage}歲 住{clive}</h2>
+        <h3>正在讀</h3>
+        {children}</React.Fragment>
+    }
+    let C3 = ({ bookName, children})=>{
+      return <p>{bookName||children}</p>
+    }
+    ReactDOM
+      .createRoot(root3)
+      .render(<Cfunc />)
+  </script>
+
+</body>
+
+</html>

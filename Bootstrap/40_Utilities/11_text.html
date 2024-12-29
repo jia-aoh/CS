@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text</title>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <script src="../_js/bootstrap.bundle.js"></script>
+    <style>
+        .text-end,
+        .text-truncate {
+            border: 2px solid aqua;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h4>官方網站-Text</h4>
+        <p><a
+                href="https://getbootstrap.com/docs/5.2/utilities/text/">https://getbootstrap.com/docs/5.2/utilities/text/</a>
+        </p>
+        <h4>官方網站-Text wrapping and overflow</h4>
+        <p><a
+                href="https://getbootstrap.com/docs/5.2/utilities/text/#text-wrapping-and-overflow">https://getbootstrap.com/docs/5.2/utilities/text/#text-wrapping-and-overflow</a>
+        </p>
+
+        <hr>
+
+        <!-- 10. 文字位置 block vs inline -->
+        <p class="text-start">text-start</p>
+        <p class="text-end">text-end</p>
+        <p class="text-center">text-center</p>
+        <span class="text-end">span text-end</span>
+        <hr>
+        <!-- 15. 在不同的螢幕寬度上，設定不同的對齊方式 -->
+        <p class="text-sm-start">text-sm-start</p>
+        <p class="text-md-start">text-md-start</p>
+        <p class="text-lg-start">text-lg-start</p>
+        <p class="text-xl-start">text-xl-start</p>
+        <p class="text-sm-end">text-sm-end</p>
+        <p class="text-md-end">text-md-end</p>
+        <p class="text-lg-end">text-lg-end</p>
+        <p class="text-xl-end">text-xl-end</p>
+        <hr>
+        <!-- 20. 當文字溢出時，使用「…」來表達：.text-truncate -->
+        <p class="text-truncate">solving text overflow w/ text-truncate zzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</p>
+        <hr>
+        <!-- 30. 文字大小寫 -->
+        <!--     .text-lowercase | .text-uppercase | .text-capitalize -->
+        <p class="text-lowercase">apPLE caT</p>
+        <p class="text-uppercase">apPLE caT</p>
+        <p class="text-capitalize">apPLE caT</p>
+        <hr>
+        <!-- 40. 文字外觀-->
+        <!--     .fs-1 |  .fw-bold  | .fst-italic -->
+        <!-- font-size | font-weight | font style -->
+        <div class="row row-cols-3">
+            <div class="col">
+                <p class="fs-1">fs-1</p>
+                <p class="fs-2">fs-2</p>
+                <p class="fs-3">fs-3</p>
+                <p class="fs-4">fs-4</p>
+                <p class="fs-5">fs-5</p>
+                <p class="fs-6">fs-6</p>
+                <p class="fs-7">fs-7(no)</p>
+                <p class="fs-8">fs-8(no)</p>
+            </div>
+            <div class="col">
+                <p class="fw-bold">fw-bold</p>
+                <p class="fw-bolder">fw-bolder</p>
+                <p class="fw-semibold">fw-semibold</p>
+                <p class="fw-normal">fw-normal</p>
+                <p class="fw-light">fw-light</p>
+                <p class="fw-lighter">fw-lighter</p>
+            </div>
+            <div class="col">
+                <p class="fst-italic">fst-italic</p>
+                <p class="fst-normal">fst-normal</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

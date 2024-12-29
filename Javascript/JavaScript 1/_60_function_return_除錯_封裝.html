@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+
+
+  function math(a, op, b) {
+    function div(a, b = 2) { // =2為參數預設值，預設值一律右邊開始填
+      if (b === 0) {
+        throw `分母不能為0` //throw一個錯誤，不用正常運算得到`分母不能為0`結果
+      }
+      return a / b
+    }
+    function add(a, b) {
+      return a + b
+    }
+    if (op == '/') {
+      return div(a, b)
+    }
+    if (op == '+') {
+      return add(a, b)
+    }
+  }
+  //設中斷點，單步追蹤三按鈕，sources > 點行
+  window.onload = function () {
+    bn.onclick = function () {
+      try {
+        const result = math(5, '+', 3)
+        console.log(result)
+      } catch (error) {
+        console.log('error: ' + error)
+      }
+      console.log('done')
+
+    }
+  }
+</script>
+
+<body>
+  <button id="bn">bn</button>
+</body>
+
+</html>

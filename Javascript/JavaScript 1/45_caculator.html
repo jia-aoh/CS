@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = function () {
+    bn1.onclick = function () {
+      const a = parseFloat(aa.value)
+      const b = parseFloat(bb.value)
+      if (b === 0) {
+        alert('NumB cannot be 0')
+      } else {
+        const ans = a / b
+        aaa.innerHTML = `a/b=${ans}`
+      }
+    }
+    bn2.onclick = function () {
+      const d = parseFloat(dd.value)
+      ddd.innerHTML = Math.ceil(d)
+    }
+    bn3.onclick = function () {
+      const a = parseInt(aa.value)
+      const b = parseInt(bb.value)
+      const ans = Math.imul(a, b)
+      aaa.innerHTML = ans
+    }
+    bn4.onclick = function () {
+      const d = parseFloat(dd.value)
+      ddd.innerHTML = Math.log2(d)
+    }
+    bn5.onclick = function () {
+      const d = parseFloat(dd.value)
+      ddd.innerHTML = Math.round(d)
+    }
+    bn6.onclick = function () {
+      const myMin = Math.ceil(parseInt(aa.value))
+      const myMax = Math.floor(parseInt(bb.value))
+      const bigArray = []
+      const myArray = []
+      if (myMax - myMin <= 5) {
+        alert('Min should be < (Max-5)')
+      } else {
+        for(j = 0; j < 5; j++){
+          for (i = 0; i < 6; i++) {
+            const x = Math.floor(Math.random() * (myMax - myMin) + myMin)
+            if (myArray.includes(x)) {
+              i = i - 1
+            } else {
+              myArray[i] = x
+            }
+          }
+          bigArray[j] = myArray
+        }
+        eee.innerHTML = bigArray
+      }
+    }
+  }
+</script>
+
+<body>
+  Min: <input type="number" id="aa"><br>
+  Max: <input type="number" id="bb"><br>
+  <button id="bn1">divide</button><button id="bn3">imul</button><br>
+  <div id="aaa"></div>
+  NumC: <input type="number" id="dd"><br>
+  <button id="bn2">32bit</button><button id="bn4">log2</button><button id="bn5">四捨五入</button>
+  <div id="ddd"></div>
+  <button id="bn6">random-array</button>
+  <div id="eee"></div>
+
+</body>
+
+</html>

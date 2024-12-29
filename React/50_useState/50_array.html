@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // * 請根據說明創造出對應的元件 *
+        // 10. 元件名稱為 ： MyComponent
+        // 20. 讓使用者可以透過 input 增加陣列項目，並且將陣列透過 <ol> 和 <li> 顯示在畫面上
+        function MyComponent() {
+            const [input, setInput] = React.useState('')
+            const [foodList, setFoodList] = React.useState(['香菜', '布丁', '火雞'])
+            // let liArray = [<li>香菜</li>
+            let handleChangeInput = () => {
+                setInput(event.target.value)
+            }
+            let handleClickAdd = () => {
+                setFoodList([...list, input])
+            }
+            // warning要加key讓所有元素有唯一性
+            //可以直接把運算放在return內
+            // let foodList = list.map((food, indexForKey) => <li key={indexForKey}>{food}</li>)            
+            return <div>
+                <input type="text" onChange={() => { handleChangeInput() }} />
+                <button onClick={() => { handleClickAdd() }}>加入清單</button>
+                <ol id='ol'>
+                    {foodList.map((foodData, indexForKey) => <li key={indexForKey}>{foodData}</li>) }
+                </ol>
+            </div>
+        }
+
+        myReactRoot.render(<MyComponent />);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    // 成功會124, 失敗34
+    $.get("../_file/smallfilae.txt", function (data) {
+      console.log("1. success")
+      console.log(data)
+    })
+      .done(function () {
+        console.log("2. second success")
+      })
+      .fail(function () {
+        console.log("3. error")
+      })
+      .always(function () {
+        console.log("4. finished")
+      })
+  </script>
+</body>
+
+</html>

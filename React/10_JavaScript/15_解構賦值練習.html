@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <pre>為了useState鋪陳</pre>
+    <script>
+        
+        let pikachu = {
+            sayhi: function (foo) {
+                return [foo, function () {
+                    console.log(foo);
+                }]
+            }
+        }
+        
+        // 10. 獲得上方的 sayhi函式的回傳值，並呼叫回傳值中的函式
+        //     * 不使用 解構賦值
+        // let sayhiFunc = pikachu.sayhi('輸入')
+        // let xb = sayhiFunc[0] // 可簡化
+        // let xc = sayhiFunc[1] // 可簡化
+        // xc()
+
+        // 20. 獲得上方的 sayhi函式的回傳值，並呼叫回傳值中的函式
+        //     * 使用 解構賦值
+        let [foo, bar] = pikachu.sayhi('輸入')
+        console.log(foo)
+        bar()
+
+    </script>
+</body>
+
+</html>

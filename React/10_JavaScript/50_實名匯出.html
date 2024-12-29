@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <pre>
+        練習步驟:
+        10. 建立 50.js 檔案
+        
+        15. 在 50.js 檔案 貼上以下內容
+            export let apple = '蘋果';
+            export function bee (){
+                console.log('蜜蜂');
+            }
+        
+        20. 在這個網頁透過 import 關鍵字載入 50.js
+            並使用匯入的內容
+            
+            *  import {變數} from "檔案路徑"
+    </pre>
+    <script type="module"> //導入要加type=module
+        import {apple, bee} from "./50.js"
+        console.log(apple)
+    </script>
+
+</body>
+
+</html>

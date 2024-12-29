@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery-ui</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+</head>
+<style>
+  .deleted {
+    display: none;
+  }
+</style>
+<script>
+
+  $(() => {
+    // jquery -> ui -> api
+    // 拖動
+    $('label').draggable({
+      revert: true,
+      start: (event, ui) => {
+        $('#trashcan').css('border', '5px solid red')
+      },
+      stop: (event, ui) => {
+        $('#trashcan').css('border', 'none')
+      }
+    })
+
+    $('#trashcan').droppable({
+      tolerance: 'touch', // 只要有1px碰到就觸發
+      drop: (event, ui) => {
+        if (confirm('確定刪除？')) {
+          ui.draggable.addClass('deleted')
+        }
+
+      }
+    })
+
+    $('#restore').click(() => {
+      $('.deleted').removeClass('deleted')
+
+    })
+
+    // 可以單獨id從垃圾桶翻哪些東西要還原
+
+  })
+
+</script>
+
+<body>
+  <img id="trashcan" src="./trash.png" width="60" alt="">
+  <button id="restore">復原</button>
+  <p></p>
+  <label>lb1</label>
+  <label>lb2</label>
+  <label>lb3</label>
+</body>
+
+</html>

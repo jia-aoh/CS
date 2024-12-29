@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+    c# Razor
+    React JSX
+
+    <h4>createElement</h4>
+    <p><a href='https://react.dev/reference/react/createElement'>https://react.dev/reference/react/createElement</a></p>
+
+    <div id="root"></div>
+    <h1>對照組</h1>
+
+    <script type="text/babel">
+
+
+
+        // 10. 使用 React.createElement() 建立元素在畫面上
+        //      * React.createElement( 標籤名稱, {標籤屬性設定}, 標籤內容 )
+        let img = React.createElement('img', {src:"../_images/pig.png"})
+        let data = React.createElement('h1', {}, '實驗組')
+        ReactDOM.createRoot(root).render(data)
+        ReactDOM.createRoot(root).render(img)
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    a {
+      color: aliceblue;
+      text-decoration: none;
+    }
+
+    a {
+      /* cursor: pointer; */
+      border: 2px solid red;
+    }
+
+    div>div {
+      background-color: black;
+      width: 100%;
+      color: white;
+      text-align: center;
+    }
+
+    div[id="dpdown2"],
+    div[id="dpdown3"] {
+      display: none;
+    }
+
+    div[class="drp_down"]:hover div {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="drp_down">
+    <div id="dpdown1"><a href="">MENU</a></div>
+    <div id="dpdown2">
+      <a href="">LANGUAGE</a><br>
+      <a href="">CONTACT</a>
+    </div>
+  </div>
+</body>
+
+</html>

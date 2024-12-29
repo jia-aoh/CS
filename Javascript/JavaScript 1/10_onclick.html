@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+
+
+<script>
+  window.onload = function () {
+    btn.onclick = function () {
+      // idLabel.innerHTML = '<div style="color:red">hello, world!</div>';
+      idLabel.innerText = 'hello, world!'
+      console.log('done')//除錯用
+    }
+    myalert.onclick = function () {
+      // alert('資料已存檔')
+
+      //   myvar = prompt('請輸入email')
+      //   console.log(myvar) //取消顯示null
+      //   if (myvar != null){
+      //     idLabel.innerText = myvar
+      //   }
+      // }
+
+      confirm('是否刪除資料')
+
+
+    }
+  }
+</script>
+
+<body>
+  <button id="btn">click</button>
+  <button id="myalert">alert</button>
+  <p></p>
+  <label id="idLabel" for="">hi</label>
+  <!-- 第一個EN，不要符號、空格 -->
+</body>
+
+</html>

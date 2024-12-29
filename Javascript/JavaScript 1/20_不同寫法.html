@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  function fname(){
+    alert('舊寫法')
+  }
+  window.onload = function () {
+    bn1.onclick = function () {
+      alert('新語法')
+    }
+    bn2.addEventListener('click', function(){
+      alert('高級語法')
+    })
+    
+  }
+</script>
+
+<body>
+  <button id="bn1">bn1</button>
+  <button id="bn2">bn2</button>
+  <button id="bn3" onclick="fname()">bn3</button>
+</body>
+
+</html>

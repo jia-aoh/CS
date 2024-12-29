@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>JavaScript Classes</h4>
+    <p><a href='https://www.w3schools.com/js/js_classes.asp'>https://www.w3schools.com/js/js_classes.asp</a></p>
+    <p>class, super, constuctor, extends, static</p>
+    <script>
+
+
+        // 10. 使用 class 關鍵字來定義一個類別，類別名稱需以大寫英文開頭
+        // 11. 在 class 類別中定義 屬性 和 方法
+        //      * 建構函數: 使用 constructor 進行定義
+        //      * 一般普通函數:  函數名稱(){}
+
+        // 宣告類別
+        class Monster {
+
+            //建構函數(使用者輸入){ 定義monster屬性 this.初始化 = 初始化 }
+            constructor(name, hp) {
+                this.name = name
+                this.hp = hp
+            }
+            // 物件方法(功能)
+            hi() {
+                console.log(`你好我是${this.name}, 血量有${this.hp}`)
+            }
+        }
+
+        // 20. 使用 new 關鍵字獲得一個 物件/實例/instance
+        let pika = new Monster('皮卡', 321000)
+        pika.hi()
+        let pikachu = new Monster('皮卡丘', 123000)
+        pikachu.hi()
+
+
+        // 30. 使用 extends 關鍵字 繼承其他類別
+        //      * class 子類別 extends 父類別
+        //      * 透過繼承，子類別會「繼承」父類別的屬性和方法
+        class Boss extends Monster{
+            constructor(name, hp, mp){
+                super(name, hp) // 35叫父的constructor
+                this.mp = mp
+            }
+            fire(){
+                console.log(`${this.name}已放火${this.mp}`)
+            }
+            static rabbit(){
+                console.log(`${this.name}變兔子${this.mp}`)
+            }
+
+        }
+        let papi = new Boss('大爸爸', 543111, 222)
+        
+        // 35.  在子類別中呼叫父類別的建構函數
+        //      * 呼叫 super 方法
+        papi.hi()
+        papi.fire()
+
+
+        // 40. 使用 static 關鍵字在類別裡面宣告一個「靜態方法」
+        //      * 使用方式(O):   類別名稱.靜態方法()
+        //      * 使用方式(X):   物件/實例/instance.靜態方法()
+        Boss.rabbit()
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<style>
+</style>
+<script>
+  //也可以用css解決
+  //資料量大考慮效率，影響耗電
+  window.onload = () => {
+    for(i=0;i<2;i++){
+      const ul = document.querySelectorAll('ul')[i]
+      for(j=0;j<4;j++){
+        if((j+i)%2==0)continue
+        ul
+        .children[j]
+        .style
+        .backgroundColor = 'cyan'
+      }
+    }
+
+  }
+
+
+</script>
+
+<body>
+  <!-- 減少id的量 -->
+  <!-- 從target目標BBBB -->
+  <ul>
+    <li>AAA</li>
+    <li>BBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+  <ul>
+    <li>AAA</li>
+    <li>BBBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+</body>
+
+</html>

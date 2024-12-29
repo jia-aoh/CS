@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  div{
+    border:1px solid black;
+  }
+</style>
+<script>
+  const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/main/aqiv2.json'
+
+//CORS代表抓不到網址
+//safari,firfox平台就有
+//chrome要在命令提示字元關
+window.onload = () => {
+    function jsonParse(jsonString) {
+      let content = ''
+      JSON.parse(jsonString).records.forEach(records=>{
+        content += `<div>站名：${records.sitename}</div>`
+        content += `<div>所在縣市：${records.county}</div>`
+        content += `<div>空氣品質：${records.aqi}</div>`
+        content += `<div>狀態：${records.status}</div>`
+      })
+      container.innerHTML = content
+    }
+
+
+
+    fetch(url)
+      .then((response) => {
+        return response.text()
+      })
+
+      .then((text)=>{
+        jsonParse(text)
+      })
+  }
+</script>
+</script>
+
+<body>
+<div id="container"></div>
+</body>
+
+</html>

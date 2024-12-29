@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .area {
+      width: 200px;
+      height: 200px;
+    }
+
+    .color1 {
+      background-color: bisque;
+    }
+
+    .color2 {
+      background-color: yellowgreen;
+    }
+  </style>
+</head>
+
+<script>
+  window.onload = function () {
+    area.onmousemove = function (event) {
+      // console.log('hi')確認訊息攔截
+      x.innerText = event.offsetX
+      y.innerText = event.offsetY
+      px.innerText = event.pageX
+      py.innerText = event.pageY
+      sx.innerText = event.screenX
+      sy.innerText = event.screenY
+    }
+    bn1.onclick = function () {
+      area.style = 'background-color:cyan'
+    }
+    bn2.onclick = function () {
+      area.classList.add('color1')
+    }
+    bn3.onclick = function () {
+      area.classList.remove('color1')
+    }
+    bn4.onclick = function () {
+      area.classList.toggle('color2') //呼叫＋移除
+    }
+    counter = 0
+    bn5.onclick = function () {
+      if (counter == 0) {
+        area.classList.add('color1')
+        counter = 1
+        return
+      }
+
+      if (counter == 1) {
+        area.classList.remove('color1')
+        area.classList.add('color2')
+        counter = 2
+        return
+      }
+
+      if (counter == 2) {
+        area.classList.remove('color2')
+        counter = 0
+        return
+      }
+    }
+  }
+</script>
+
+<body>
+  <button id="bn1">stylecolor</button>
+  <button id="bn2">addClassCss</button>
+  <button id="bn3">removeClassCss</button>
+  <button id="bn4">toggle</button>
+  <button id="bn5">exercise</button>
+  <div id="area" class="area"> </div>
+  X: <label id="x">0</label>
+  <p></p>
+  Y: <label id="y">0</label>
+  <p></p>
+  pX: <label id="px">0</label>
+  <p></p>
+  pY: <label id="py">0</label>
+  <p></p>
+  sX: <label id="sx">0</label>
+  <p></p>
+  sY: <label id="sy">0</label>
+  <p></p>
+
+</body>
+
+</html>

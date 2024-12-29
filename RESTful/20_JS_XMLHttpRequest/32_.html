@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<body>
+  <button id="getAllInfo">取得資料</button>
+  <select id="city"></select>
+  <div id="result"></div>
+  <script>
+    let xml = ''
+    function getWeatherInfo() {
+      let request = new XMLHttpRequest
+      request.addEventListener('load', parseXml)
+      request.open('get', '../_file/F-C0032-001.xml')
+      request.send()
+      document.getElementById('getAllInfo').disabled = true
+    }
+    function parseXml() {
+      let parser = new DOMParser()
+      xml = parser.parseFromString(this.responseText, 'application/xml')
+      let list_city = $(xml).find('locationName')
+      printCity(list_city)
+
+    }
+    function printCity(citys) {
+      $(citys).each((index, city) => {
+        let option = document.createElement('option')
+        option.innerHTML += city.innerHTML
+        option.value = index
+        $('#city').append(option)
+      })
+
+    }
+    function printWeatherInfo() {
+      $('#result').text('')
+      let cList = xml.querySelectorAll('locationName+weatherElement')
+      wList = $(cList[$('#city').val()])
+      $(wList).find('time').each((index, value)=>{
+        console.log(value)
+        $('#result').append($(value).find('startTime').text()+'<br>')
+        $('#result').append($(value).find('endTime').text()+'<br>')
+        $('#result').append($(value).find('parameterName').text()+'<br><br>')
+      })
+    }
+
+    document.getElementById('getAllInfo').addEventListener('click', getWeatherInfo)
+    document.getElementById('city').addEventListener('change', printWeatherInfo)
+  </script>
+</body>
+
+</html>

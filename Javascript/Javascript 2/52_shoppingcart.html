@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+</style>
+<script>
+  function inc() {
+    origin = event.target.parentElement.parentElement.children[2].textContent
+    event.target.parentElement.parentElement.children[2].textContent = parseInt(origin) + 1
+
+
+  } 
+  function dec() {
+    origin = event.target.parentElement.parentElement.children[2].textContent
+    if(origin == 1){
+      event.target.parentElement.parentElement.remove()
+    }else{
+    event.target.parentElement.parentElement.children[2].textContent = parseInt(origin) - 1
+  }}
+  window.onload = () => {
+    const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/product.json'
+    fetch(url)
+      .then(response => response.json())
+      .then((jsonObj) => {
+        let table = `<table border='1'>
+          <tr>
+            <td>項次</td>
+            <td>名稱</td>
+            <td>數量</td>
+            <td>操作</td>
+            </tr>`
+        let i = 1
+        jsonObj.forEach((url) => {
+          table += `<tr>
+            <td>${url.pid}</td>
+            <td>${url.name}</td>
+            <td>${url.quantity}</td>
+            <td><button id="bn${i}1" onclick="inc()">+</button><button id="bn${i}0" onclick="dec()">-</button></td>
+            </tr>`
+          i += 1
+        })
+        table += '</tr>'
+        tb.innerHTML = table
+        console.log(table)
+      })
+      .catch(reason => console.log(reason))
+  }
+</script>
+
+<body>
+<div id="tb"></div>
+</body>
+
+</html>

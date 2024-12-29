@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<style>
+</style>
+<script>
+  window.onload = () => {
+    const el = document.querySelector('ul').firstElementChild
+    //只要有改內容，整個chain就斷了 
+    el.innerHTML = 'EEE'
+    el.style.backgroundColor = 'cyan'
+
+    //body跟ul間1
+    document
+      .body
+      .firstChild
+      .textContent = 'Agenda'
+    //錯誤原因：1.定義理解錯誤，2.瀏覽器edge,chrome,firefox,safari
+    
+    //body跟ul間2
+    document
+      .querySelector('ul')
+      .previousSibling
+      .textContent = 'Agenda'
+
+
+  }
+</script>
+
+<body>
+  <!-- 減少id的量 -->
+  <!-- 從target目標BBBB -->
+  <ul>
+    <li>AAA</li>
+    <li>BBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+  <ul>
+    <li>AAA</li>
+    <li>BBBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+</body>
+
+</html>

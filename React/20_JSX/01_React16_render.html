@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <!-- 引入 React V16 -->
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+</head>
+
+<body>
+
+    <h3> React V16 </h3>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // 10. 透過 ReactDOM.render( 資料(或JSX) , 指定元素 ) 將資料渲染在畫面上
+        let data1 = '資料1'
+        let data2 = '資料2'
+        let data3 = '資料3'
+        let elem = document.getElementById('root')
+
+        ReactDOM.render( [data1, data2, data3] , elem )
+        ReactDOM.render( <i>可以打標籤</i> , elem )
+
+        
+    </script>
+</body>
+
+</html>

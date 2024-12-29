@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+
+    <script type="text/babel">
+
+        // 目標：產生 div 裡面有 form ， form 裡面有三個 input
+        //      a. 每一個 input 都設定為 文字輸入
+        //      a. 每一個 input 都需要帶有 placeholder 屬性
+
+        // 10. 使用 React.createElement() 
+        let myReactElement =
+            React.createElement('form', {}, [
+                React.createElement('input', { type: "text", placeholder: "name" }),
+                React.createElement('input', { type: "text", placeholder: "address" }),
+                React.createElement('input', { type: "text", placeholder: "phone" })
+            ])
+
+        // 20. 使用 JSX 
+        let myJSXElement = <form>
+            <input type="text" placeholder="name" />
+            <input type="text" placeholder="address" />
+            <input type="text" placeholder="phone" />
+        </form>
+        ReactDOM.createRoot(document.getElementById('root'))
+            .render(<div>
+                <h3>使用 createElement 產生</h3>
+                {myReactElement}
+                <hr />
+                <h3>使用 JSX 產生</h3>
+                {myJSXElement}
+            </div>);
+    </script>
+</body>
+
+</html>

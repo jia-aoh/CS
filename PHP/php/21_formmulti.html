@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="21_formback.php" method="get">
+    Account: <input type="text" name="account"><br>
+    Password: <input type="password" name="password"><br>
+    Gender:
+    <input type="radio" name="gender" value="m" checked >Male
+    <input type="radio" name="gender" value="f">Female<br>
+    興趣: 
+    <input type="checkbox" name="interests[]" value="1">打電腦
+    <input type="checkbox" name="interests[]" value="2">打小孩
+    <input type="checkbox" name="interests[]" value="3">打藍球
+    <input type="checkbox" name="interests[]" value="4">打麻將
+    <input type="checkbox" name="interests[]" value="5">打毛線
+    <br>
+    <input type="submit" value="Register">
+  </form>
+</body>
+</html>

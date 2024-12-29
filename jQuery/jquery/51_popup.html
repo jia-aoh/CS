@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery-ui</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+</head>
+<style>
+  .ui-menu {
+    width: fit-content;
+  }
+</style>
+<script>
+
+  $(() => {
+    // 適合做pop-up menu
+    $('#menu').menu({
+      select: (event, ui) => {
+        const id = $(event.currentTarget).attr('id') // 攔截使用者選哪個選單
+        console.log(id)
+      }
+    }).hide() // 先隱藏
+
+    // 滑鼠右鍵下拉選單
+    $('#label')
+      .mousedown((event) => {
+        if (event.button == 2) {
+          const x = event.pageX
+          const y = event.pageY
+          $('#menu').show()
+        }
+      })
+
+    $('html')
+      .click(() => {
+        $('#menu').hide()
+      })
+      .contextmenu((event) => {
+        event.preventDefault()
+        return true
+      })
+
+  })
+
+</script>
+
+<body>
+  <label id="label">Hello, World!</label>
+  <ul id="menu">
+    <li>
+      <div>選單內容1</div>
+      <ul>
+        <li id="pk1">
+          <div>選單內容1-1</div>
+        </li>
+        <li id="pk2">
+          <div>選單內容1-2</div>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="ui-state-disabled">選單內容2</div>
+    </li>
+
+  </ul>
+</body>
+
+</html>

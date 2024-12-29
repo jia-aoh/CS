@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <pre>
+        練習步驟:
+        10. 建立 51.js 檔案
+        
+        15. 在 51.js 檔案 貼上以下內容
+            let cat = '貓咪';
+            function dog (){
+                console.log('狗狗');
+            }
+            
+            export {
+                cat as bigcat,
+                dog
+            }
+        
+        20. 在這個網頁透過 import 關鍵字載入 51.js
+            並使用匯入的內容
+            
+            *  import {變數} from "檔案路徑"
+    </pre>
+    <script type="module">
+        import {bigcat, dog} from "./51.js"
+    </script>
+    <script>
+        let test = 
+        console.log(typeof test)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <!-- 引入 React V18 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+</head>
+
+<body>
+
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // 10. 改寫上一個檔案，原本使用 #root 元素，請改為使用 body 標籤
+        //    a. 觀察畫面
+        //    b. 觀察主控台是否有錯誤訊息
+        let data = <h1>資料</h1>
+        let elem = document.getElementsByTagName('body')
+        ReactDOM.createRoot(elem[0]).render([data, data])
+
+    </script>
+</body>
+
+</html>

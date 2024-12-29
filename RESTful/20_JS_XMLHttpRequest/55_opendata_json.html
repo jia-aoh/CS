@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+<style>
+    table,
+    tr,
+    td {
+        border: 1px solid black;
+    }
+
+    img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<body>
+
+    <h4>獨立音樂</h4>
+    <p><a href='https://data.gov.tw/dataset/6006'>https://data.gov.tw/dataset/6006</a></p>
+    <hr>
+    <button id="btnGetOpenData">取得展覽資料</button>
+    <hr>
+    <div id="divResult"></div>
+    <script>
+        // 10. 按鈕點選時，載入資料
+        btnGetOpenData.addEventListener('click', getFile)
+
+        // 30. 宣告 function getFile()
+        //     取得平台資料並將 起訖日期、展覽名稱 顯示在畫面上
+        function getFile() {
+            const url = '../_file/showmusic.json'
+            let xhr = new XMLHttpRequest()
+            xhr.onload = xhrLoad
+            xhr.open('get', url)
+            xhr.send()
+        }
+        function xhrLoad() {
+            // 請接this.responseText
+            let jsonObj = JSON.parse(this.responseText)
+            // console.log(jsonObj[0].startDate)
+            // console.log(jsonObj[0].endDate)
+            // console.log(jsonObj[0].title)
+
+            //JS
+            let content = ''
+            jsonObj.forEach((value) => {
+                content += `期間：${value.startDate}-${value.endDate}<br>`
+                content += `名稱：${value.title}<br>`
+                if (value.imageUrl) {
+                    content += `<img src="${value.imageUrl}"><br>`
+                } else {
+                    content += `此場次沒圖<br>`
+                }
+                content += `場次票價：<br>`
+
+                content += `<table>`
+                value.showInfo.forEach((value) => {
+                    content += `<tr>`
+                    content += `<td>時間：<br>${value.time}</td>`
+                    content += `<td>地點：<br>${value.locationName}</td>`
+                    content += `<td>地址：<br>${value.location}</td>`
+                    if (value.onSales = "Y") {
+                        if (value.price == "") {
+                            content += `<td>售票中：<br>甭錢</td>`
+                        }
+                    } else {
+                        content += `<td>售票未開啟</td>`
+                    }
+                    content += `</tr>`
+                })
+                content += `</table><hr>`
+
+            })
+            document.getElementById('divResult').innerHTML = content
+
+
+            //jQuery
+            // $('#divResult').text('')
+            // $(jsonObj).each(function(index, value){
+            //     $('#divResult').append(`<p>期間：${value.startDate} ~ ${value.endDate}</p>`)
+            //     $('#divResult').append(`<p>名稱：${value.title}</p><hr>`)
+            //     // console.log(value.startDate)
+            //     // console.log(value.endDate)
+            //     // console.log(value.title)
+            // })
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <!-- 試試看，<select>、<option> -->
+
+    <label for="phone">選擇手機型號:</label>
+    <select name="phone" id="phone">
+        <option value="i15">iPhone 15</option>
+        <option value="i14">iPhone 14</option>
+        <option value="p8">Pixel 8</option>
+        <option value="p7" selected>Pixel 7</option>
+    </select>
+    <!-- 試試看，<select>、<optgroup>、<option> -->
+    <br>
+    <label for="phone2">手機型號</label>
+    <select id="phone2">
+        <optgroup label="Apple">
+            <option>iPhone15</option>
+            <option>iPhone14</option>
+        </optgroup>
+        <optgroup label="Google">
+            <option value="">Pixel8</option>
+            <option value="">Pixel7</option>
+        </optgroup>
+    </select>
+    <br>
+    <!-- 試試看，<datalist>、<option> -->
+    <label for="movie">請輸入喜歡的電影</label>
+    <input id="movie" type="text" list="movielist">
+    <datalist id="movielist">
+        <option value="spiderman"></option>
+        <option value="ironman"></option>
+        <option value="batman"></option>
+    </datalist>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+const jsonString = `
+{
+   "name": "David",
+   "phone": {
+       "home": "1111",
+       "mobile": "2222"
+   },
+   "children": [
+       {
+           "name": "Mei"
+       },
+       {
+           "name": "Tom"
+       }
+   ]
+}
+   `
+   //解析完處理，看圖說故事
+const david = JSON.parse(jsonString)
+console.log(david.phone.mobile)
+console.log(david.children.length)
+console.log(david.children[1].name)
+// https://www.json.org/json-en.html
+</script>
+
+<body>
+
+</body>
+
+</html>

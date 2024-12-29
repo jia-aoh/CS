@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <style>
+        .test_class {
+            color: green;
+        }
+
+        #test_id {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h4>The Rules of JSX - camelCase </h4>
+    <p><a
+            href="https://react.dev/learn/writing-markup-with-jsx#3-camelcase-salls-most-of-the-things">https://react.dev/learn/writing-markup-with-jsx#3-camelcase-salls-most-of-the-things</a>
+    </p>
+
+    <hr>
+    <div id="root1"></div>
+    <div id="root2"></div>
+    html標籤可以複製貼上
+    1. 要自閉
+    2. style要用class or id
+    3. class -> className
+    4. for -> htmlFor
+    5. html data-* 
+    6. css --* 
+
+    <script type="text/babel">
+
+        // 10. 在 HTML 寫下一個標籤，且該標籤有一個屬性 style，放入一些css樣式的設定
+        // ReactDOM
+        //     .createRoot(root)
+        //     .render(<p style="font-size: larger";>設定css</p>) 
+
+        // 15. 在 JSX 中 將步驟 10 所寫的標籤複製過來，確認是否可以正常運行
+        // 20. 將 css 樣式寫在 <style> 標籤中，並且使用 #id 或者 .class 進行設計； 
+        //     設定 JSX 標籤，使用定義好的css樣式，觀察是否可以正常使用
+        ReactDOM
+            .createRoot(root1)
+            .render(<p className="test_class" id="test_id"> 設定css</p >) //class因為JS跟HTML都有所以區別一下
+
+
+        // 30. 請在 JSX 中測試 <label>標籤的 for屬性，請依照提示進行修正
+        ReactDOM
+            .createRoot(root2)
+            .render(<React.Fragment>
+                <label htmlFor="myInput">label: </label>
+                <input id="myInput" />
+            </React.Fragment>)
+
+    </script>
+</body>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery-ui</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+  <script src="datepicker-zh-TW.js"></script>
+</head>
+<style>
+</style>
+
+<script>
+
+  $(() => {
+
+    // 注意時間標準格式：輸出到資料庫
+    $('#datepicker').datepicker({
+      regional: 'zh-TW',
+      minDate: '0', // 生日取消
+      maxDate: '+30', // 限制時間，生日0
+      dateFormat: 'yy-mm-dd', // iso標準
+      changeMonth: true, // 月份選擇
+      changeYear: true, // 年份選擇
+      showButtonPanel: true, // 快進到今天
+
+
+    })
+
+
+
+
+  })
+
+</script>
+
+<body>
+  <input type="text" id="datepicker">
+</body>
+
+</html>

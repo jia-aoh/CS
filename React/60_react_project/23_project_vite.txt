@@ -1,0 +1,221 @@
+【前置作業】
+
+10. 已經透過 10_create_project.txt 確認過環境 OK
+
+15. 確認使用 Vite 進行專案建立完畢
+
+18. 獲得 HTML 樣板
+    下載這個樣板: https://startbootstrap.com/template/blog-home
+    * 若連結失效，請使用這個資料夾底下的「startbootstrap-blog-home-gh-pages.zip」
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【資料夾】
+
+20. 觀察專案資料夾
+
+    node_modules：套件
+    
+    public
+
+    src：放程式碼
+
+25. 將步驟 18 獲得的 HTML 樣板放到 Vite 專案中
+    
+    assets 資料夾
+
+    css 資料夾
+
+    js 資料夾
+
+    
+    問題：步驟 18 獲得了一個 index.html
+
+        是否應該要直接取代掉 Vite 專案底下的 index.html？
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【引用檔案 & 更新內容】
+
+30. 觀察 Vite 專案，並引用 css 和 js 檔案
+
+    問題：App.jsx 如何引用 css 檔案 
+    答案：
+
+    問題：如何引用 我們自己剛剛放入的 styles.css
+    答案：
+
+    問題：如何確認 我們的 styles.css 有引用成功
+    答案：
+
+    問題：App.jsx 如何引用 js 檔案 
+    答案：
+
+    問題：如何引用 我們自己剛剛放入的 scripts.js
+    答案：
+
+    問題：如何確認 我們的 scripts.js 有引用成功
+    答案：
+
+
+
+35. 更改 App.jsx 元件回傳的標籤內容
+
+    問題：App.jsx 回傳的標籤有哪些
+    答案：
+
+    問題：HTML 樣板的 index.html 內容有哪些要複製到 App.jsx
+    答案：
+
+    問題：將 HTML 樣板的內容貼過來以後，專案運行起來有沒有問題
+    答案：
+
+    問題：專案運行的結果是否和 HTML樣板相符
+    答案：
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【拆分元件】
+
+40. 在 src 資料夾底下建立 apple_share 資料夾
+
+    * 資料夾名稱帶入 apple 只是想要提醒這裡可以依照自己的需求命名
+
+    * 稍後有出現「apple」的字樣，全部都是相同提醒
+
+    * 實際開發時請移除 apple，依照需求命名
+
+
+
+43. 判斷哪些「標籤(元素)」其他的頁面也會用到
+    
+
+45. 以 導覽列 作為示範
+
+    a. 安裝 vscode 延伸模組: ES7+ React/Redux/React-Native snippets
+
+
+    b. 建立檔案 apple_share\AppleNav.jsx；
+
+        開啟 AppleNav.jsx 並在檔案內手動輸入 rfce
+
+        透過 rfce 快速搭建元件所需要的程式碼
+    
+
+    c. AppleNav.jsx 的回傳值為 <div>AppleNav</div>
+
+        請刪除這個div，改放導覽列相關的標籤
+
+
+    d. 在 App.jsx 引用 AppleNav.jsx 後，加入元件到適當位置
+
+
+
+47. 目前頁面上出現 <!-- Blog post--> 的地方有四個，
+
+    請針對這個地方設計元件
+
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+
+【傳值給元件】
+
+50. 假定上述步驟 47 所建立的元件為 AppleCard
+    底下用 AppleCard 進行描述
+
+    //用屬性傳-----------
+
+    問題：卡片裡面有一個地方顯示日期，顯示的日期是什麼
+    答案：
+
+    問題：如果想要將指定的日期傳入 AppleCard 元件中，應該要如何設置
+    答案：
+
+    問題：如果想要將圖片路徑傳入 AppleCard 元件中，應該要如何設置
+    答案：
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【搜尋資料】
+
+60. 畫面右側有 Search 以及 Categories ，請將他們獨立出去變成一個元件
+
+    * 假設元件名稱為 AppleSearch.jsx
+
+
+
+62. 在 AppleSearch.jsx 中建立兩個陣列，分別對應 Categories 的左側和右側
+
+
+65. 當按鈕點擊後，取得使用者輸入的文字，並且進行資料篩選，出現文字名稱相符的項目
+
+npm init -y	
+npm install react@^18.3.1	
+npm install react-dom@^18.3.1	
+npm install @eslint/js@^9.13.0 eslint@^9.13.0 eslint-plugin-react@^7.37.2 eslint-plugin-react-hooks@^5.0.0 eslint-plugin-react-refresh@^0.4.14	
+npm install @types/react@^18.3.12 @types/react-dom@^18.3.1	
+npm install vite@^5.4.10 @vitejs/plugin-react@^4.3.3	
+npm install globals@^15.11.0	
+	
+type nul>index.html	
+type nul>vite.config.js	
+mkdir src	
+cd src	
+type nul>App.jsx	
+type nul>Main.jsx	
+cd ..	
+	
+src/App.jsx	import React from 'react';
+	function App() {
+	return (
+	<>
+	<div>皮卡丘1</div>
+	<div>皮卡丘2</div>
+	</>
+	)
+	}
+	export default App
+	
+src/main.jsx	import React from 'react';
+	import ReactDOM from 'react-dom/client';
+	import App from './App';
+	
+	const root = ReactDOM.createRoot(document.getElementById('root'));
+	root.render(
+	<React.StrictMode>
+	<App />
+	</React.StrictMode>
+	);
+	
+index.html	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Vite + React</title>
+	</head>
+	<body>
+	<div id="root"></div>
+	<script type="module" src="/src/main.jsx"></script> 
+	</body>
+	</html>
+		
+vite.config.js	import { defineConfig } from 'vite'
+	import react from '@vitejs/plugin-react'
+	
+	// https://vite.dev/config/
+	export default defineConfig({
+	plugins: [react()],
+	})
+	
+package.json	"scripts": {
+	"dev": "vite",
+	"build": "vite build",
+	"lint": "eslint .",
+	"preview": "vite preview"
+	},"type": "module",

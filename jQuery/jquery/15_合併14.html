@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <!-- jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+  $(() => {
+    // 將14_合併
+    $('#root')
+      .append('<label>append1</label>')
+      .append('<label>append2</label>')
+      .prepend('<label>prepend</label>')
+      .before('<div>before</div>')
+      .after('<div>after</div>')
+
+    $('li')
+      .click((event) => {
+        $(event.target).remove()
+      })
+      .eq(1)
+      .after($('li').first())
+
+
+  })
+</script>
+
+<body>
+  <div id="root"></div>
+  <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+  </ul>
+</body>
+
+</html>

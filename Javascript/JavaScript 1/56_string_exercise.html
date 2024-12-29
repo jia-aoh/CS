@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+
+  window.onload = function () {
+    const text = article.innerHTML
+    function highlightText() {
+      let searchText = input.value
+      const highlightText = text.replaceAll(searchText,
+        `<span style="background-color:aqua;">${searchText}</span>`
+      )
+      article.innerHTML = highlightText
+    }
+    input.oninput = function () { //也可onkeyup, onchange打完之後按enter會觸發
+      highlightText()
+    }
+    // i = 0
+    // const arrayof = []
+    // while (i = -1) {
+    //   break
+    // } else {
+    //   const of = article.indexOf('of', i)
+    //   console.log(arrayof)
+    //   arrayof += i
+    // }
+    let myArray = []
+    bn.onclick, input.onchange = function () {
+      let i = -1
+      const searchText = input.value
+      if (searchText.trim() != '') {
+        return //檢查是否為空字串
+      }
+      let index = -1
+      while (true) {
+
+        index = text.indexOf(searchText, index + 1)
+        i += 1
+        if (index == -1) {
+          //pop多的
+          break
+        }
+        myArray[i] = index
+      }
+      console.log(myArray)
+    }
+  }
+</script>
+
+<body>
+  <input id="input" type="text"><button id="bn">search</button><br>
+  <div id="article">Spring: Go hiking, birding, and canyoning in Aragón. Soak up the sun in the Balearic and Canary
+    Islands. Take a foodie road trip through Catalonia. Taste wine in Rioja, a region in Spain known for its reds.
+    Celebrate a larger-than-life traditional festival, like the fiery Fallas of Valencia.
+    Summer: Take refuge from the heat in the lush, mystical forests of Galicia. Sip cider in rugged Asturias, and nibble
+    pintxos in cosmopolitan San Sebastián. Toss tomatoes in Buñol’s epic tomato squish-fest, La Tomatina, or get
+    spritzed in Haro’s Battle of Wine—it’s a wine fight you don’t want to miss!
+  </div>
+</body>
+
+</html>

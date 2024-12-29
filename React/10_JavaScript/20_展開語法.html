@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h4>How TO - The Spread Operator (...)</h4>
+    <p><a href='https://www.w3schools.com/howto/howto_js_spread_operator.asp'>https://www.w3schools.com/howto/howto_js_spread_operator.asp</a></p>
+
+    <script>
+        // 10. 定義一個物件a，並賦予物件a 一個屬性
+        let gasha = {
+            piece: '海賊王',
+            hunter: '獵人'
+        }
+
+
+        // 15. 定義一個物件b，並且使用展開語法，將 物件a 融合到 物件b
+        // 後蓋前
+        let ichiban = {
+            ...gasha,
+            hunter: '麥當勞'
+        }
+        console.log(ichiban)
+
+
+        // 20. 定義一個陣列 c
+        let c  = [{name:100, email:200, pwd:300}]
+        let s  = [{name:100, email:200, pwd:300}]
+        
+        // 25. 定義一個陣列 d ， 並且使用展開語法，將 陣列c 融合到 陣列d
+        let d = [...c, ...s]
+        console.log(d)
+
+    </script>
+</body>
+
+</html>

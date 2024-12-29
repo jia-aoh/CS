@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    function div(a, b, complete) {
+      setTimeout(() => {
+        complete(a / b)
+      }, 0)
+
+    }
+    function inc(a, complete) {
+      setTimeout(() => {
+        complete(a + 1)
+      }, 0)
+    }
+
+    //inc層先得到答案帶入div層，但因async所以先印出done
+    let n = 0
+    inc(n, (result) => {
+      div(5, result, (result) => {
+        console.log(result)
+      })
+    })
+    console.log('done')
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

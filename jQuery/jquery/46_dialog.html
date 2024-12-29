@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery-ui</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+</head>
+<style>
+
+</style>
+<script>
+
+  $(() => {
+
+    $('#dialog').dialog({
+      autoOpen: false, //預設對話筐隱藏
+      modal: true, //modal dialog: 關掉dialog才能繼續操作網頁
+      buttons: {
+        cancel: () => { // 第一個enter(思考使用者體驗)
+          $('#dialog').dialog('close')
+          alert('cancel')
+        },
+        ok: () => {
+          $('#dialog').dialog('close')
+          alert('hello')
+        }
+      }
+    })
+
+    $('#bn_dialog').click(() => {
+      $('#dialog').dialog('open')
+    })
+
+  })
+
+</script>
+
+<body>
+  <button id="bn_dialog">dialog</button>
+  <div id="dialog" title="TITLE">
+    content
+  </div>
+</body>
+
+</html>

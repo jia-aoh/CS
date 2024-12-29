@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>useEffect</h4>
+    <p><a href='https://react.dev/reference/react/useEffect#connecting-to-an-external-system'>https://react.dev/reference/react/useEffect#connecting-to-an-external-system</a></p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+
+        // * 開始練習前，請先閱讀底下已經寫好的 MyComponent *
+
+        // 10. 呼叫 React.useEffect() 時，在第一個參數傳入一個 函式->渲染就會執行
+        // 20. 呼叫 React.useEffect() 時，在第二個參數傳入一個 空陣列->渲染不會執行
+        // 25. 呼叫 React.useEffect() 時，在第二個參數傳入一個 陣列 [count1]->渲染[內容]就會執行
+
+        // 30. 傳入到 useEffect 的函式回傳值若為另一個函式，則 useEffect 會在「下次」執行前呼叫
+
+        function MyComponent() {
+
+            const [count1, setCount1] = React.useState(0);
+            const [count2, setCount2] = React.useState(0);
+
+            React.useEffect(() => {
+                //初始化fetch, axios, ajax
+                console.log('測試 MyComponent: ', new Date())
+                //return渲染前執行
+                return(()=>{
+                    console.log('done');                  
+                })
+                //調動:分頁
+            },[count1])
+
+            function addCount1() { setCount1(count1 + 1) }
+            function addCount2() { setCount2(count2 + 1) }
+
+            return (
+                <div>
+                    <h1>MyComponent</h1>
+                    <p>CountA:{count1} &nbsp;  <button onClick={addCount1}>增加A</button> |
+                       CountB:{count2} &nbsp;  <button onClick={addCount2}>增加B</button> </p>
+                </div>
+            )
+        }
+
+        myReactRoot.render(<MyComponent />);
+    </script>
+</body>
+
+</html>

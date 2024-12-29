@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    //資料庫不顯示時區
+    //訂單出貨日期
+    window.onload = () => {
+        //UTC無時區、世界協調時間
+        //GMT有時區、閏秒1s
+        let str = Date()
+        console.log(str)
+        //new就是Object了
+        let date = new Date()
+        console.log(date)
+        //年
+        console.log(date.getFullYear())
+        console.log(date.getUTCHours())
+        console.log(date.getHours())
+
+        //抓資料庫時間才有參考價值
+        //指定時間
+        date = new Date('2024/1/1 18:0:0')
+        console.log(date.getHours())
+
+        //格式
+        //通用'2024/1/1 18:0:0'
+        //iso8601標準'2024-05-18 17:03:18'
+        //微軟sql server：daytime2才iso8601
+        date = new Date('2024-05-18 17:03:18')
+        console.log(date.getUTCHours())
+        //加時區資訊utc時間
+        date = new Date('2024-05-18 17:03:18+08:00')
+        //有些資料庫會+8有些
+        //mySQL直接砍掉時區資訊
+        console.log(date.getUTCHours())
+        console.log(date.getHours())
+        
+        //時間一定要開會
+        //前端要不要加時區資訊
+        //台灣政府不帶時區資訊
+        //資料庫用UTC
+        //不同語言都要試
+        //後端需要對時軟體
+        //年,月,日（,時,分,秒）
+        date = new Date(2024,3,18,5,6,3)
+        console.log(date.getFullYear())
+        //月份+1
+        console.log(date)
+
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

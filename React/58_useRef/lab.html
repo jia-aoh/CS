@@ -1,0 +1,55 @@
+             ＋      |    {}                                                  | ()                                   
+HTML | 沒            | 沒
+CSS  | 選擇棄：後一個  | {放排版}
+JS   | 字、數相加     | let {s, n, b, obj:{key}} = obj 解構給值, ${}, export{匯出} | function(){}, a(), (先做), (不retrun{})
+PHP  | 數相加 
+SQL  | 數、欄相加
+REACT|              | {放變數}
+
+流程： 
+先html->放到.render()把</>, 整理成react格式->拆解元件, 將重複放在attibute
+
+後端：
+將物件分解到細到不行
+最後在[{},{},...a, ...b] = package
+流程：後端api->前端解構賦值
+前端
+let 解壓縮 = {...物件, ...物件, ...others篩選後端資料}
+
+var：暫存
+[]：單一性質
+{}：多元性質
+()=>{}：事件、一坨程式碼
+class：會new很多相同{}的時候
+extend：想拿人家來用, then super()
+static：class.func
+
+
+React:
+
+決定要不要帶event或xa
+函式名稱(大寫開頭)->元件名->標籤名->自定義標籤屬性
+<React></React>要用{x.children}去包
+useState:1.數動畫面改render
+onClick = {()=>{func()}}
+onClick = {func}
+useEffect用於刷新, 接api，1.render後會執行, 2.渲染[指定內容]就會執行, 3.return渲染前執行
+useContext:包東西給子父元素互相通信用
+useRef：1.數動畫面不render , 2.取得input值：id.value, jQuery, ref屬性+useRef, usestate寫事件, 3.紀錄保存資料
+var, let, const: 不保留值, 套到setUseState會bug, 用在fetch url
+
+流程：render元件->function元件->return標籤->證明可以在畫面上->寫元件內useState, handleClick
+統一格式：
+元件function Product(){
+let [value, setValue] = React.useState(0)
+內事件let handleEventName = () => {setValue(value+1 or 直接放log的路徑)}}
+
+把資料放到畫面上｜
+JS, JQuery, 
+PHP, React, 
+Razor, Vue
+Angular
+
+VB, Cobol
+
+//列每張重點

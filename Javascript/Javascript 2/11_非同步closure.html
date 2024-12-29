@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    function div(a, b, complete) {
+      //用closure，只需在原functione調整非同步或同步呼叫
+      //因return就是同步，所以回傳值一律用closure回傳
+      setTimeout(()=>{
+        complete(a / b) 
+      },0)
+      
+    }
+    function inc(a) {
+      return a + 1
+    }
+
+    
+    // let n = 0
+    // n = inc(n)
+    // const result = div(5, n)
+    // console.log(result)
+
+//光看不會知道原程式是sync或async，要寫程式try
+    div(5, 3, (result)=>{
+      console.log(result)
+    })
+
+    
+    console.log('done')
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

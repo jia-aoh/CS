@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h4>JavaScript Array Reference</h4>
+    <p><a
+            href='https://www.w3schools.com/jsref/jsref_obj_array.asp'>https://www.w3schools.com/jsref/jsref_obj_array.asp</a>
+    </p>
+    <pr>
+        some() 回傳bool
+        map() 有回傳值，另創新陣列
+        findIndex() 回傳第一個符合的index
+        filter() 回傳所有符合的value
+        forEach() 會改變原陣列
+        find() 回傳一個符合的value
+        Array.from() 製造空陣列
+        </pre>
+
+        <script>
+
+
+            // * 底下和陣列相關的方法，請練習如何使用 * 
+
+            var numList = [999, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+
+            // 10. Array.from()
+            console.group("10. Array.from()");
+
+            let xa = Array.from({ length: 3 }) // 可以製造空陣咧 undefined
+            console.log(xa)
+
+            let xb = new Array(3) // empty
+            console.log(xb)
+
+            // console.log(undefined == empty) // chrome的問題, safari就沒有empty, JS沒有empty這個關鍵字
+            console.groupEnd();
+
+
+            // 20. find(value, index, obj): 找極端值、找第一個符合條件的值
+            console.group("20. find()");
+            // function check(list) {
+            //     for (let k = 0; k < list.length; k++) {
+            //         console.log('跑幾次');
+            //         if (list[k] == 100) {
+            //             return `${k}號100`
+            //             //    break
+            //         }
+            //     }
+            // }
+
+            // function check(x) {
+            //     console.log('跑幾次');
+            //     return x == 100
+            // }
+            // let xc = numList.find(check)
+
+            let searchGrade = 1000
+            let xc = numList.find(x => x == searchGrade) ?? `${searchGrade}` //找到顯示return值，找不到return undefine
+            let xd = numList.findIndex(x => x == searchGrade) ?? `${searchGrade}` //找到顯示return值，找不到return undefine
+            console.log(`${xd}號${xc}`)
+
+            console.groupEnd();
+
+            // 25. findIndex()
+            console.group("25. findIndex(value, index, obj)");
+            console.groupEnd();
+
+
+            // 30. filter()
+            console.group("30. filter(value, index, array)");
+            let xe = numList.filter(x => x < 80)
+            console.log(xe)
+            console.groupEnd();
+
+            // 40. forEach()
+            console.group("40. forEach()：");
+            numList = [999, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+            numList.forEach((value, index, array) => {
+                if (value < 60) {
+                    array[index] = 60
+                }
+            }) //.void沒有回傳值
+            console.log(numList)
+
+            console.groupEnd();
+
+            // 50. map() react常用
+            console.group("50. map()：");
+            numList = [999, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+            let xf = numList.map((value, index, self) => {
+                return value < 60 ? 60 : value
+            })
+            console.log(numList)// before
+            console.log(xf)//after
+
+            console.groupEnd();
+
+            // 60. some()
+            console.group("60. some()：");
+            numList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+            let lg = numList.some(x => x == 100) || '找不到'
+            console.log(lg)
+
+            console.groupEnd();
+
+
+            // 70. reduce((total, eachValue)=>{要做啥},total初始值)
+            console.group("70. reduce()：");
+            numList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+            // let total = numList.reduce((total, current) => total + current, 7)
+            // console.log(total)
+            let yc = numList.reduce(function(ya, yb){
+                console.log(`Total=${ya}`)
+                console.log(`加.${yb}`)
+                return ya + yb
+            }, 0)
+
+            console.groupEnd();
+
+        </script>
+
+</body>
+
+</html>

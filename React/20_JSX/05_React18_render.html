@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <!-- 引入 React V18 -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+</head>
+
+<body>
+    
+    <h3> React V18 </h3>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // 10. 透過 ReactDOM.createRoot( 指定元素 ).render( 資料(或JSX) ) 將資料渲染在畫面上
+      let data = <h1>資料</h1>
+      let elem = document.getElementById('root')
+        ReactDOM.createRoot( elem ).render( data ) 
+        ReactDOM.createRoot( root ).render( [data, data] ) // id可以直接放
+    </script>
+</body>
+
+</html>

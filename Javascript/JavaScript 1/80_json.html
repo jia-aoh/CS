@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 本地導入json檔 -->
+  <!-- <script src="./81_shoplist.js"></script> -->
+
+</head>
+<style>
+  img {
+    width: 100%;
+  }
+
+  #container>div {
+    width: 33.3%;
+    display: inline-block;
+  }
+
+  #container>div>div {
+    border: 1px solid black;
+  }
+</style>
+
+<script>
+  //導入網址，前後端分離，後端送json給前端
+  const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/main/product.json'
+
+  //搜尋：indoexOf找在哪個index，看幾個字元，把他抓出來
+  //或json parse: 把json字串轉成object，需要parser
+  //習慣上處理完的json會用jsonObj
+  window.onload = () => {
+    function jsonParse(jsonString) {
+      let content = ''
+      JSON.parse(jsonString).forEach(product => {
+        content += `<div>`
+        content += `<div><img src="${product.image}"></div>`
+        content += `<div>商品編號：${product.pid}</div>`
+        content += `<div>商品名稱：${product.name}</div>`
+        content += `<div>單價：${product.price}</div>`
+        content += `<div>數量：${product.quantity}</div>`
+        content += `<div>小計：${product.price * product.quantity}</div>`
+        content += `</div>`
+      })
+      container.innerHTML = content
+    }
+
+    //fetch回來的資料用then接closure，習慣用responce
+    fetch(url)
+      .then((response) => {
+        return response.text()
+      })
+      //再接，習慣上用text
+      .then((text)=>{
+        jsonParse(text)
+      })
+  }
+</script>
+
+<body>
+
+  <div id="container"></div>
+</body>
+
+</html>

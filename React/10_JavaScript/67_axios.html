@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+    <h4>Getting Started</h4>
+    <p><a href='https://axios-http.com/docs/intro'>https://axios-http.com/docs/intro</a></p>
+    <h4>Axios API</h4>
+    <p><a href='https://axios-http.com/docs/api_intro'>https://axios-http.com/docs/api_intro</a></p>
+    <button id="btn">測試axios</button>
+    <script>
+
+        // 10. 透過 Axios 取得 https://reqres.in/api/users/2 的資料
+        btn.onclick = async() => {
+            let p = await axios.get('https://reqres.in/api/users/2')
+            console.log(p.data.data) //第一個data是axios, 第二個是get回來的資料
+        }
+
+    </script>
+</body>
+
+</html>

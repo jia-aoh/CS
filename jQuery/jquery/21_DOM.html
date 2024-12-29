@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <!-- jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+  $(() => {
+
+    console.log($('li')) //是一個object .get(0) = .eq(0)
+
+    // .not()
+    console.log(
+      $('li')
+        .not($('li').eq(2)) //排除第3個
+    )
+
+    // 全部li一起
+    $('li')
+      .not($('li').eq(2)) //第一組的C不要
+      .not($('li').eq(5)) //第二組的B不要
+      .css('background-color', 'yellow')
+
+    // .even(), .odd()
+    $('li')
+      .even() //.odd()
+      .css('color', 'red')
+
+    $('ul')
+      .children()
+      .first() //只有一個
+      .css('background-color', 'red')
+      .parent()
+      .siblings()
+      .children()
+      .eq(0)
+      .css('background-color', 'green')
+
+  })
+</script>
+
+<body>
+  <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+
+  <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+</body>
+
+</html>

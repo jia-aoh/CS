@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- 除錯工具 -->
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>The Rules of JSX - Return a single root element </h4>
+    <p><a
+            href="https://react.dev/learn/writing-markup-with-jsx#the-rules-of-jsx">https://react.dev/learn/writing-markup-with-jsx#the-rules-of-jsx</a>
+    </p>
+
+    <div id="root1"></div>
+    <div id="root2"></div>
+    React.Fragment標籤畫面沒有，所以影響css選擇器的選擇
+    官方程式碼執行環境，不適用.html，例如<></>
+
+    <script type="text/babel">
+
+        // console.log(ReactDOM.createRoot)
+        // 10. 透過 JSX 渲染出兩個按鈕
+        // ReactDOM
+        //     .createRoot(root)
+        //     .render(<button>a</button> <button>b</button>)
+        // 20. 透過 JSX 渲染元素時，只能有一個根元素: 使用 <div>
+        ReactDOM
+            .createRoot(root1)
+            .render(<div>
+                <button>a</button> <button>b</button>
+            </div>)
+
+        // 25. 透過 JSX 渲染元素時，只能有一個根元素: 使用 <React.Fragment>
+        // console不出現<React.Fragment>標籤，所以影響css選擇器的選擇
+        ReactDOM
+            .createRoot(root2)
+            .render(<React.Fragment>
+                <button>c</button> <button>d</button>
+            </React.Fragment>)
+
+    </script>
+</body>
+
+</html>

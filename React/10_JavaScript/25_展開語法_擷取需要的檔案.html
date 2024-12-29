@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+</head>
+
+<body>
+    [{},{},...a, ...b] = package壓縮
+    let 解壓縮 = {要的物件, 要的物件, ...others}篩選後端資料
+    <script>
+        let bento = {
+            bentoName: '舒肥雞胸肉',
+            price: 105,
+            drink: true,
+            contents: {
+                rice: '紫米飯',
+                vegetable: ['高麗菜', '豆芽菜', '空心菜']
+            }
+        }
+        // 10. 物件：把「指定屬性」以外的所有資料，存放到指定變數
+        let { bentoName, drink, ...others } = bento
+        console.log(bentoName)
+        console.log(drink)
+        console.log(others)
+
+        // 20. 陣列：把「指定位置」以外的所有資料，存放到指定變數
+        let data = ['gasha1', 'gahsa2', 'gasha3', 'gasha4']
+        let [mygasha, yourgasha, ...other] = data
+        console.log(mygasha)
+        console.log(other)
+    </script>
+</body>
+
+</html>

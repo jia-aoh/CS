@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <button id="btnGetFileA">測試 非同步|異步</button>
+    <button id="btnGetFileB">測試 同步</button>
+    <hr>
+    <main>
+        <div id="divLeft"></div>
+        <div id="divRight"></div>
+    </main>
+
+
+    <script>
+
+        //  #divLeft  顯示 ../_file/bigfile.txt   文字檔資料
+        //  #divRight 顯示 ../_file/smallfile.txt 文字檔資料
+
+        // 10. #btnGetFileA 
+        //     先讀取 bigfile.txt ， 後讀取 smallfile.txt
+        //     * 呼叫 open 方法時， async 參數傳入 true 
+        // btnGetFileA.onclick = () => {
+        //     // console.log(123)
+        //     let content = new XMLHttpRequest()
+        //     content.onload = function () {
+        //         console.log(content)
+        //         divLeft.innerText = this.responseText
+        //     }
+        //     content.open('get', '../_file/bigfile.txt', true)
+        //     content.send()
+
+        // }
+
+        function printFile(elemID, filePath, x) {
+            let content = new XMLHttpRequest()
+            content.onload = function () {
+                // console.log(content)
+                document.getElementById(elemID).innerText = this.responseText
+            }
+            content.open('get', filePath, x)
+            content.send()
+        }
+
+        document.getElementById('btnGetFileA').onclick = () => {
+            printFile('divLeft', '../_file/bigfile.txt', true)
+            printFile('divRight', '../_file/smallfile.txt', true)
+        }
+
+        // 20. #btnGetFileB 
+        //     先讀取 bigfile.txt ， 後讀取 smallfile.txt
+        //     * 呼叫 open 方法時， async 參數傳入 false 
+
+        document.getElementById('btnGetFileB').onclick = () => {
+            printFile('divLeft', '../_file/bigfile.txt', false)
+            printFile('divRight', '../_file/smallfile.txt', false)
+        }
+    </script>
+    
+    <!-- 
+     異步：攏來
+     同步：一步一步來
+     -->
+
+</body>
+
+</html>

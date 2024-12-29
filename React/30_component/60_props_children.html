@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>Passing JSX as children</h4>
+    <p><a
+            href="https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children">https://react.dev/learn/passing-props-to-a-component#passing-jsx-as-children</a>
+    </p>
+
+    <div id="root"></div>
+    html tag內可react tag
+    react tag內要{tag.children}才到畫面上Ｆ
+
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 宣告一個元件A
+        //      a. 安排一個參數，並且log參數查看
+        //      b. 回傳一個 div元素
+        function FuncA(props) {
+            console.log(props)
+            return <div>{props.children}</div>
+        }
+        // 15. 宣告一個元件B，回傳一個 p 元素
+        function FuncB(props) {
+            console.log(props)
+            return <p>FuncB in FuncA</p>
+        }
+        // 20. 請依照下列情境使用元件
+        //    20-1 使用A元件，沒有屬性，沒有內容
+        //    20-2 使用A元件，加入一個屬性，沒有內容
+
+        //    react Tag裡面包任何東西不行
+        //    20-3 使用A元件，A元件內容放入一個span標籤
+        //    20-4 使用A元件，A元件內容放入B元件 (B元件沒有屬性，沒有內容)
+
+        // ** 為了操作方便，底下先放入 div標籤，可視情況移除
+        myReactRoot.render(<div>
+            <FuncA />
+            <FuncA attr='屬性' />
+            <FuncA><span>span in FuncA</span></FuncA>
+            <FuncA>
+                <FuncB />
+                <FuncB />
+                <FuncB />
+            </FuncA>
+        </div>);
+    </script>
+</body>
+
+</html>

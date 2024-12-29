@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>JavaScript Promises</h4>
+    <p><a href='https://www.w3schools.com/js/js_promise.asp'>https://www.w3schools.com/js/js_promise.asp</a></p>
+    <h4>使用 Promise</h4>
+    <p><a href='https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises'>https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Guide/Using_promises</a></p>
+    
+    <script>
+        
+        // 10. 宣告 + 測試 Promise 物件 
+        let myPromise = new Promise(function(ok, err){
+            ok('promise ok')
+            // err('promise fuckup')
+        })
+        myPromise.then(function(response){
+            console.log(response)
+        }, function(error){
+            console.log(error)
+        })
+        // 跟氣象局要承諾，status code判斷成功ok(this.responseText)與否err()，mypromise.then((做抓到事)=>{},(server busy)=>{})
+    </script>
+</body>
+
+</html>

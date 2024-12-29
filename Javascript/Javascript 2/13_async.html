@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    //async非同步用.then(()=>{接結果})如果有return值的話
+    async function div(a, b) {
+      return a / b
+    }
+    async function inc(a) {
+      return a + 1
+    }
+
+    //inc層先得到答案帶入div層，但因async所以先印出done
+    let n = 0
+    const ans = inc(n)
+    //用一個func包裝整組async
+    function task() {
+      div(5, 3).then((result) => {
+        console.log(result)
+      })
+    }
+    task()
+    console.log('done')
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

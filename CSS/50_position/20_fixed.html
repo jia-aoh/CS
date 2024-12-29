@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/position.css">
+    <style>
+        /* 10. 將 #reddiv 固定在右下角，捲動不能動，並且顯示圖片 */
+        #reddiv {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>position：fixed</h3>
+
+    <!-- 20. 該在哪裡加上超連結，點選之後連到任意網頁？ -->
+
+    <div class="demo">
+        我是demo div的元素內容。<br>
+        <div id="reddiv"><a target="_blank" href="https://one-piece.com/index.html"><img src="../img/onepiece20th_logo.png" alt=""></a></div>
+        <div id="greendiv">Green</div>
+        <div id="bluediv">Blue</div>
+    </div>
+
+</body>
+
+</html>

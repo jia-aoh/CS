@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        /* 10. 請設計一個React函數元件 ，
+                a. 名稱為 Classroom
+                b. 接受一個參數
+                c. log 參數，並在最後回傳 div 標籤
+        */
+       // x prop自動帶入Tag的Attribute
+        function Classroom(prop) {
+            console.log(prop)
+            return <div>{prop.apple}</div>
+        }
+
+
+
+        // 15. 渲染 Classroom 元件，並設定 apple 屬性，屬性值為 '超級蘋果'
+
+        myReactRoot.render(<Classroom apple='超級蘋果' bee='超級蜜蜂' />);
+
+    </script>
+</body>
+
+</html>

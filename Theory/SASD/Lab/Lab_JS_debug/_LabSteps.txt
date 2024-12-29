@@ -1,0 +1,65 @@
+JavaScript 除錯練習
+===================
+
+請參照各資料夾 index_0.html 的說明
+
+- Lab_1xx 的錯誤都是語法錯誤或是因為程式語言特性所招致的陷阱
+直譯(錯才停)vs編譯(會整個區塊看沒問題才執行)
+Pascal命名法vs駝峰命名法
+如果browser是用加密的https，script就不能用http，相反就可以，用//讓瀏覽器選擇最適合的
+settimeout vs setinterval(會越來越多個interval)
+
+php &$var傳值或傳址
+$x = 100;
+$y = &$x; -- $y是$x指向100的箭頭
+$x = 200;
+result: $y是200, 沒加&是100
+php false === 0 strpos()可以這樣濾掉
+
+前false&&後不做 vs 前不管如何&後都做
+eg. 有密碼 && 檢查密碼（有密碼再檢查密碼）
+
+x, y交換用解構賦值[]=[]
+0.1+0.2不等於=0.3(因為10進位轉2進位)1.四捨五入toFixed, toPrecision 2.轉為int再/避免誤差3.用decimal.js套件
+
+- Lab_2xx 主要為執行時期錯誤 + try..catch 語法練習
+try{
+//if(可以偵測的錯誤)...
+}catch{
+//用於無法偵測的錯誤
+}
+if (typeof mailAddress === "undefined") {
+    $("#report").append("undefine資料有缺<br>")
+    return
+}
+--排除
+while($row = mysqli_fetch()){
+
+}
+統一錯誤回報機制與系統error_log
+有問題：繼續->回報、停下來、再試一次
+狀態碼
+
+
+
+- Lab_3xx 內含邏輯錯誤以及除錯工具使用練習
+console.log
+if(條件)debugger
+console.assert(錯誤,才顯示)注意要雙重否定
+確認抓到圖片$(DOCUMENT).ready(()=>{})or$(()=>{})
+
+ajax先確認按鈕可以觸發->可以抓到使用者輸入內容->換網址
+環境都能正常運作->資料庫
+
+敏捷開發，iso機制
+opp記憶體: class proto, new instance, reference, 
+物件有constuctor, destructor, session
+物件導向思考 var是指向位置, =[]{}是new 一個array或obj出來
+
+【課後參考資料】
+
+JavaScript is Awe-ful
+https://www.youtube.com/watch?v=k3brfCZSFiQ
+
+Using the Console
+https://developers.google.com/web/tools/chrome-devtools/console/

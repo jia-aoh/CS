@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h4>JavaScript Arrow Function</h4>
+    <p><a href='https://www.w3schools.com/js/js_arrow_function.asp'>https://www.w3schools.com/js/js_arrow_function.asp</a></p>
+
+    <script>
+        // 10. 複習「箭頭函式」和「非箭頭函式」
+       let apple = (x, y)=>{
+        return x + y
+       }
+       let addApple = apple(1,2)
+       console.log(addApple)
+
+       let bee = function(x, y){
+           return x + y
+        }
+        let addBee = apple(1,2)
+        console.log(addBee)
+        // 15. 箭頭函式在什麼情況下可以省略 (只有一個param) 和 {只做一件return} 
+        let jiao = x => `Hi, ${x}`
+        let papa = jiao('papa')
+        console.log(papa)
+
+        console.clear()
+        
+        // 20. 請宣告箭函式，並設計呼叫函式後回傳陣列
+        let returnArray = () => ([1,2,3,4,5])
+        let x1 = returnArray()
+        console.log(x1)
+        
+        // 30. 請宣告箭函式，並設計呼叫函式後回傳物件
+        let returnObj = () => ({name:'mapa', email: 'hello@gmail.com'})
+        let x2 = returnObj()
+        console.log(x2)
+        
+    </script>
+</body>
+
+</html>

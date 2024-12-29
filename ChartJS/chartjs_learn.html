@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Getting Started with Chart JS with www.chartjs3.com</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .chartMenu {
+      width: 100vw;
+      height: 40px;
+      background: #1A1A1A;
+      color: rgba(54, 162, 235, 1);
+    }
+
+    .chartMenu p {
+      padding: 10px;
+      font-size: 20px;
+    }
+
+    .chartCard {
+      width: 100vw;
+      height: calc(100vh - 40px);
+      background: rgba(54, 162, 235, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chartBox {
+      width: 80%;
+      padding: 20px;
+      border-radius: 20px;
+      border: solid 3px rgba(54, 162, 235, 1);
+      background: white;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+</head>
+
+<body>
+
+  <div class="chartMenu">
+    <p>Scheduler</p>
+  </div>
+  <div class="chartCard">
+    <div class="chartBox">
+      <canvas id="myChart"></canvas>
+      <div>Heading to <input type="month" onchange="chartFilter(this)"></div>
+      <br>
+      <hr>
+      <br>
+      <input id="nameTask" type="text" placeholder="New Task" list="tasks">
+      <datalist id="tasks"></datalist>
+      <input id="startDateTask" type="date">
+      <input id="endDateTask" type="date">
+      <input id="teamMemberTask" type="text" list="names" placeholder="Who">
+      <datalist id="names"></datalist>
+      <select name="" id="statusTask">
+        <option value="0">Delayed</option>
+        <option value="1">Complete</option>
+        <option value="2">Pending</option>
+      </select>
+      <button onclick="addTask()">Add Task</button>
+      <br>
+      <hr>
+      <br>
+      <select id="minTask" onchange="showTask()" name="">
+        <option value="0" selected>Task 1</option>
+        <option value="1">Task 2</option>
+        <option value="2">Task 3</option>
+        <option value="3">Task 4</option>
+      </select>
+      <select id="maxTask" onchange="showTask()" name="">
+        <option value="5">Task 6</option>
+        <option value="6">Task 7</option>
+        <option value="7">Task 8</option>
+        <option value="8" selected>Task 9</option>
+      </select>
+    </div>
+  </div>
+
+  <script>
+    //--data
+    // colours
+    rowBgColour = ['rgba(255, 26, 104, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(255, 206, 86, 0.2)']
+    rowBorderColour = ['rgba(255, 26, 104, 1)', 'rgba(75, 192, 192, 1)', 'rgba(255, 206, 86, 1)',]
+
+    // setup 
+    const data = {
+
+      //labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [{
+        label: 'Weekly Sales',
+        data: [
+          { x: ['2024-09-27', '2024-09-28'], y: 'Task 1', name: 'Alx', status: '1' },
+          { x: ['2024-09-28', '2024-09-29'], y: 'Task 2', name: 'Bob', status: '1' },
+          { x: ['2024-09-29', '2024-09-30'], y: 'Task 3', name: 'Cad', status: '1' },
+          { x: ['2024-09-30', '2024-10-01'], y: 'Task 4', name: 'Doy', status: '1' },
+          { x: ['2024-10-01', '2024-10-02'], y: 'Task 5', name: 'Edd', status: '1' },
+          { x: ['2024-10-02', '2024-10-03'], y: 'Task 6', name: 'Fod', status: '1' },
+          { x: ['2024-11-03', '2024-11-04'], y: 'Task 7', name: 'Gib', status: '0' },
+          { x: ['2024-11-04', '2024-11-05'], y: 'Task 8', name: 'Hud', status: '2' },
+          { x: ['2024-11-04', '2024-11-05'], y: 'Task 9', name: 'Ian', status: '2' }
+        ],
+        backgroundColor: (ctx) => {
+          return rowBgColour[ctx.raw.status]
+        }
+        // [
+        //   'rgba(255, 26, 104, 0.2)',
+        //   'rgba(54, 162, 235, 0.2)',
+        //   'rgba(255, 206, 86, 0.2)',
+        //   'rgba(75, 192, 192, 0.2)',
+        //   'rgba(153, 102, 255, 0.2)',
+        //   'rgba(255, 159, 64, 0.2)',
+        //   'rgba(0, 0, 0, 0.2)'
+        // ]
+        ,
+        borderColor: (ctx) => {
+          return rowBorderColour[ctx.raw.status]
+        }
+        // [
+        //   'rgba(255, 26, 104, 1)',
+        //   'rgba(54, 162, 235, 1)',
+        //   'rgba(255, 206, 86, 1)',
+        //   'rgba(75, 192, 192, 1)',
+        //   'rgba(153, 102, 255, 1)',
+        //   'rgba(255, 159, 64, 1)',
+        //   'rgba(0, 0, 0, 1)'
+        // ]
+        ,
+        borderWidth: 1,
+        borderSkipped: false,
+        borderRadius: 2,
+        barPercentage: 0.9,
+      }]
+    }
+
+    //簡化y的labels的array
+    const labelsArray = data.datasets[0].data.map((data, index) => {
+      return data.y
+    })
+    // console.log(labelsArray)
+    const labelsArrayFilter = [...new Set(labelsArray)]
+
+
+    //--display plugin
+    //todayLine
+    const todayLine = {
+      id: 'todayLine',
+      afterDatasetsDraw(chart, args, pluginOptions) {
+        const { ctx, data, chartArea: { top, bottom, left, right }, scales: { x, y } } = chart
+        ctx.save()
+
+        if (x.getPixelForValue(new Date()) >= left && x.getPixelForValue(new Date()) <= right) {
+          //今天線
+          ctx.beginPath()
+          ctx.lineWidth = 1
+          ctx.strokeStyle = 'rgba(0,0,0,0.7)'
+          ctx.setLineDash([6, 1])
+          ctx.moveTo(x.getPixelForValue(new Date()), top)
+          ctx.lineTo(x.getPixelForValue(new Date()), bottom)
+          ctx.stroke()
+          ctx.restore()
+
+          //畫箭頭標記
+          ctx.beginPath()
+          ctx.lineWidth = 1
+          ctx.strokeStyle = 'rgba(0,0,0,0.7)'
+          ctx.fillStyle = 'rgba(0,0,0,0.7)'
+          ctx.moveTo(x.getPixelForValue(new Date()), top + 3)
+          ctx.lineTo(x.getPixelForValue(new Date()) - 6, top - 6)
+          ctx.lineTo(x.getPixelForValue(new Date()) + 6, top - 6)
+          ctx.closePath()
+          ctx.stroke()
+          ctx.fill()
+          ctx.restore()
+
+          //畫今天標記
+          ctx.font = 'bold 12px sans-serif'
+          ctx.fillStyle = 'rgba(0,0,0,0.7)'
+          ctx.textAlign = 'center'
+          ctx.fillText('Today', x.getPixelForValue(new Date()), bottom + 15)
+
+        }
+
+        //讓xy軸實心
+        ctx.setLineDash([])
+      }
+    }
+
+    //狀態
+    const status = {
+      id: 'status',
+      afterDatasetsDraw(chart, args, pluginOptions) {
+        const { ctx, data, options, chartArea: { top, bottom, left, right }, scales: { x, y } } = chart
+
+        const icons = ['\uf00d', '\uf00c', '\uf04d']
+        const colour = ['rgba(255, 26, 104, 0.7)', 'rgba(75, 192, 192, 0.8)', 'rgba(255, 206, 86, 1)']
+        const angle = Math.PI / 100
+        const pdRight = right + options.layout.padding.right / 2
+        console.log(options.layout.padding.right)
+        ctx.save()
+        ctx.font = 'bolder 12px FontAwesome'
+        ctx.textBaseline = 'middle'
+        ctx.textAlign = 'center'
+        data.datasets[0].data.forEach((data, index) => {
+
+          //修飾icon overflow
+          if (y.getPixelForValue(index) > top && y.getPixelForValue(index) < bottom) {
+
+            // 畫icon
+            // ctx.arc(x, y, radius, angleS, angleE, false)
+            ctx.beginPath()
+            ctx.fillStyle = colour[data.status]
+            ctx.arc(pdRight, y.getPixelForValue(index), 9, 0, angle + 7, false)
+            ctx.closePath()
+            ctx.fill()
+
+            ctx.fillStyle = 'white'
+            ctx.fillText(icons[data.status], pdRight, y.getPixelForValue(index))
+
+          }
+
+
+
+        })
+        //status標題
+        ctx.font = 'bolder 12px sans-serif'
+        ctx.fillStyle = 'black'
+        ctx.fillText('Status', pdRight, top - 18)
+
+        ctx.restore()
+
+      }
+    }
+
+    //寫名字
+    const assignedTasks = {
+      id: 'assignedTasks',
+      afterDatasetsDraw(chart, args, pluginOptions) {
+        const { ctx, data, chartArea: { top, bottom, left, right }, scales: { x, y } } = chart
+
+        ctx.save()
+
+        ctx.font = 'bolder 12px sans-serif'
+        ctx.fillStyle = 'black'
+        ctx.textBaseline = 'middle'
+        ctx.textAlign = 'left'
+        data.datasets[0].data.forEach((data, index) => {
+
+          if (y.getPixelForValue(index) > top && y.getPixelForValue(index) < bottom) {
+
+            ctx.fillText(data.name, 10, y.getPixelForValue(index))
+          }
+        })
+        // ctx.fillText('Names',x,y)
+        ctx.fillText('Name', 10, top - 18)
+        ctx.restore()
+      }
+    }
+    //標示假日
+    const weekend = {
+      id: 'weekend',
+      beforeDatasetsDraw(chart, args, pluginOptions) {
+        const { ctx, chartArea: { top, bottom, left, right, width, height }, scales: { x, y } } = chart
+        ctx.save()
+
+        //找週末
+        // console.log(x.ticks)
+        x.ticks.forEach((tick, index) => {
+          console.log(tick.value)
+          const day = new Date(tick.value).getDay()
+          console.log(day)
+
+          if (day === 6 || day === 0) {
+            ctx.fillStyle = pluginOptions.weekendColor
+
+            if (x.getPixelForValue(tick.value) > left && x.getPixelForValue(new Date(tick.value).setHours(24)) < right) {
+
+              // ctx.fillRect(x, y, width, height)
+              ctx.fillRect(x.getPixelForValue(tick.value),
+                top,
+                x.getPixelForValue(new Date(tick.value).setHours(24)) - x.getPixelForValue(tick.value),
+                height)
+            }
+
+
+          }
+        })
+      }
+    }
+
+
+    //--display
+    // config 
+    const config = {
+      type: 'bar',
+      data,
+      options: {
+        layout: {
+          padding: {
+            left: 40,
+            right: 75,
+            bottom: 20
+          }
+        },
+        indexAxis: 'y',
+        scales: {
+          x: {
+            position: 'top',
+            type: 'time',
+            time: {
+              unit: 'day',
+              displayFormats: {
+                day: 'MM/dd'
+              }
+            },
+            min: '2024-09-27',
+            max: '2024-10-05'
+          },
+          y: {
+            min: 0,
+            max: data.datasets[0].data.length,
+            labels: labelsArrayFilter
+          }
+        },
+        plugins: {
+          weekend: {
+            weekendColor: 'rgba(102,102,102,0.1)'
+          },
+          //長條標題
+          legend: {
+            display: false
+          },
+          //詳細資訊
+          tooltip: {
+            //刪掉weekly sale數據
+            displayColors: false,
+            //對齊
+            yAlign: 'bottom',
+            callbacks: {
+              //刪掉weekly sale數據
+              label: (ctx) => {
+                return ''
+              },
+              title: (ctx) => {
+                // console.log(ctx[0])
+                const startDate = new Date(ctx[0].raw.x[0])
+                const endDate = new Date(ctx[0].raw.x[1])
+                const formattedStartDate = startDate.toLocaleString([], {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric'
+                  // hour12:'true'
+                })
+                const formattedEndDate = endDate.toLocaleString([], {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric'
+                  // hour12:'true'
+                })
+                return [`${ctx[0].raw.name} - ${ctx[0].label}`, `Deadline: ${formattedStartDate} ~ ${formattedEndDate}`]
+              }
+            }
+          }
+        }
+      },
+      plugins: [todayLine, assignedTasks, status, weekend]
+    };
+
+    // --function
+    // render init block------------------------------
+    const myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+
+    // Timeline Search Function-------------------------
+    const chartFilter = (date) => {
+      // console.log(date.value)
+      const year = date.value.substring(0, 4)
+      const month = date.value.substring(5, 7)
+      const lastDay = (y, m) => {
+        return new Date(y, m, 0).getDate()//0=last value of month
+      }
+      // console.log(lastDay(year, month))
+      const startDate = `${year}-${month}-01`
+      const endDate = `${year}-${month}-${lastDay(year, month)}`
+      // console.log([startDate, endDate])
+
+      myChart.config.options.scales.x.min = startDate
+      myChart.config.options.scales.x.max = endDate
+      myChart.update()
+    }
+
+    //Add Task Function---------------------------------
+    const addTask = () => {
+      const nameTask = (document.getElementById('nameTask')).value
+      const startDateTask = (document.getElementById('startDateTask')).value
+      const endDateTask = (document.getElementById('endDateTask')).value
+      const teamMemberTask = (document.getElementById('teamMemberTask')).value
+      const statusTask = (document.getElementById('statusTask')).value
+
+      const arrayLength = myChart.data.datasets[0].data.length
+      myChart.data.datasets[0].data[arrayLength] = ({ x: [startDateTask, endDateTask], y: nameTask, name: teamMemberTask, status: parseInt(statusTask) })
+
+      //Add Task順便addNames()到datalist裡
+      addNames()
+      addTasks()
+      myChart.update()
+    }
+
+    //Add name datalist function-----------------------
+    const addNames = () => {
+      const names = document.getElementById('names')
+      //刪除因addTask()重複加入datalist的名字
+      while (names.firstElementChild) {
+        names.removeChild(names.firstElementChild)
+      }
+
+      //抓json裡的所有名字
+      const namesArray = myChart.data.datasets[0].data.map((data) => {
+        return data.name
+      })
+      //用set刪除重複
+      const namesArrayFilter = [...new Set(namesArray)]
+
+      //印到datalist裡
+      namesArrayFilter.forEach((name) => {
+        const option = document.createElement('option')
+        option.value = name
+        names.appendChild(option)
+      })
+      //加addNames()到addTask()最後，確保每次加task都能順便加名字
+    }
+    //datalist初始化
+    addNames()
+
+    //Add Task datalist function-----------------------
+    const addTasks = () => {
+      const tasks = document.getElementById('tasks')
+      //刪除因addTask()重複加入datalist的名字
+      while (tasks.firstElementChild) {
+        tasks.removeChild(tasks.firstElementChild)
+      }
+
+      //抓json裡的所有名字
+      // const tasksArray = myChart.data.datasets[0].data.map((data) => {
+      // return data.y
+      // })
+      //用set刪除重複
+      // const tasksArrayFilter = [...new Set(tasksArray)]
+
+      //印到datalist裡
+      labelsArrayFilter.forEach((task) => {
+        const option = document.createElement('option')
+        option.value = task
+        tasks.appendChild(option)
+      })
+      //加addNames()到addTask()最後，確保每次加task都能順便加名字
+    }
+    //datalist初始化
+    addTasks()
+
+    //show amount of tasks function--------------------
+    const showTask = () => {
+      const yScale = myChart.config.options.scales.y
+      const minTask = document.getElementById('minTask').value
+      const maxTask = document.getElementById('maxTask').value
+      yScale.min = yScale.labels[minTask]
+      yScale.max = yScale.labels[maxTask]
+      myChart.update()
+
+    }
+  </script>
+
+</body>
+
+</html>

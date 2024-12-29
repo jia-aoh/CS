@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <!-- 這裡是範本 -->
+    <div>
+        <p id="jsresult"></p>
+        <button onclick="apple()">點我加一(JavaScript)</button>
+    </div>
+    <!-- 這裡是範本 -->
+
+    <hr>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 請完成上面範本中 JavaScript 點選按鈕後數字累加並且呈現在 #jsresult
+        let result = 0
+        function apple() {
+            result += 1
+            jsresult.innerText = result
+        }
+
+        // 20. 宣告一個 Function Component ， 
+        //      內容包含一個按鈕，且具備按鈕點擊後，將數字+1的功能
+        // 畫面沒變，所以要用react method才會重新render
+        function Component() {
+            let result = 0
+            function plus() {
+                result += 1
+                console.log(result)
+            }
+            //bug版
+            return <div>
+                <p>React測試:{result}</p>
+                <button onClick={plus}>點我加一</button>
+            </div>
+        }
+
+        myReactRoot.render(<Component />); 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+
+        // 10. 請嘗試在 MyComponent 內，透過 addEventListener 綁定 #apple 的 click 事件
+        //      * 應該 * 會有錯誤訊息
+        function MyComponent() {
+            // useEffect跑在render後
+            React.useEffect(() => {
+                document.getElementById('apple').addEventListener('click', () => {
+                    console.log(1234)
+                })
+            })
+
+            return (
+                <button id="apple">我是按鈕</button>
+            )
+        }
+
+        myReactRoot.render(<MyComponent />);
+
+    </script>
+</body>
+
+</html>

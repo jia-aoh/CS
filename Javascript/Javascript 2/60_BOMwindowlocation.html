@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    //接回傳的東西
+    let win = null
+    window.onload = () => {
+        document.getElementById('open').onclick = () => {
+            //開頁籤(網址,頁籤名or新頁)
+            //回傳的東西＋開頁籤
+            win = window.open('https://udn.com', '_blank')
+
+            //他網回報我資訊，保留字opener指向誰開了網頁
+            //只要用原始碼1.寫網頁插件動網頁原始碼eg.adblock（action被改掉資料就傳出去了）
+            // opener.function(location.href)
+
+            //2.proxy server中間伺服器等於cache
+            //當server在很遠，cache在本地，後人乘涼
+            //加opener.function直接改回報原網頁proxy的資訊
+            //掃毒軟體會修改本地瀏覽器proxy設定，可以掃描，也可以統計分析
+        }
+        //_blank
+        //_top換掉最外層
+        //_parent換掉包住自己的iframe
+        //_self假設自己是iframe3則換掉自己
+        document.getElementById('close').onclick = () => {
+            win.close()
+        }
+        //基本上= window.open()
+        //protocol, hostname
+        //可以攔截換網頁（上下一頁有用，關掉可以知道）
+        document.getElementById('location').onclick = () => {
+            // location.href = 'https://www.google.com'
+
+            //網址不同源（web server）不給抓
+            // console.log(win.location.host)
+            console.log(location.host)
+            console.log(location.hostname)
+            console.log(location.port)
+            console.log(location.pathname)
+            console.log(location.origin)
+        }
+    }
+</script>
+
+<body>
+    <button id="open">open</button>
+    <button id="close">close</button>
+    <button id="location">location</button>
+</body>
+
+</html>

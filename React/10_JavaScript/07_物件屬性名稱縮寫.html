@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>Method definitions</h4>
+    <p><a
+            href='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions'>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Method_definitions</a>
+    </p>
+
+    <script>
+        // 10. 觀察下列程式碼，
+        //      判斷主控台是否會出現 舒肥雞胸肉便當 和 105 
+        let bentoName = '舒肥雞胸肉便當'; //放變數 foreach
+        let price = 105;
+
+        let bentoA = {
+            bentoName: bentoName,
+            price: price
+        }
+
+        console.log('便當一號:', bentoA.bentoName);
+        console.log('便當一號:', bentoA.price);
+
+
+        // 20. 若 物件的屬性名稱 和 變數名稱相同的話
+        //      可進行物件屬性名稱縮寫
+        let bentoB = [
+            bentoName,
+            price
+        ]
+        console.log('便當二號:', bentoA.bentoName);
+        console.log('便當二號:', bentoA.price);
+
+        // 物件、陣列、function、變數
+        // 陣列
+        let testArray = [123, 234, 345, 456]
+        let testObj = {
+            1: 'one',
+            2: 'two',
+            3: 'three'
+        }
+        let testFunc = function () {
+            console.log('停水')
+        }
+        let test = {
+            testArray,
+            testObj,
+            testFunc,
+            testFunc2() {
+                console.log('厲害的function寫法')
+            }
+        }
+        console.log(test.testArray)
+        console.log(test.testObj)
+        test.testFunc()
+        test.testFunc2()
+
+
+    </script>
+</body>
+
+</html>

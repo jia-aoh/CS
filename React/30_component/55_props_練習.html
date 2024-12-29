@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 請比照上一個檔案的方式，設計一個元件 Student1
+        //     並顯示學生的姓名、年齡和城市等資訊
+        // 15. 改以解構賦值的方式撰寫
+        function Student1({name, age, city, obj:{x1}}) {
+            // let {name, age, city, obj} = prop
+            // let {x1, x2} = obj
+            return <div>{name}{age}{city}{x1}</div>
+        }
+
+        // 20. 倘若元件的屬性值為物件，該如何設定與取值？
+        myReactRoot.render(<Student1 name='姓名1' age='年齡1' city='城市1' obj={{x1:'aa', x2:'bb'}}/>); 
+        
+    </script>
+</body>
+
+</html>

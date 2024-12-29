@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    function div(a, b) {
+      return a / b
+    }
+    function inc(a) {
+      return a + 1
+    }
+    //反過來就不用等10分鐘
+    // const result = div(5, 3)
+
+    // console.log(result)
+    // console.log('done')
+    let n = 0
+    setTimeout(()=>{
+      n = inc(n)
+      const result = div(5, n)
+      console.log(result)
+      //=0就是非同步呼叫（沒跑完先繼續跑後面）
+      //1.程式會同時跑兩個地方
+      //牽涉到從網路抓資料的網路速度，算資料，所以async
+      //return如果沒東西可以算會當掉
+
+    },0)
+    console.log('done')
+    
+
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

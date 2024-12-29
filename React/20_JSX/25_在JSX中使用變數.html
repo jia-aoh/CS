@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>Where to use curly braces {} </h4>
+    <p><a
+            href="https://react.dev/learn/javascript-in-jsx-with-curly-braces#where-to-use-curly-braces">https://react.dev/learn/javascript-in-jsx-with-curly-braces#where-to-use-curly-braces</a>
+    </p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // 10. 宣告一個變數，將變數的值設定為字串
+        // 15. 在JSX中使用變數
+        let data = '字串變數'
+        let func = function func1(value=''){ //沒預設會undefine
+            return value + '我是function印出來的strings'
+        }
+        let array1 = [11,22,33,44]
+        let yesno = false // 沒出現
+        // 物件要拆開
+        let obj = {name:'美美', age:20}
+        let {name, age} = obj
+
+        ReactDOM
+            .createRoot(root)
+            .render(
+                <div>
+                    <h3>會出現：Strings, number, obj.key, array</h3>
+                    <h3>不出現：bool, function, undefine</h3>
+                    <p>{data}{data.length}</p>
+                    <p>{func(123)}</p>
+                    <p>{array1[1]}</p>
+                    <p>{func(array1)}</p>
+                    <p>{yesno}{obj.name}, {age}</p>
+                </div>
+            )
+
+        // 20. 宣告一個變數，將變數的值設定為需要參數，且具有回傳值的函式
+        // 25. 在JSX中呼叫函式
+
+        // 30. 宣告一個變數，將變數的值設定為陣列
+        // 35. 在JSX中使用變數
+
+    </script>
+</body>
+
+</html>

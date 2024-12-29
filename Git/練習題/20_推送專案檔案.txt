@@ -1,0 +1,10 @@
+目標 : 建立 Lab_B 數據庫，並推送第一個版本
+
+10. 在 GitHub 建立新的數據庫 test_B
+20. git clone 到Git_Demo資料夾
+30. test_B資料夾放東西準備推送
+40. Visual Studio Code 開 test_B資料夾
+50. 將檔案放到暫存區列管
+60. 提交並查看版本紀錄
+70. 推送到 GitHub 數據庫
+80. 在 GitHub 頁面查看數據庫變化

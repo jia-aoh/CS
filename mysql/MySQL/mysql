@@ -1,0 +1,210 @@
+危機排除：
+
+1. union (all) - 強制顯示資料
+select 'a', '1' from table
+union
+select 'b', '2'
+
+2. distinct - 強制剔除重複資料：1. 沒設pk, 2. code錯
+select distinct left(cname, 1) as lastname
+
+3. trigger loop - 資料庫停機
+
+熟悉資料庫：
+1. er
+2. trigger
+3. procedure
+
+設計：
+
+1. 時間 vs 商機: 決定(no)SQL
+2. 檔案損毀中斷服務3小時可？
+3. 備份：離峰時間？
+4. 備援：異地2-4倍成本？
+
+SQL:
+1. er: 上層(1對1), (1)對(多), (多)(對)(多)
+2. data dict: 說明, varchar長
+3. 都有pk > 每格一筆 > 子與pkpk相關 > 子不自相關
+
+4. 沒er分析command找關聯
+
+施行：
+
+1. pk, fk:
+	alter table 'table_name'
+	drop pk
+	add pk ('col1','col2');
+	add fk('col1') references 'table'('col') on delete restrict on update 
+	cascade;
+
+2. insert into table ('col','col') values 
+('',load_file('/path/image.png'));絕對不能有兩筆相同資料
+
+3. update table set col = new where col = old;
+
+4. delete from table where col = old;
+
+*5. truncate table table_name(不能後悔)
+
+欄位格式：
+
+cname: varchar(51)
+name:
+caddress: varchar(100)
+phone: varchar(20)-資安:1. 前端檢查<>$, 2. 發簡訊驗證 or int-區碼、電話、分機
+email: ----1. 發email驗證
+image: tiny256byte, blob65k, mblob16m, lblob4g
+
+procedure:
+
+drop procedure if exists loginCheck;
+delimiter $$
+create procedure loginCheck(myuid varchar(20), mypassword varchar(20))
+BEGIN
+	declare n int default null;
+	select count(*) into n from UserInfo where uid = myuid and password = mypassword;
+	if n = 1 then 
+		select n as status, null as col_title;
+	else 
+		select n as status, '帳號密碼錯誤' as col_title;
+	end if;
+END $$
+delimiter;
+
+call loginCheck('A01','1234');
+
+drop procedure if exists register;
+delimiter $$
+create procedure register(myuid varchar(20), mypassword varchar(20), mycname varchar(51))
+BEGIN
+	declare n int default null;
+	select count(*) into n from UserInfo where uid = myuid;
+	if n = 1 then 
+		select n as status, '帳號已被註冊' as title;
+	else 
+		insert into UserInfo(uid, password, cname) values (myuid, password(mypassword), mycname);
+		select n as status, '註冊成功' as title;
+	end if;
+END $$
+delimiter;
+
+trigger:
+
+drop trigger if exists userinfo_insert;
+delimiter $$
+create trigger userinfo_insert after insert
+on UserInfo for each row
+begin
+	set @uid = new.uid;
+	set @cname = ifnull(new.cname, 'NULL');
+	set @body = concat('在UserInfo插入一筆資料：',@uid,', ',@cname,'');
+	insert into Log(body) values (@body);
+end $$
+delimeter;
+
+drop trigger if exists userinfo_delete;
+delimeter $$
+create trigger userinfo_delete after delete 
+on UserInfo for each row 
+begin
+	set @uid = old.uid;
+	set @body = concat('在UserInfo刪除一筆資料：',@uid);
+	insert into Log(body) values (@body);
+end $$
+delimeter;
+
+drop trigger if exists oldtrigger_name;
+delimiter $$
+create trigger newtrigger_name before update
+on table_name for each row 
+begin 
+	if @n is null then
+		set @n = 1;
+	else 
+		set @n = @n + 1;
+	end if;
+	if @n > 1 and (not new.password <=> old.password) then 
+		signal sqlstate '45000' set message_text = '不可更新兩筆以上password資料'; 
+	end if;
+end $$
+delimeter;
+
+SQL command: 
+1. select
+
+	count(*) * 0.9
+
+	ifnull('col','_string')
+
+	sum, avg, min, max, concat('string',int,func())
+
+	case
+		when sum(fee) > 100 then 50
+		else 0
+	end as _var
+
+	(Nesting) as _var
+
+2. from
+	
+	table1 
+	left join table2 on table1.col1 = table2.col1
+
+	(Nesting) as _var
+
+3. where (having)
+
+	col is null or col = '' or col <> ''
+
+	col and, or, (not) in ('','',''), (not) between a and b
+
+	col like 'string%'
+
+	case
+                when sum(fee) > 100 then 50
+                else 0
+        end as _var
+
+	(Nesting);
+
+4. group by (select count以外的都要組到)
+
+	col1, col2
+
+5. having = where
+
+6. order by
+
+	col desc, col asc, col convert(col using big5)
+
+7. limit 1
+
+給前端：
+
+1. json 將 null 變 ''
+select ifnull(col, '')
+
+給後端：
+塞網路，記憶體資源不足
+
+1.view (給後端、外包商)
+
+打包json：
+
+drop view if exists vw_json_table;
+create view vw_vwname as 
+select concat(
+'[', group_concat(json_object(
+	'string1', var1,
+	'string2', ifnull(var2,''),
+))
+,']') as json
+from table
+
+呼叫：
+
+select * from vw_json_table
+
+comment: var1為pk, var2 非pk, unique，幫前端判斷null，後端沒事做
+

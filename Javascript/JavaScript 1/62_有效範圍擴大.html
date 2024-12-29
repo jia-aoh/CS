@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = function () {
+    let i = 10 //i變全域變數，非必要不用全域，單步追蹤才知道錯在哪，不用通用名
+    function f() {
+      console.log('f改前: '+ i)
+      i = 20
+      console.log('f改後: '+ i)
+    }
+    bn.onclick = function () {
+      f()
+      console.log('button: '+ i)
+    }
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

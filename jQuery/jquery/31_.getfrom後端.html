@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+
+  $(() => {
+
+    const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/user.json'
+
+    // 簡便語法
+
+    $('#bn_jquery').click(() => {
+      // get
+      $.get(url, (result) => {
+        $('#data').text(result)
+      })
+    })
+
+    // post
+    // $.post(url, (result) => {
+    //   $('#data').text(result)
+    // })
+
+
+
+
+  })
+
+</script>
+
+<body>
+  <button id="bn_jquery">jquery</button>
+  <hr>
+  <pre id="data"></pre>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let isShow = false
+    window.onload = () => {
+        const now = (date) => {
+            //缺項補零
+            const h = ('0' + date.getHours()).slice(-2)
+            const m = ('0' + date.getMinutes()).slice(-2)
+            const s = ('0' + date.getSeconds()).slice(-2)
+            //mod2改true,false
+            const isShow = date.getSeconds() % 2
+            const time_with_colon = `${h}:${m}:${s}`
+            const time_without_colon = `${h}<span style="visibility:hidden">:</span>${m}<span style="visibility:hidden">:</span>${s}`
+            //三元運算
+            return isShow?time_with_colon:time_without_colon
+          
+        }
+
+        
+        //顯示第一秒
+        clock.innerText = now(new Date())        
+        setInterval(() => {
+            clock.innerHTML = now(new Date())
+        }, 1000)
+    }
+
+</script>
+
+<body>
+    <label id="clock"></label>
+</body>
+
+</html>

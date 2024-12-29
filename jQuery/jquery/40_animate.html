@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+
+  $(() => {
+
+    $('#bn').click(() => {
+      $('#label').animate({
+        top: 200,
+        opacity:0.2,
+      }, 5000) //毫秒
+    })
+
+
+
+  })
+
+</script>
+
+<body>
+  <button id="bn">click</button>
+  <p></p>
+  <label id="label" style="position: relative;">Hello, World!</label>
+</body>
+
+</html>

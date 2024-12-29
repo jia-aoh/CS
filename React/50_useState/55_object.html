@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // * 請根據說明創造出對應的元件 *
+        // 10. 元件名稱為 ： MyComponent
+        // 20. 模擬商品維護(編號、名稱、價格)，請設計使用者可以增加、修改商品
+        // 25. 將商品資料顯示在畫面上
+        function MyComponent() {
+            const [id, setId] = React.useState(0)
+            const [name, setName] = React.useState('')
+            const [price, setPrice] = React.useState(0)
+            const [list, setList] = React.useState([
+                { id: 3, name: '雞', price: 100 },
+                { id: 4, name: '牛', price: 200 }])
+            let handleClickAdd = () => {
+                setList([...list, {id, name, price}])
+            }
+            let handleClickEdit = () => {
+                //找id
+                let i = list.findIndex((value, index)=> value.id == id)
+                //針對位置做設定
+                setList(list.map((data, index)=>{
+                    return (index == i) ?  {id, name, price} : data
+                }))
+            }
+            let handleChangeId = () => {
+                setId(event.target.value)
+            }
+            let handleChangeName = () => {
+                setName(event.target.value)
+            }
+            let handleChangePrice = () => {
+                setPrice(event.target.value)
+            }
+            return <div>
+                <input onChange={() => { handleChangeId() }} type="text" placeholder='編號' />
+                <input onChange={() => { handleChangeName() }} type="text" placeholder='名稱' />
+                <input onChange={() => { handleChangePrice() }} type="text" placeholder='價格' />
+                <button onClick={() => { handleClickAdd() }}>add</button>
+                <button onClick={() => { handleClickEdit() }}>edit</button>
+                {list.map(({id, name, price}, index) => <p key={index}>清單{id},去買{name}{price}元</p>)}
+            </div>
+        }
+
+        myReactRoot.render(<MyComponent />);
+
+    </script>
+</body>
+
+</html>

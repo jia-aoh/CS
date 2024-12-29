@@ -1,0 +1,120 @@
+[
+  {
+    "version": "1.4",
+    "UID": "66e48f5a26b3241dc43a7f87",
+    "title": "2024臺東藝穗節《山海城市：漂流者的時空地圖》",
+    "category": "5",
+    "showInfo": [
+      {
+        "time": "2024/11/22 15:30:00",
+        "location": "臺東縣太麻里鄉瀧路63號",
+        "locationName": "芙瀨實驗廚房",
+        "onSales": "Y",
+        "price": "",
+        "latitude": "22.50882316957386",
+        "longitude": "120.95704952262236",
+        "endTime": "2024/11/22 16:30:00"
+      },
+      {
+        "time": "2024/11/23 14:00:00",
+        "location": "臺東縣太麻里鄉瀧路63號",
+        "locationName": "芙瀨實驗廚房",
+        "onSales": "Y",
+        "price": "",
+        "latitude": "22.50882316957386",
+        "longitude": "120.95704952262236",
+        "endTime": "2024/11/23 15:00:00"
+      },
+      {
+        "time": "2024/11/23 15:30:00",
+        "location": "臺東縣太麻里鄉瀧路63號",
+        "locationName": "芙瀨實驗廚房",
+        "onSales": "Y",
+        "price": "",
+        "latitude": "22.50882316957386",
+        "longitude": "120.95704952262236",
+        "endTime": "2024/11/23 16:30:00"
+      },
+      {
+        "time": "2024/11/24 14:00:00",
+        "location": "臺東縣太麻里鄉瀧路63號",
+        "locationName": "芙瀨實驗廚房",
+        "onSales": "Y",
+        "price": "",
+        "latitude": "22.50882316957386",
+        "longitude": "120.95704952262236",
+        "endTime": "2024/11/24 15:00:00"
+      },
+      {
+        "time": "2024/11/24 15:30:00",
+        "location": "臺東縣太麻里鄉瀧路63號",
+        "locationName": "芙瀨實驗廚房",
+        "onSales": "Y",
+        "price": "",
+        "latitude": "22.50882316957386",
+        "longitude": "120.95704952262236",
+        "endTime": "2024/11/24 16:30:00"
+      }
+    ],
+    "showUnit": "",
+    "discountInfo": "",
+    "descriptionFilterHtml": "",
+    "imageUrl": "",
+    "masterUnit": [],
+    "subUnit": [],
+    "supportUnit": [],
+    "otherUnit": [],
+    "webSales": "https://www.opentix.life/program/1832992902153216001",
+    "sourceWebPromote": "https://www.opentix.life/program/1832992902153216001",
+    "comment": "",
+    "editModifyDate": "",
+    "sourceWebName": "OPENTIX兩廳院文化生活",
+    "startDate": "2024/11/22",
+    "endDate": "2024/11/24",
+    "hitRate": 1
+  },
+  {
+    "version": "1.4",
+    "UID": "6706e51326b3241dc43a878f",
+    "title": "2024 來雲門遙滾",
+    "category": "5",
+    "showInfo": [
+      {
+        "time": "2024/12/13 17:00:00",
+        "location": "新北市淡水區中正路一段6巷36號",
+        "locationName": "雲門劇場",
+        "onSales": "Y",
+        "price": "",
+        "latitude": "25.1803581",
+        "longitude": "121.4289221",
+        "endTime": "2024/12/14 09:30:00"
+      },
+      {
+        "time": "2024/12/14 17:00:00",
+        "location": "新北市淡水區中正路一段6巷36號",
+        "locationName": "雲門劇場",
+        "onSales": "Y",
+        "price": "",
+        "latitude": "25.1803581",
+        "longitude": "121.4289221",
+        "endTime": "2024/12/15 09:30:00"
+      }
+    ],
+    "showUnit": "",
+    "discountInfo": "",
+    "descriptionFilterHtml": "",
+    "imageUrl": "",
+    "masterUnit": [],
+    "subUnit": [],
+    "supportUnit": [],
+    "otherUnit": [],
+    "webSales": "https://www.opentix.life/program/1839514495256604673",
+    "sourceWebPromote": "https://www.opentix.life/program/1839514495256604673",
+    "comment": "",
+    "editModifyDate": "",
+    "sourceWebName": "OPENTIX兩廳院文化生活",
+    "startDate": "2024/12/13",
+    "endDate": "2024/12/15",
+    "hitRate": 12
+  }
+]

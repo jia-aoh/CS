@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<script>
+  //object小寫
+  const a = {
+    name: 'David'
+  }
+
+  //JS func: 1.函式 2.物件導向（大寫）
+  //封裝
+  function Person(name, age) {
+    //放變數
+    //物件屬性、特徵
+    this.name = name
+    this.age = age
+
+    //放函數（一律用closure）
+    //物件方法
+    this.send = () => {
+      console.log(`${name}去寄信了`)
+    }
+  }
+  //物件的擴充
+  function Superman(name, age) {
+    //把Person裡面的property跟function加進來
+    Person.call(this, name, age)
+    this.flyTo = (city)=>{
+      console.log(`${name}飛到${city}`)
+    }
+  }
+
+  window.onload = async () => {
+    //物件導向Object：變數常數與函數
+
+    //1.放變數
+    const david = new Person('David', 30)
+    console.log(david.age)
+    const betty = new Superman('Betty', 28)
+
+    //2.method
+    david.send()
+    betty.send()
+    betty.flyTo('Taipei')
+  }
+</script>
+
+<body>
+  <div id="container"></div>
+</body>
+
+</html>

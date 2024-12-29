@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <!-- 註解 -->
+
+    <!-- 10. 開始標籤到結束標籤 -> 元素 -->
+    <h1>hello, world</h1>
+
+    <!-- 20. 元素的屬性 -->
+    <h1 id="content">hello, world</h1>
+
+    <!-- id 的屬性值:
+        1. 有區分大小寫
+        2. 至少包含一個字元
+        3. 不能以數字開頭
+        4. 不能包含空格 -->
+
+
+    <!-- 21. 不同元素可能有不同屬性。 ex: <a> -->
+    <!-- href = hypertext reference -->
+    <a href="https://www.google.com">google</a>
+
+    <!-- 22. 元素可以有多個屬性。 ex: <a> -->
+    <!-- copy : shift + option + updown -->
+    <!-- move : option + updown -->
+    <!-- clean by  : shift + option + f -->
+    <a id="google" href="https://www.google.com">google</a>
+    <a href="https://www.google.com" id="google">google</a>
+
+
+    <!-- 試試看，
+         元素使用不支援的屬性，是否能達到效果?(X) -->
+    <h1 href="www.google.com">test: href in h1</h1>
+
+    <!-- 23. JS相關屬性 -->
+    <!-- on開頭：事件屬性 -->
+    <button onclick="showMsg()">press me</button>
+    <!-- if write script in .html, do script -->
+    <!-- function name(){things to do} -->
+    <script>
+        function showMsg() {
+            alert("hello, world");
+        }
+    </script>
+</body>
+
+</html>

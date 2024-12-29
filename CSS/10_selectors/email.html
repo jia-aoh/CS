@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #mail:focus {
+      background-color: whitesmoke;
+    }
+
+    #mail:invalid {
+      background-color: pink;
+    }
+
+    .me:checked+label {
+      color: blue;
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+
+<body>
+  <label for="mail"></label>
+  <input id="mail" type="email" pattern="[A-Za-z0-9.\-_']+@gmail\.com">
+  <br>
+  <input class="me" id="me" type="checkbox"><label for="me">選我</label>
+</body>
+
+</html>

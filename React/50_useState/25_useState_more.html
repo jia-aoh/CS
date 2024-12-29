@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>Updating state based on the previous state</h4>
+    <p><a
+            href='https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state'>https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state</a>
+    </p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 直接改變 useState 所回傳的「變數值/資料狀態/狀態值」實質改變、畫面不變
+        function Element() {
+            let [value, setValue] = React.useState(789)
+            let handleClickAdd = () => {
+                setValue(value += 1)
+            }
+            let handleClickB = () => {
+                value -= 1
+            }
+            let handleClickC = () => {
+                //updater function: 等全部render完，再一次性計算所有setValue內function，render最後結果
+                setValue((a)=>a+=1)
+                setValue((a)=>a+=1)
+                setValue((a)=>a+=1)
+
+                //setValue(a=>a+1)
+                //setValue((a)=>{return a+1})
+            }
+            return <div>
+                <p>show value: {value}</p>
+                <button onClick={() => { handleClickAdd() }}>加一</button>
+                <button onClick={() => { handleClickB() }}>直接給值不會render</button>
+                <button onClick={() => { handleClickC() }}>呼叫很多次</button>
+            </div>
+        }
+
+        // 20. 連續呼叫 useState 所回傳的函式多次要setValue((a)=>{return a+1})內放函式
+
+        myReactRoot.render(<Element />);
+        // render元件->function元件->return標籤->證明可以在畫面上
+    </script>
+</body>
+
+</html>

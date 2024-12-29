@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = function () {
+    bn.onclick = function () {
+
+      // for loop
+      // for (i = 0; i < 10; i++) { 初始，判斷，步進
+      //   console.log(i)
+      // }
+
+      for (i = 0; i < 10; i+=2) { //也可以10到0
+        console.log(i)
+      }
+
+      for (i = 0; i < 10; i++) { 
+        if(i == 3){ //設結束點
+          break }
+        console.log(i)
+      }
+      
+      for (i = 0; i < 10; i++) { 
+        if(i == 3 || i == 7){ 
+          continue //設立刻步進點
+        }
+        console.log(i)
+      }
+
+      // while loop
+      // let i = 0 控制變數（初始）
+      // while (i < 10) { 判斷
+      //   console.log(i)
+      //   i += 1  步進
+      // }
+    }
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

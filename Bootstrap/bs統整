@@ -1,0 +1,47 @@
+ sm - md - lg - xl - xxl
+576 - 768- 992-1200-1400
+
+.container
+.container-[sm540|md720|lg960|xl1140|xxl1320|fluid]
+
+.row 本身是display:flex
+.row-cols-[number]
+.col-sm,md,lg,xl,xxl-{數字}
+.col //平分：12cols為單位
+.col-{數字} //佔幾個等分
+
+.table-{顏色}
+.text-{顏色}
+.bg-{顏色}
+.text-bg-{顏色}
+
+align(block vs inline element)
+text-斷點-{start | end | center}
+
+column
+.scope＝“row, col” 此為row還是col的標題
+
+text
+.fs-{1-6}
+.text-{start|center|end}
+.text-斷點-{}
+
+width,height
+.{w-h}-{auto|25%|50%|75%|100%}
+
+margin, padding
+.{m|p}{t|b|s|e|x|y|none}-{none-5|auto(m才有)}
+.{m|p}{t|b|s|e|x|y|none}-斷點-{none-5|auto(m才有)}
+
+.border-{top|bottom|start|end}
+.border-{primary|info}
+.border-{1-5}
+
+.rounded
+.rounded-{top|bottom|start|end|circle|1-5}
+
+.btn
+.btn-{顏色}
+.btn-{lg|sm}
+
+.flex-grow-{0|1}

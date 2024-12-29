@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 練習取得資料並且放到畫面上
+        //     https://reqres.in/api/users?page=1
+
+        // 20. 設計查詢框，讓使用者可以針對定資料查詢
+        //css inline style格式{{key:'valueValue'},{}}
+        //usestate員工清單不同畫面不同
+        //useeffect連api
+
+        function MyComponent() {
+            const [employeeList, setEmployeeList] = React.useState([])
+            const [page, setPage] = React.useState(1)
+
+            React.useEffect(function () {
+                const url = 'https://reqres.in/api/users?page='
+                let callAPI = async () => {
+                    let response = await fetch(url + page)
+                    let jsonObj = await response.json()
+                    // console.log(jsonObj.data)
+                    setEmployeeList(jsonObj.data)
+                }
+                callAPI()
+            }, [page])
+
+            let handleClickTurnPage = () => {
+                setPage(document.getElementById('inputPage').value)
+            }
+
+            return (<div>
+                <input id="inputPage" type="text" />
+                <button onClick={() => { handleClickTurnPage() }}>search</button>
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                    {
+                        (employeeList.length > 0) ?
+                            employeeList.map(({id, first_name, avatar}=employee) => {
+                                return <div key={id} style={{ width: '18vw' }}>
+                                    <h1>{first_name}</h1>
+                                    <img src={avatar} alt="" />
+                                </div>
+                            }) :
+                            <h1>查無資料</h1>
+                    }
+                </div>
+            </div>);
+        }
+        //{{扭蛋系列:[{資訊1A}, {資訊2:B}]},{頁:4}}
+
+        myReactRoot.render(<MyComponent />);
+
+    </script>
+</body>
+
+</html>

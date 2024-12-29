@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 呼叫 React.useState 方法
+        //      a. 觀察回傳值
+        //      b. 呼叫 React.useState 方法時，是否可以傳入數字？
+
+        // 20. 在 函式元件的內部使用 useState 進行 變數值/資料狀態/狀態值 的管理
+        //     當 變數值/資料狀態/狀態值 改變時， React 會重新渲染該函式元件。
+        // useState只能用在元件內
+
+        function Test() {
+            // let tmp = React.useState(1)
+            let [count, func] = React.useState(0)
+            // console.log(value)
+            // console.log(func())
+            function test() {
+                func(count += 1)
+            }
+            console.log(count, func)
+            return <div>
+                <p>React測試:{count}</p>
+                <button onClick={test}>點我加一</button>
+            </div>
+        }
+        myReactRoot.render(<div>
+            <Test />
+            <Test />
+            <Test />
+        </div>
+        ); 
+    </script>
+</body>
+
+</html>

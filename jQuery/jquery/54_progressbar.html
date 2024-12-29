@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery-ui</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+</head>
+<style>
+  .ui-widget-header {
+    background-color: lavender;
+  }
+
+  .progressbar {
+    position: relative;
+    width: 200pt;
+    background-color: bisque;
+  }
+
+  .label {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+
+<script>
+
+  $(() => {
+
+    let value = 20
+
+    $('#progress').progressbar({
+      max: 100,
+      change: (event, ui) => { // 進度有改變就更新啥
+        $('.label').text(`${value}%`)
+      },
+      complete: (event, ui) => { // 當進度條完成時
+
+        setTimeout((event, ui) => { // 非同步呼叫讓done之前進度條就100
+          alert('done')
+        }, 0)
+
+      }
+    })
+
+    $('#progress').progressbar('value', value)
+
+    $('#bn').click(() => {
+      value += 10
+      $('#progress').progressbar('value', value)
+
+    })
+
+  })
+
+</script>
+
+<body>
+  <button id="bn">click</button>
+  <div class="progressbar">
+    <div id="progress"></div>
+    <div class="label"></div>
+
+  </div>
+</body>
+
+</html>

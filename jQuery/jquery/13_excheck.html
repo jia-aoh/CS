@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <!-- jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+  $(() => {
+
+    //老師版
+    $('a').click((event) => {
+      $(':checkbox').prop('checked') ? //:checkbox 抓所有type是checkbox的
+        true :
+        event.preventDefault(); $('label').css('color', 'red')
+    })
+
+  })
+
+</script>
+
+<body>
+  <input type="checkbox" id="done" value="已閱讀"><br>
+  <a href="http://www.google.com">Google</a>
+  <a href="http://www.apple.com">Apple</a>
+</body>
+
+</html>

@@ -1,0 +1,266 @@
+
+前置作業：
+
+10. 已經透過 10_create_project.txt 確認過環境 OK
+
+15. 確認使用 Vite 進行專案建立完畢
+
+    npm create vite@latest
+    cd 你的專案名稱  
+    npm install 
+    npm run dev 
+
+
+18. 獲得 HTML 樣板
+    下載這個樣板: https://startbootstrap.com/template/blog-home
+    * 若連結失效，請使用這個資料夾底下的「startbootstrap-blog-home-gh-pages.zip」
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+20. 觀察專案資料夾
+
+25. 依序將步驟 18 獲得的 HTML 樣板內容放到 Vite 專案中
+除字錯
+取消index.css, main.css
+  
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+30. 觀察 Vite 專案 \src\App.jsx
+
+    問題：App.jsx 如何引用 css 檔案 
+    問題：如何引用 我們自己剛剛放入的 styles.css
+    問題：如何確認 我們的 styles.css 有引用成功
+    問題：App.jsx 如何引用 js 檔案 
+    問題：如何引用 我們自己剛剛放入的 scripts.js
+
+35. 更改 App.jsx 元件回傳的標籤內容
+
+    問題：App.jsx 回傳的標籤有哪些
+    問題：HTML 樣板的 index.html 內容有哪些要複製到 App.jsx
+    問題：將 HTML 樣板的內容貼過來以後，專案運行起來有沒有問題
+    問題：專案運行的結果是否和 HTML樣板相符
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【拆分元件】
+
+40. 在 src 資料夾底下建立 apple_share 資料夾
+
+    * 資料夾名稱帶入 apple 只是想要提醒這裡可以依照自己的需求命名
+
+    * 稍後有出現「apple」的字樣，全部都是相同提醒
+    
+    * 實際開發時請移除 apple，依照需求命名
+
+
+
+45. 以 導覽列 作為示範
+
+    a. 安裝 vscode 延伸模組: ES7+ React/Redux/React-Native snippets
+
+
+    b. 建立檔案 apple_share\AppleNav.jsx；
+
+        開啟 AppleNav.jsx 並在檔案內手動輸入 rfce
+
+        透過 rfce 快速搭建元件所需要的程式碼
+    
+
+    c. AppleNav.jsx 的回傳值為 <div>AppleNav</div>
+
+        請刪除這個div，改放導覽列相關的標籤
+
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div className="container">
+                <a className="navbar-brand" href="#!">Start Bootstrap</a>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li className="nav-item"><a className="nav-link" href="#">Home</a></li>
+                        <li className="nav-item"><a className="nav-link" href="#!">About</a></li>
+                        <li className="nav-item"><a className="nav-link" href="#!">Contact</a></li>
+                        <li className="nav-item"><a className="nav-link active" aria-current="page" href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    d. 在 App.jsx 引用 AppleNav.jsx
+
+        上方 import AppleNav from './apple_share/AppleNav'
+        原本 <nav> 改為 <AppleNav />
+
+
+47. 目前頁面上出現 <!-- Blog post--> 的地方有四個，
+
+    請練習比照上述步驟，完成元件設計
+
+    . 建立一個檔案叫做 AppleCard.jsx
+
+    . AppleCard.jsx 的回傳值為 <div>AppleCard</div>
+
+        請刪除這個div，改放底下的標籤
+        
+        <div className="card mb-4">
+            <a href="#!"><img className="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+            <div className="card-body">
+                <div className="small text-muted">January 1, 2023</div>
+                <h2 className="card-title h4 bg-info">Post Title</h2>
+                <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                <a className="btn btn-primary" href="#!">Read more →</a>
+            </div>
+        </div>
+
+    . 在 App.jsx 引用 AppleNav.jsx
+
+        . App.jsx 上方 記得引用 import AppleCard from './apple_share/AppleCard'
+
+        . App.jsx 下方 改為 <AppleCard /> (有四個地方)
+            
+
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【傳值給元件】
+
+50. 假定上述步驟 47 所建立的元件為 AppleCard
+    底下用 AppleCard 進行描述
+
+    問題：卡片裡面有一個地方顯示日期，範本顯示的日期是什麼
+    答案：January 1, 2023
+
+    問題：如果想要將指定的日期傳入 AppleCard 元件中，應該要如何設置
+    答案：
+
+        App.jsx
+            <AppleCard mydate="2024/2/1"/>
+
+        AppleCard.jsx 
+            function AppleCard(props) 
+            <div className="small text-muted"> {props.mydate} </div>
+
+            ** 在 props 的地方改用解構也可以
+
+
+    問題：如果想要將圖片路徑傳入 AppleCard 元件中，應該要如何設置
+    答案：
+        public資料夾底下加入 images資料夾
+        
+        App.jsx
+            <AppleCard mydate="2024/1/1" mysrc="./images/sea/fish.png"/>
+
+        AppleCard.jsx 
+            src={props.mysrc||'images/pig.png'}
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【搜尋資料】
+
+60. 畫面右側有 Search 以及 Categories ，請將他們獨立出去變成一個元件
+
+    -> 假設元件名稱為 AppleSearch.jsx
+        return (
+            <>
+                {/* <!-- Search widget--> */}
+                <div className="card mb-4">
+                    <div className="card-header">Search</div>
+                    <div className="card-body">
+                        <div className="input-group">
+                            <input className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                            <button className="btn btn-primary" id="button-search" type="button">Go!</button>
+                        </div>
+                    </div>
+                </div>
+                {/* <!-- Categories widget--> */}
+                <div className="card mb-4">
+                    <div className="card-header">Categories</div>
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <ul className="list-unstyled mb-0">
+                                    <li><a href="#!">Web Design</a></li>
+                                    <li><a href="#!">HTML</a></li>
+                                    <li><a href="#!">Freebies</a></li>
+                                </ul>
+                            </div>
+                            <div className="col-sm-6">
+                                <ul className="list-unstyled mb-0">
+                                    <li><a href="#!">JavaScript</a></li>
+                                    <li><a href="#!">CSS</a></li>
+                                    <li><a href="#!">Tutorials</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
+        )
+
+
+    -> 原本的 App.jsx
+        {/* <!-- Side widgets--> */}
+        <div className="col-lg-4">
+            <AppleSearch />
+
+
+62. 在 AppleSearch.jsx 中建立兩個陣列，分別對應 Categories 的左側和右側
+
+    -> ul 有兩個，資料就兩個；要注意 li 裡面還有一個 a
+        let leftdata = [
+            { link: '', content: 'Web Design' },
+            { link: 'https://www.w3schools.com/html/', content: 'HTML' },
+            { link: '', content: 'Freebies' },
+        ]
+
+        let rightdata = [
+            { link: 'https://www.w3schools.com/js/default.asp', content: 'JavaScript' },
+            { link: 'https://www.w3schools.com/css/default.asp', content: 'CSS' },
+            { link: '', content: 'Tutorials' },
+        ]
+
+
+
+65. 當按鈕點擊後，取得使用者輸入的文字，並且進行資料篩選，出現文字名稱相符的項目
+
+    -> 當前的完成
+
+    -> 因為希望畫面會「根據變數重新渲染」，所以需要 useState
+        const [left, setLeft] = React.useState([...leftdata])
+        const [right, setRight] = React.useState([...rightdata])
+
+
+    -> 在 input 加入了 id
+        <input id='userInput' className="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+    
+    -> 在 button 加入了 onClick={handleClick}
+        <button onClick={handleClick} className="btn btn-primary" id="button-search" type="button">Go!</button>
+
+
+    -> 改寫現有的 ul 底下的 li 
+        <ul className="list-unstyled mb-0">
+            {left.map((v, i) => <li key={i}> <a href={v.link}>{v.content}</a> </li>)}
+        </ul>
+
+        <ul className="list-unstyled mb-0">
+            {right.map((v, i) => <li key={i}> <a href={v.link}>{v.content}</a> </li>)}
+        </ul>
+
+
+    -> click事件處理
+        function handleClick() {
+            let val = document.getElementById('userInput').value;
+
+            setLeft(function () {
+                return leftdata.filter(p => p.content.indexOf(val) >= 0)
+            })
+
+            setRight(function () {
+                return rightdata.filter(p => p.content.indexOf(val) >= 0)
+            })
+        }
+
+JS, useRef, useState
+useEffect拿資料

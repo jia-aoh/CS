@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<style>
+  .hint {
+    color: red;
+    visibility: hidden;
+  }
+</style>
+<script>
+  window.onload = () => {
+    // 直接focus在第一個input
+    uid.focus()
+
+    register.onclick = (event) => {
+      event.preventDefault()
+      if (uid.value.trim() === '') {
+        required.style.visibility = "visible"
+      } else if (password.value === password_confirm.value) {
+        password_error.style.visibility = 'hidden'
+        myForm.submit()
+      } else {
+        password_error.style.visibility = "visible"
+      }
+
+    }
+  }
+</script>
+
+<body>
+  <!-- method: get(default) v.s. post
+  get:使用者資料會出現在網址列後面，資料有上限
+  post:會隱藏在某個地方，有個資的用這個，資料大小無上限
+  按按鈕，網址換到action -->
+  <form id="myForm" action="register.php" method="post">
+    <!-- 帳號馬上就檢查有沒有被註冊 -->
+    帳號：<input name="uid" id="uid">
+    <p></p>
+    <!-- 馬上檢查有沒有不符合密碼規則 -->
+    <!-- 游標移開onblur -->
+    <!-- 收到游標onfocus -->
+    密碼：<input name="password" id="password">
+    <p></p>
+    確認：<input name="password_confirm" id="password_confirm">
+    <label class="hint" id="password_error" for="">密碼不一致</label>
+    <label class="hint" id="required" for="">所有欄位皆必填</label>
+    <p></p>
+    <button id="register">註冊</button>
+    <!-- <input type="submit" value="註冊"> -->
+    <!-- 清空 -->
+    <input type="reset">
+  </form>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="../_js/react.development.js"></script>
+    <script src="../_js/react-dom.development.js"></script>
+    <script src="../_js/babel.js"></script>
+<style>
+    div{
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        /* 10. 使用 useContext 傳遞資料 (在不同的元件中共享狀態或方法)
+                * 建立 context:      const 名稱 = React.createContext()
+                * 提供 context 的值: <名稱.Provider value={想傳遞的值}>
+                * 使用 context 的值: React.useContext(名稱)
+        */
+       const shareObj = React.createContext()
+       function Home(){
+        const [food, setFood] = React.useState('薑母鴨')
+        const func = () => { setFood('雞鴨鵝') }
+        return<div>
+            <p>Home</p>
+            <shareObj.Provider value={{food, func}}>
+            <Member/>
+            </shareObj.Provider>
+            </div>
+       }
+       function Member(){
+        return<div>
+            <p>Member</p>
+            <Order/>
+            </div>
+       }
+       function Order(){
+        return<div>
+            <p>Order</p>
+            <OrderDetail/>
+            </div>
+       }
+       function OrderDetail(){
+        let {food, func} = React.useContext(shareObj)
+        return<div>
+            <p>OrderDetail - {food}</p>
+            <button onClick={()=>{func()}}>換食物</button>
+            </div>
+       }
+        
+        myReactRoot.render(<Home />);
+    </script>
+</body>
+
+</html>

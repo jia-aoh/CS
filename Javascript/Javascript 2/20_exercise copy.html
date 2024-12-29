@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<script>
+  window.onload = async() => {
+    const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/user.json'
+
+    const response = await fetch(url)
+    const jsonObj = await response.json()
+
+    let name = ''
+    jsonObj.forEach((user) => {
+      name += user.name + '<br>'
+    })
+    container.innerHTML = name
+    console.log('hello') 
+    console.log('done')
+  }
+</script>
+
+<body>
+  <div id="container"></div>
+</body>
+
+</html>

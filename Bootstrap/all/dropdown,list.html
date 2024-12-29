@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dropdown,list</title>
+  <meta name="keywords" content="Bootstrap, Accordian, Path">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <hr>
+  <!-- Path -->
+  <div style="--bs-breadcrumb-divider: '>'">
+    <div class="breadcrumb">
+      <div class="breadcrumb-item"><a href="#">Home</a></div>
+      <div class="breadcrumb-item"><a href="#">Library</a></div>
+      <div class="breadcrumb-item active">Data</div>
+    </div>
+  </div>
+
+  <hr>
+  <!-- dropdown2種 -->
+  <!-- 樣式:正常|split|(父drop[up|down]-center,btn-group drop[up|end|start]), dropdown-menu dropdown-menu-dark -->
+  
+  <!-- dropdown-menu[-md][-end|start] > dropdown-item-text 展開編輯版面-->
+
+  <!-- data-bs-offset="10,20"定位 -->
+  <div class="dropdown-center">
+    <button class="btn btn-primary btn-lg dropdown-toggle dropdown-toggle-split"
+      data-bs-toggle="dropdown" data-bs-offset="10,20">Dropdown</button>
+    <ul class="dropdown-menu dropdown-menu-dark">
+      <li><a class="dropdown-header">Dropdown header</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+      <li><hr class="dropdown-divider"></li>
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+    </ul>
+  </div>
+
+  <div class="btn-group dropup">
+    <button class="btn btn-primary">Dropdown</button>
+    <button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown"></button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+      <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <!-- accordion -->
+  <div class="accordion" id="atotal">
+
+    <div class="accordion-item">
+      <div class="accordion-button" data-bs-toggle="collapse" data-bs-target="#a1">
+        Header #1
+      </div>
+      <div id="a1" class="accordion-collapse collapse show" data-bs-parent="#atotal">
+        <div class="accordion-body">first item's accordion body</div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#a2">
+        Header #2
+      </div>
+      <div id="a2" class="accordion-collapse collapse" data-bs-parent="#atotal">
+        <div class="accordion-body">second item's accordion body.</div>
+      </div>
+    </div>
+
+  </div>
+  <hr>
+
+  <!-- list 
+   list-group list-group-flush list-group-numbered list-group-horizontal[-sm]
+   > list-group-item[-color] list-group-item-action(hover效果)
+  -->
+
+  <ol class="list-group list-group-numbered">
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto">
+        <div class="fw-bold">Subheading</div>
+        Content for list item
+      </div>
+      <span class="badge bg-primary rounded-pill">14</span>
+    </li>
+      <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">List group item heading</h5>
+          <small>3 days ago</small>
+        </div>
+        <p class="mb-1">Some placeholder content in a paragraph.</p>
+        <small>And some small print.</small>
+      </a>
+      <li class="list-group-item">
+        <input class="form-check-input me-1" type="checkbox" value="" id="z">
+        <label class="form-check-label stretched-link" for="z">checkbox</label>
+      </li>
+  </ol>
+
+</body>
+
+</html>

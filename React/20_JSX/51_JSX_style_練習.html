@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <style>
+        .ok {
+            background-color: chartreuse;
+        }
+
+        .err {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+    <button id="btn">random</button>
+
+    <script type="text/babel">
+        // 10. 使用<style>標籤設置兩個 .class
+        //     稍後會使用在表達 "分數及格" 的呈現和 "分數不及格" 的呈現
+
+        // 15. 宣告一個變數，將變數的值設定為數字90
+        //     當變數大於60的時候，套用"分數及格"，沒有大於60，則套用 "分數不及格" 
+        // setup
+        let grade = 100
+        ReactDOM
+            .createRoot(root)
+            .render(<div>
+                <p className='ok'>{grade}</p>
+            </div>)
+        //test
+        btn.onclick = () => {
+            // random grade
+            let grade = Math.ceil(Math.random() * 100)
+            // 判斷
+            grade >= 60 ? status = 'ok' : status = 'err'
+            // 粉刷
+            ReactDOM
+                .createRoot(root)
+                .render(<div>
+                    <p className={status}>{grade}</p>
+                </div>)
+
+        }
+
+
+        // 20. 延續上一題
+        //     當變數沒有大於60的時候，出現「加油！」的文字
+
+    </script>
+</body>
+
+</html>

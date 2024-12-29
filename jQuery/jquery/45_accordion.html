@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery-ui</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+</head>
+<style>
+  .ui-accordion-header-active {
+    background-color: lightgreen;
+    border-color: green;
+  }
+</style>
+<script>
+
+  $(() => {
+    // 改css: 1.看文件，2. 檢查元件分析css
+
+    $('#accordion').accordion({
+      create: (event, ui) => { // 畫面一開始的呈現function
+        ui.header.css('color', 'orange')
+      },
+      beforeActivate: (event, ui) => { // 展開前呼叫的function
+        ui.newHeader.css('color', 'orange') //要展開的
+        ui.oldHeader.css('color', 'black') //要關起來的
+      }
+    })
+
+  })
+
+</script>
+
+<body>
+  <div id="accordion">
+    <h1>一月</h1>
+    <div>AAAAAAA</div>
+    <h1>二月</h1>
+    <div>BBBBBBB</div>
+    <h1>三月</h1>
+    <div>CCCCCCC</div>
+
+  </div>
+</body>
+
+</html>

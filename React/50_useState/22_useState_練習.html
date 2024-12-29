@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>Adding event handlers</h4>
+    <p><a
+            href='https://react.dev/learn/responding-to-events#adding-event-handlers'>https://react.dev/learn/responding-to-events#adding-event-handlers</a>
+    </p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+
+        // 10. 延續上一個檔案，請改為增加三個按鈕
+        //     按鈕A: 點一下就減一
+        //     按鈕B: 歸零
+        //     按鈕C: 點一下就加一
+        function Product() {
+            let [amount, setAmount] = React.useState(1)
+            // 元件內事件用handleClick
+            let handleClickAdd = () => {
+                //
+                setAmount(amount + 1)
+            }
+            let handleClickMinus = () => {
+                (amount == 0) ? setAmount(amount = 0) : setAmount(amount - 1)
+            }
+            return <div><p>商品數量: {amount}</p>
+                <button onClick={handleClickMinus}>減</button>
+                <button onClick={handleClickAdd}>加</button>
+            </div>
+        }
+
+
+
+        myReactRoot.render(
+            <div>
+                <Product />
+                <Product />
+                <Product />
+            </div>
+        ); 
+    </script>
+</body>
+
+</html>

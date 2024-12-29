@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = () => {
+        a = [1, 2, 3, 4]
+        console.log(a)
+        a.forEach((value, index) => { //依參數數量，包含下面幾種寫法
+            console.log(`forEach(${index},${value})`)
+        })
+        for (i = 0; i < a.length; i++) {
+            console.log(`for(${i},${a[i]})`)
+        }
+        for (index in a) { //JS放陣列索引值
+            console.log(index)
+        }
+        for (value of a) { //JS放陣列元素
+            console.log(value)
+        }
+    }    
+</script>
+
+<body>
+
+</body>
+
+</html>

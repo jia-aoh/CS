@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    //async非同步用.then(()=>{接結果})如果有return值的話
+    async function div(a, b) {
+      return a / b
+    }
+    async function inc(a) {
+      return a + 1
+    }
+
+    let n = 0
+    async function task() {
+      //await = 非同步轉同步
+      //await的外層func必須改為async
+      let result = await inc(n)
+      result = await div(5, result)
+      console.log(result)
+    }
+    task()
+    console.log('done')
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

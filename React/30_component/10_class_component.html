@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+    <h4>React Class Components</h4>
+    <p><a href="https://www.w3schools.com/react/react_class.asp">https://www.w3schools.com/react/react_class.asp</a></p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // 10. 閱讀 w3school 文件後，將 w3school 所提供的
+
+        //     Class component 範例程式碼帶到這個檔案
+        class Car extends React.Component {
+            render() {
+                return <h2>Hi, I am a Car!</h2>;
+            }
+        }
+        // new版
+        function Dog (){
+            return <h2>Hi, I am a Dog!</h2>
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<div><Car /><Dog/></div>); //tagname 來自class=>function
+
+
+    </script>
+</body>
+
+</html>

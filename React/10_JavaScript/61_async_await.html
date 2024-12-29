@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>JavaScript Async</h4>
+    <p><a href='https://www.w3schools.com/js/js_async.asp'>https://www.w3schools.com/js/js_async.asp</a></p>
+    <h4>async function</h4>
+    <p><a href='https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/async_function'>https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Statements/async_function</a></p>
+    <h4>await</h4>
+    <p><a href='https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/await'>https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Operators/await</a></p>
+
+    <button id="btn10">btn 10 async</button>
+    <button id="btn20">btn 20 await</button>
+    <button id="btn30">btn 30 async & await</button>
+
+    <script>
+
+        btn10.onclick = function () {
+            // 10. async 關鍵字|保留字 加在 宣告function 前
+            //     回傳的結果將會變成一個 promise 
+            // 15. 宣告一個變數，存放 function 執行後的結果
+            async function func1(){ //給承諾
+                return 'func1'
+            }
+            let tmp = func1()
+            console.log(tmp)//印出來是promise
+            
+        }
+
+        btn20.onclick = function () {
+            // 20.  await 關鍵字|保留字 加在 呼叫執行function 前
+            async function func1(){
+                return 'func1'
+            }
+            async function func2(){ //給承諾、配合awake出現
+                let tmp = await func1() //等承諾、解開承諾
+                console.log(tmp)
+
+            }
+            func2()
+        }
+
+        btn30.onclick = function () {
+            // 30. await 必須要待在 async function 裡面
+            async function func1(){
+                return 'func1'
+            }
+            async function func2(){ //給承諾、配合awake出現
+                let tmp = func1() //等承諾、解開承諾
+                tmp.then(function(response){
+                    console.log(response)
+                })
+            }
+            func2()
+        }
+    </script>
+
+</body>
+
+</html>

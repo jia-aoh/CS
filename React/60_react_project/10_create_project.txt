@@ -1,0 +1,131 @@
+1. 確認環境，請開啟 終端機/命令提示字元 執行下列指令
+
+    a. 是否有安裝 Node.js
+        node -v
+        
+        -> 如果沒有出現版本號，請下載並且安裝
+            https://nodejs.org/zh-tw/download/prebuilt-installer
+
+    b. 是否有安裝 npm 
+         npm -v
+
+    c. 確認路徑底下是否存在
+        C:\Users\你自己的電腦名稱\AppData\Roaming\npm
+
+        -> 如果 npm 資料夾不存在，請手動建立一個 npm 資料夾
+        
+        -> 請把 終端機/命令提示字元 關閉
+
+        -> 再次開啟 終端機/命令提示字元 ，準備執行稍後的指令
+
+
+
+2. 依照官方文件建立 React 專案
+
+    舊的官方文件:https://zh-hant.legacy.reactjs.org/docs/create-a-new-react-app.html#create-react-app
+
+        在/usr/local/lib/node_modules
+        指令: 
+            npx create-react-app my-app
+            cd my-app
+            npm start
+
+        結果: 
+            1. 會「自動」開啟一個網頁，網址為 http://localhost:3000/
+            2. 根據網頁提示 「Edit src/App.js and save to reload.」
+            3. 找到 App.js 進行修改，並且確認瀏覽器有重新載畫面
+            4. ctrl + c 可以結束工作
+
+
+    新的官方文件: https://react.dev/learn/start-a-new-react-project
+
+        指令1(來自官方): 
+            npx create-next-app@latest
+
+        詢問:
+            What is your project named? » my-app
+            Would you like to use TypeScript? » No / Yes
+            Would you like to use ESLint? » No / Yes
+            Would you like to use Tailwind CSS? » No / Yes
+            Would you like to use `src/` directory? » No / Yes
+            Would you like to use App Router? (recommended) » No / Yes
+            Would you like to use Turbopack for next dev? » No / Yes
+            Would you like to customize the default import alias (@/*)? » No / Yes
+
+
+        確認啟動指令: 
+            專案/package.json 
+                -> 找到 "scripts"
+                -> 確認 "scripts" 底下有 "dev" 這個 key
+
+        指令2: 
+            cd my-app
+            npm run dev
+
+
+        結果: 
+            1. 不會「自動」開啟一個網頁
+            2. 從執行後的結果可以看到
+
+                ▲ Next.js 
+                - Local:        http://localhost:3000
+            
+            3. 想要把標籤加入到畫面上，需要修改哪一個檔案？
+            4. ctrl + c 可以結束工作
+
+
+
+
+
+3. 其他建立 React 專案的方式 : Vite 
+
+    指令: npm create vite
+
+    詢問*4:
+        Ok to proceed? (y)
+        ? Project name: » vite-project
+        ? Select a framework: » - Use arrow-keys. Return to submit.
+                Vanilla
+                Vue
+            >   React
+                Preact
+                Lit
+                Svelte
+                Solid
+                Qwik
+                Others
+
+        ? Select a variant: » - Use arrow-keys. Return to submit.
+            TypeScript
+            TypeScript + SWC
+        >   JavaScript
+            JavaScript + SWC
+            Remix ↗
+
+        Done. Now run:
+
+            cd vite-project  
+            npm install 
+            npm run dev 
+
+
+    結果: 
+        1.  不會「自動」開啟一個網頁
+        2. 從執行後的結果可以看到
+
+            VITE  ready in XXX ms
+
+            ➜  Local:   http://localhost:5173/
+            ➜  Network: use --host to expose
+            ➜  press h + enter to show help
+
+        3. 想要把標籤加入到畫面上，需要修改哪一個檔案？
+        4. ctrl + c 可以結束工作
+
+
+
+4. 關於資料夾應該要如何建立
+
+    File Structure
+    https://zh-hant.legacy.reactjs.org/docs/faq-structure.html
+

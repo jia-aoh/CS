@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+    <div>html tag 可以包react tag, react不行包自己</div>
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 請運行程式碼並且觀察結果
+        function Apple() {
+            return <h1>小小兵</h1>
+        }
+        
+        function Bee() {
+            return <span>黃色的!</span>
+        }
+
+        myReactRoot.render(<div>
+            <Apple>
+                <Bee/>
+            </Apple>
+        </div>)
+
+    </script>
+</body>
+
+</html>

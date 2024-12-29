@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>資料型態</title>
+</head>
+<script>
+  //string, int, float決定值之後具有哪些功能
+  //NaN: Not a number
+  //型態轉換一律自己轉parseInt(x), parseFloat(x), String(x)...
+  //新舊語法不嚴謹NaN在typeof還是number
+  // and:&&, or:||
+  window.onload = function () {
+    bn.onclick = function () {
+      const a = parseFloat(aa.value)
+      const b = parseFloat(bb.value)
+      console.log(typeof a) //typeof判別資料型態
+      //防刁民
+      if (isNaN(a) || isNaN(b)) {
+        alert('請輸入數字')
+      } else {
+        const ans = parseFloat(a) + parseFloat(b)
+        console.log(ans.toFixed(2))//顯示兩位小數
+      }
+    }
+  }
+
+</script>
+
+<body>
+  <button id="bn">add</button><br>
+  let a = <input id="aa"><br>
+  let b =<input id="bb"><br>
+</body>
+
+</html>

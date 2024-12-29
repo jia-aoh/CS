@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+
+  $(() => {
+
+    const url = 'http://localhost/32_33.php'
+
+    // 加前端資料送到後端：
+    // fetch 加一 object{method: 'post', body: new FormData(資料id) }
+
+    $('#bn_fetch').click(() => {
+      fetch(url, {
+        method: 'post',
+        body: new FormData(myform)
+      })
+        .then(response => response.text())
+        .then(text => $('#data').text(text)) // 把json fetch 到 innertext
+
+    })
+
+    // 加前端資料送到後端：
+    // 標準寫法
+    $('#bn_jquery').click(() => {
+      $.ajax({
+        type: 'post',
+        url: url,
+        data: $('#myform').serialize(),
+        success: (result) => {
+          $('#data').text(result)
+        }
+      })
+    })
+
+    // 加前端資料送到後端：
+    // .post加$('#資料id').serialize()
+    $('#bn_jquery').click(() => {
+      // post
+      $.post(url, $('#myform').serialize(), (result) => { 
+        $('#data').text(result)
+      })
+    })
+    // 陣列序列化 -> 可以網路傳資料 -> 反序列化(其他語言讀)
+    // 資安：1.加密，2.碼檢查(雜湊)。若序列化被人動手腳，不要反序列化
+
+    //舊寫法
+    $('#bn_old').click(() => {
+      const xhttp = new XMLHttpRequest();
+      xhttp.onload = function () {
+        document.getElementById("data").innerHTML = this.responseText;
+      }
+      xhttp.open("post", url, true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(`email=${email.value}&password=${password.value}`);
+      xhttp.send();
+    })
+
+
+
+  })
+
+</script>
+
+<body>
+  <form id="myform" action="32_33.php" method="post">
+    email:<input id="email" name="email" value="david@gmail.com">
+    <p></p>
+    password:<input id="password" name="password" value="1234">
+    <button>submit</button> 
+    <!-- submit網址會變，ajax畫面局部更新 -->
+  </form>
+  <button id="bn_fetch">fetch</button>
+  <button id="bn_jquery">jquery</button>
+  <button id="bn_old">old</button>
+  <hr>
+  <pre id="data"></pre>
+</body>
+
+</html>

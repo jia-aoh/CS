@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>picture</title>
+    <link rel="stylesheet" href="../_css/bootstrap.css">
+    <script src="../_js/bootstrap.bundle.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h4>官方網站</h4>
+        <p><a href="https://getbootstrap.com/docs/5.2/content/images/#picture">https://getbootstrap.com/docs/5.2/content/images/#picture</a></p>
+        <hr>
+
+        <!-- 10. 在不同的裝置螢幕下，載入不同的圖片-->
+        <!--    a. 先製作大中小不同尺寸的素材 -->
+        <!--        https://dummyimage.com/ -->
+        
+        <!--    b. 再透過 <picture>、<source srcset="" media="">、<img src=""> 等標籤實現 -->
+畫面寬度>=1200px, 顯示1200x400圖片
+畫面寬度>=900px, 顯示900x400圖片
+畫面寬度>=900px, 顯示600x400圖片
+<picture>
+    <source media="(min-width:1200px)" srcset="https://dummyimage.com/1200x400/0000ff/ffffff.jpg&text=1200*400">
+    <source media="(min-width:900px)" srcset="https://dummyimage.com/900x400/ffee00/000000.jpg&text=900*400">
+    <img src="https://dummyimage.com/600x400/ff0000/000000.jpg&text=600*400" alt="">
+</picture>
+    </div>
+    <!-- https://dummyimage.com/600x400/ff0000/000000.jpg&text=600*400
+    https://dummyimage.com/900x400/ffee00/000000.jpg&text=900*400
+    https://dummyimage.com/1200x400/0000ff/ffffff.jpg&text=1200*400 -->
+</body>
+
+</html>

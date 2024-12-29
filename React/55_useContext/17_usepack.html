@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+<body>
+  <div id="root"></div>
+  <script type="module">
+  </script>
+  <script type="text/babel">
+    import {rabbit} from "./16_pack.js"
+    console.log(rabbit)
+    const myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+    // console.log(rabbit)
+    // 渲染 App 元件到頁面
+    myReactRoot.render(<Home/>)
+  </script>
+
+</body>
+
+</html>

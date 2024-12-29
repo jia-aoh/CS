@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <!-- jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+  $(() => {
+
+    // .each((index, elemet)=>{}) - jQuery 的 forEach
+
+    $('ul').each((index, element) => {
+      $(element)
+        .children()
+        .first()
+        .css('background-color', 'green')
+    })
+
+    // show & hide
+    $('#show').click(() => {
+      $('ul').show(100) //show(毫秒)
+    })
+
+    $('#hide').click(() => {
+      $('ul').hide(100) //hide(毫秒)
+    })
+
+  })
+</script>
+
+<body>
+  <button id="show">show</button>
+  <button id="hide">hide</button>
+
+  <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+
+  <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+    <li>D</li>
+  </ul>
+</body>
+
+</html>

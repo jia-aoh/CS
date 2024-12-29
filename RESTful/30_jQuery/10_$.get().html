@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="../_js/jquery-3.6.0.js"></script>
+</head>
+<style>
+    table {
+        /* ammounts of cols */
+        --row: 4;
+        width: 100%;
+        text-align: center;
+    }
+
+    table img {
+        width: calc(100vw/var(--row));
+        height: calc(100vw/var(--row));
+        object-fit: cover;
+    }
+</style>
+
+<body>
+
+    <h4>線上API測試平台 (點選網頁下方的 GET SINGLE USER)</h4>
+    <p><a href='https://reqres.in/'>https://reqres.in/</a></p>
+    <h4>jQuery.get()</h4>
+    <p><a href='https://api.jquery.com/jquery.get/'>https://api.jquery.com/jquery.get/</a></p>
+    <hr>
+    <button id="btnGetData">取得資料</button>
+    <div id="divResult">
+        顯示資料
+        <input id="email" type="email"> <br><br>
+        <img id="img">
+    </div>
+    <table id="users"></table>
+
+
+    <script>
+        // 10. 按鈕點選後，取得使用者資料 (測試)
+        btnGetData.onclick = function () {
+
+
+            // 20. 觀察資料結構 https://reqres.in/api/users/2
+            //     並試著從中讀取email和大頭照顯示到網頁上
+            //   * 使用 $.get()
+            const url = 'https://reqres.in/api/users/2'
+            $.get(url, function (data) {
+                $('#divResult>input').val(data.data.email)
+                // $('#divResult>img').attr('src', data.data.avatar)
+                $('#divResult>img').prop('src', data.data.avatar)
+                $('#divResult').append('<hr>')
+            })
+
+            const url2 = 'https://reqres.in/api/users?page=2'
+            // ammounts of cols from css
+            const cols = getComputedStyle(document.getElementById('users')).getPropertyValue('--row')
+            console.log(cols)
+            $.get(url2, function (data) {
+                content = ''
+                $(data.data).each(function (index, value) {
+                    if (index % cols == 0) {
+                        content += `<tr>`
+                    }
+                    content += '<td>'
+                    content += `<img src="${value.avatar}">`
+                    content += `<br><span>${value.first_name}</span>`
+                    content += '</td>'
+                    if (index % cols == cols - 1) {
+                        content += '</tr>'
+                    }
+                })
+                content += '</tr>'
+                $('#users').append(content)
+            })
+
+            //用於bootstrap
+            // let elem = $('<div>');
+            // elem.addClass('col-3');
+            // elem.append(`<img>`)...;
+
+
+        }
+    </script>
+</body>
+
+</html>

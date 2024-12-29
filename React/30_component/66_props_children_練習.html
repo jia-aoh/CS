@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <!-- 這裡是範本 -->
+    <div>
+        <h1>1803教室裡面有</h1>
+        <h2>皮卡丘 28歲 住台中</h2>
+        <h3>正在讀</h3>
+        <p>海賊王</p>
+        <p>天竺鼠車車</p>
+    </div>
+    <!-- 這裡是範本 -->
+
+    <hr>
+
+    <div id="root"></div>
+    去第一個資料夾的children
+
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+
+        // 10. DemoA 元件裡面使用了 A1、A2、A3 元件
+        //     目標: 請撰寫 A1、A2、A3 元件，讓DemoA的呈現與範本相同
+        let DemoA = function () {
+            return (
+                <A1 className="1803">
+                    <A2 sname='皮卡丘' sage='28' scity='台中'>
+                        <A3 bname='海賊王' />
+                        <A3 bname='天竺鼠車車' />
+                    </A2>
+                </A1>
+            )
+        }
+        function A1({ className, children }) {
+            // console.log(apple)
+            // console.log(children)
+            return <React.Fragment>
+                <h1>{className}教室裡面有</h1>
+                {children}
+            </React.Fragment>
+        }
+        function A2({ sname, sage, scity, children }) {
+            // console.log(children)
+            return (<React.Fragment>
+                <h2>{sname} {sage}歲 住{scity}</h2>
+                <h3>正在讀</h3>
+                {children}
+            </React.Fragment>
+            )
+        }
+        function A3({ bname }) {
+            return <p>{bname}</p>
+        }
+
+
+        // 10. DemoB 元件裡面使用了 B1、B2、B3 元件
+        //     目標: 請撰寫 B1、B2、B3 元件，讓DemoB的呈現與範本相同
+        // let DemoB = function () {
+        //     return <div>
+        //         <B1 apple="1803" />
+        //         <B2 sname='皮卡丘' sage='28' scity='台中' />
+        //         <h3>正在讀</h3>
+        //         <B3 bname='海賊王' />
+        //         <B3 bname='天竺鼠車車' />
+        //     </div>
+        // }
+        // function B1(props) {
+        //     console.log(props)
+        // }
+        // function B2(props) {
+        //     console.log(props)
+        // }
+        // function B3(props) {
+        //     console.log(props)
+        // }
+
+        myReactRoot.render(<div>
+            <DemoA />
+            <hr />
+
+        </div>);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>React Components</h4>
+    <p><a
+            href="https://www.w3schools.com/react/react_components.asp">https://www.w3schools.com/react/react_components.asp</a>
+    </p>
+
+    <div id="root"></div>
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <div id="root3"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot1 = ReactDOM.createRoot(root1);
+        let myReactRoot2 = ReactDOM.createRoot(root2);
+        let myReactRoot3 = ReactDOM.createRoot(root3);
+
+        // 10. 宣告一個變數，存放div標籤，在div標籤內加入三個h1標籤，並渲染到畫面上
+        let container = <div>
+            <h1>11</h1>
+            <h1>22</h1>
+            <h1>33</h1>
+        </div>
+        myReactRoot1.render(container);
+
+        // 20. 將上一個步驟的 div標籤，改成函式的回傳值
+        function func() {
+            return <div>
+                <h1>44</h1>
+                <h1>55</h1>
+                <h1>66</h1>
+            </div>
+        }
+        myReactRoot2.render(func());
+
+        // 25. 將步驟20的「函式名稱當作標籤使用」
+        let Func = () => {
+            return <div>
+                <h1>77</h1>
+                <h1>88</h1>
+                <h1>99</h1>
+            </div>
+        }
+        myReactRoot3.render(<Func />);
+
+        //總結
+        let where = ReactDOM.createRoot(root)
+        let Tag = () => <h1>output</h1> 
+        where.render(<Tag />)
+    </script>
+</body>
+
+</html>

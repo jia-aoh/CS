@@ -1,0 +1,26 @@
+語言 | 內容 | 標題
+HTML | span div XML   | tag
+HTML | id class href  | attribute
+
+
+CSS | #id .class     | selector
+CSS | :hover ::after | pseudo
+
+JS  | var let const  | declare
+JS  | function       | method
+onclick負責請求
+
+JS  | [{...},{...}]  | json
+
+RESTful
+Ajax: 用js只更新<tag>內：取得vs交換
+
+思維：
+1. object：很多資料，不同角度
+2. array：很多資料，相同意義
+3. function：重複程式碼
+
+問題排解：
+  1. 釐清client端還server端問題 
+
+  .open('get','.txt, .php')

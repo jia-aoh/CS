@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<script>
+  //object小寫
+  const a = {
+    name: 'David'
+  }
+  class Person {
+    //建構子函數 = init初始化函數
+    //constructor在New時會被呼叫
+    constructor(name, age) {
+      this.name = name
+      this.age = age
+    }
+    //class裡的function但前面不加function
+    send() {
+      console.log(`${this.name}去寄信了`)
+    }
+  }
+  //extends繼承並擴充
+  class Superman extends Person {
+    flyTo(city) {
+      this.city = city
+      console.log(`${this.name}飛到${city}`)
+    }
+  }
+
+  window.onload = async () => {
+
+    const david = new Person('David', 30)
+    console.log(david.age)
+    const betty = new Superman('Betty', 28)
+
+    david.send()
+    betty.send()
+    betty.flyTo('NewYork')
+  }
+</script>
+
+<body>
+  <div id="container"></div>
+</body>
+
+</html>

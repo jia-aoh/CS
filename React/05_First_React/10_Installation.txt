@@ -1,0 +1,12 @@
+英文版： https://react.dev/learn/installation
+中文版： https://zh-hant.react.dev/learn/installation
+
+
+在本機端嘗試 React
+https://zh-hant.react.dev/learn/installation#try-react-locally
+
+    → 請依照官網的提示將 HTML 頁面下載下來
+
+    → 將下載下來的 HTML 頁面放到這個資料夾
+
+    → 觀察檔案內容，找出熟悉、不熟悉、看不懂的地方

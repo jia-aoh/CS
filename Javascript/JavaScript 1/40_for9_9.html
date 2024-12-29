@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>If</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    tr,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+<script>
+  //九九乘法表
+  //`多工：${元}`,'',""
+  window.onload = function () {
+    bn.onclick = function () {
+      let table = '<table>'
+      for (i = 1; i <= 9; i++) { //(i初始值;終止條件;i值變化)段一>段二>裡面>段三>段二>裡面⋯⋯
+        table += '<tr>'
+        for (j = 2; j <= 9; j++) {
+          table += `<td>${j} x ${i} = ${i * j}</td>`
+        }
+        table += '</tr>'
+      }
+      table += '</table>'
+      area.innerHTML = table
+    }
+  }
+</script>
+
+<body>
+  <div class="area" id="area"></div>
+  <button id="bn">bn</button>
+</body>
+
+</html>

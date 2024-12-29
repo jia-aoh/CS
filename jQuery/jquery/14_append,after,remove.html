@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <!-- jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+  $(() => {
+
+    $('#root')
+      // 增加child
+      .append('<label>append1</label>')
+      .append('<label>append2</label>') // 從尾加
+      .prepend('<label>prepend</label>') // 從頭 = insert
+
+    $('#root')
+      // 增加siblings
+      .before('<div>before</div>')
+      .after('<div>after</div>')
+
+    // ABC -> BAC (存在就移動，不存在就新增)
+    $('li')
+      .eq(1)
+      .after($('li').first())
+
+    // empty()移除內容、remove()刪除標籤
+    $('li').click((event) => {
+      $(event.target).remove()
+    })
+
+
+  })
+</script>
+
+<body>
+  <div id="root"></div>
+  <ul>
+    <li>A</li>
+    <li>B</li>
+    <li>C</li>
+  </ul>
+</body>
+
+</html>

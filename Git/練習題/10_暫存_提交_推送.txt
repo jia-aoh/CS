@@ -1,0 +1,36 @@
+目標 : 練習「編輯檔案 → 追蹤檔案 → 提交新版本 → 推送到GitHub」的流程 
+
+
+10. 觀察工作目錄目前的狀態
+
+    11. 使用 Visual Studio Code 開啟 test_A 資料夾
+
+    12. ⌘+j 開啟vs終端機
+    
+    13. windows 從終端機面板右上角的下拉按鈕，選擇 Command Prompt
+
+
+20. 新增檔案
+
+    21. 新增 pokemon.html
+    22. git status
+
+30. 將檔案放到暫存區列管|追蹤。
+
+    31. git add pokemon.html
+    32. git status 指令，觀察訊息
+
+40. 提交檔案。
+
+    41. git commit -m "新增皮卡丘"
+    42. git log，查看版本紀錄
+
+50. 推送到 GitHub 數據庫。
+
+    51. 至 GitHub 確認已登入帳號
+    52. git remote -v，查詢指向的 GitHub 數據庫位址
+    53. git push origin main，
+        若出現「Connect to GitHub」，
+        點「Sign in with your browser」
+    54. git log --oneline
+    55. 在 GitHub 頁面

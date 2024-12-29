@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+  <style>
+    .ok {
+      background-color: chartreuse;
+    }
+
+    .err {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="root1"></div>
+  <button id="btn1">我幾分</button>
+  <div id="root2"></div>
+  <button id="btn2">我幾分</button>
+  <div id="root3"></div>
+  <button id="btn3">我幾分</button>
+  <div id="root4"></div>
+  <button id="btn4">我幾分</button>
+
+  <script type="text/babel">
+    // 10. 使用<style>標籤設置兩個 .class
+    //     稍後會使用在表達 "分數及格" 的呈現和 "分數不及格" 的呈現
+
+    // 15. 宣告一個變數，將變數的值設定為數字90
+    //     當變數大於60的時候，套用"分數及格"，沒有大於60，則套用 "分數不及格" 
+
+    btn1.onclick = () => {
+      let grade = Math.ceil(Math.random() * 100)
+      let good = <p className='ok'>你才{grade}</p>
+      let bad = <p className='err'>你{grade}</p>
+      let result = grade > 59 ? good : bad
+      ReactDOM
+        .createRoot(root1)
+        .render(result)
+    }
+    btn2.onclick = () => {
+      let grade2 = Math.ceil(Math.random() * 100)
+      ReactDOM
+        .createRoot(root2)
+        .render(<div className={grade2 > 59 ? 'ok' : 'err'}>{grade2}</div>)
+    }
+    btn3.onclick = () => {
+      let grade3 = Math.ceil(Math.random() * 100)
+      ReactDOM
+        .createRoot(root3)
+        .render(<div style={{color:(grade3 > 59) && 'red'}}>
+          {grade3}
+        </div>)
+    }
+    btn4.onclick = () => {
+      let grade4 = Math.ceil(Math.random() * 100)
+      ReactDOM
+        .createRoot(root4)
+        .render(<div style={{color:(grade4 > 59) && 'red'}}>
+          {grade4}{(grade4 < 59) && '棒'}
+        </div>)
+    }
+
+
+    // 20. 延續上一題
+    //     當變數沒有大於60的時候，出現「加油！」的文字
+
+  </script>
+</body>
+
+</html>

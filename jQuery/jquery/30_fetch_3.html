@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+
+  $(() => {
+
+    const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/user.json'
+    $('#bn_fetch').click(() => {
+      fetch(url)
+        .then(response => response.text())
+        .then(text => $('#data').text(text)) // 把json fetch 到 innertext
+
+    })
+
+    $('#bn_jquery').click(() => { // jquery的ajax
+      $.ajax({ //static method $.class(object{functionkey: value, ...})
+        url: url,
+        success: (result) => { //fetch成功之後做啥，result = fetch的text
+          $('#data').text(result)
+        }
+      })
+    })
+
+    //舊寫法
+    $('#bn_old').click(() => {
+      const xhttp = new XMLHttpRequest(); // 這個是JS內建object在不同瀏覽器物件名稱不同，所以要寫判斷做不同元件
+      xhttp.onload = function () { // 註冊function，相當於fetch第一個then，相當於jquery的success function
+        document.getElementById("data").innerHTML = this.responseText; // this.responseText = text, result
+      }
+      xhttp.open("GET", url, true); // 相當於fetch (get, post取決於後端：github都是get因為沒法在上面寫程式)，（true = async）
+      xhttp.send(); // 執行
+    })
+
+    // html狀態碼
+    // xml描述複雜資料結構
+    // 1. 可以直接定標簽名，不像html要attribute
+    // 2. xml後續處理成本高(fetch程式碼要寫很多)
+
+
+
+
+  })
+
+</script>
+
+<body>
+  <button id="bn_fetch">fetch</button>
+  <button id="bn_jquery">jquery</button>
+  <button id="bn_old">old</button>
+  <hr>
+  <pre id="data"></pre>
+</body>
+
+</html>

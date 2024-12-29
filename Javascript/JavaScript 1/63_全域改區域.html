@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = function () {
+    function f(i) {
+      console.log('f改前: '+ i)
+      i[0] = 20
+      console.log('f改後: '+ i)
+    }
+    bn.onclick = function () {
+      let i = [10] //用array
+      f(i)
+      console.log(i)
+    }
+  }
+  //因為效率
+  //純量變數（只能放一個值的）一律call by value傳值呼叫(你改我不動) 
+  //非純量變數（可放兩個以上）大多數語言是call by address傳址呼叫（你改我就改 = reference/ sharing/ object
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

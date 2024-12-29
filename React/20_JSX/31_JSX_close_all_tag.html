@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <h4>The Rules of JSX - Close all the tags </h4>
+    <p><a
+            href="https://react.dev/learn/writing-markup-with-jsx#2-close-all-the-tags">https://react.dev/learn/writing-markup-with-jsx#2-close-all-the-tags</a>
+    </p>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // 10. 透過 HTML 設定圖片 (在 script 區段外使用 <img> 標籤)
+        ReactDOM
+            .createRoot(root)
+            .render( <img src="../_images/pig.png"/>) //要多一條結束標籤
+        // 20. 透過 JSX 設定圖片
+
+
+    </script>
+</body>
+
+</html>

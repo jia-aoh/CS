@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="22_formback.php" method="post" enctype="multipart/form-data">
+    <!-- enctype 針對表單資料切割成多個封包 
+         #fragment, localStorage, sessionStorage, Cookies, IndexDB-->
+    
+         <!-- 檔案上傳一定post因為url不夠長 -->
+    File: <input type="file" name="upload[]"><br>
+    File: <input type="file" name="upload[]"><br>
+    File: <input type="file" name="upload[]"><br>
+    File: <input type="file" name="upload[]"><br>
+    <input type="submit" value="upload">
+  </form>
+</body>
+</html>

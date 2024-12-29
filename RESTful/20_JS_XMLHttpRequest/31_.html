@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<body>
+  <button id="btnGetOpenData">取得天氣資料</button>
+  <hr>
+  <select id="cityList"></select>
+  <hr>
+  <div id="divResult"></div>
+  
+  <script>
+    let cList = ''
+    let wList = ''
+    // 取資料
+    function btnClick() {
+      let xhr = new XMLHttpRequest()
+      // 有金鑰
+      const url = 'https://opendata.cwa.gov.tw/fileapi/v1/opendataapi/F-C0032-001?Authorization=rdec-key-123-45678-011121314&format=XML'
+      xhr.onload = xhrLoad
+      xhr.open('get', url)
+      xhr.send()
+
+      // 讓按鈕消失
+      // document.getElementById('btnGetOpenData').style.display = 'none'
+      // 讓按鈕不能用
+      document.getElementById('btnGetOpenData').disabled = true
+    }
+    //資料載入
+    function xhrLoad() {
+      let parse = new DOMParser()
+      let xmldoc = parse.parseFromString(this.responseText, 'application/xml')
+      selectChangeJquery()
+      cList = xmldoc.getElementsByTagName('locationName')
+      selectAppend()
+      wList = xmldoc.querySelectorAll('locationName+weatherElement')
+
+    }
+
+    //設定下拉選單
+    function selectAppend() {
+      //清除下拉選單
+      document.getElementById('cityList').innerHTML = ''
+      // document.getElementById('cityList').options.length = 0
+
+      for (i = 0; i < cList.length; i++) {
+        let option = document.createElement('option')
+        option.innerText = cList[i].innerHTML
+        option.setAttribute('value', i)
+        document.getElementById('cityList').appendChild(option)
+      }
+    }
+    //顯示天氣
+    //JS版
+    function selectChangeJS() {
+      let i = document.getElementById('cityList').selectedIndex
+      // console.log(cList[i])
+      // console.log(wList[i])
+      console.log(i);
+      let t1s = wList[i]
+      console.log(t1s);
+      document.getElementById('divResult').innerHTML = ''
+
+      // for (j = 1; j <= 3; j++) {
+      //   let ts = wList[i].children[j].children[0].innerHTML; // endTime
+      //   let te = wList[i].children[j].children[1].innerHTML; // endTime
+      //   let tp = wList[i].children[j].children[2].children[0].innerHTML; //parameterName
+      //   document.getElementById('divResult').innerHTML += `${ts}<br>${te}<br>${tp}<br>`
+      // }
+    }
+    //jQuery版
+    function selectChangeJquery() {
+      let i = document.getElementById('cityList').selectedIndex
+      $('#divResult').empty()
+
+      $(wList[i]).find('time').each((index, value)=>{
+        $('#divResult').append($(value).find('startTime').text()+'<br>')
+        $('#divResult').append($(value).find('endTime').text()+'<br>')
+        $('#divResult').append($(value).find('parameterName').text()+'<br>')
+        $('#divResult').append($(value).find('parameterValue').text()+'<br><br>')
+      })
+    }
+
+
+    document.getElementById('btnGetOpenData').addEventListener('click', btnClick)
+    document.getElementById('cityList').addEventListener('change', selectChangeJquery)
+    </script>
+</body>
+
+</html>

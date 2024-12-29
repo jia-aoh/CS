@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        figure {
+            border: 1px #cccccc solid;
+            padding: 4px;
+            margin: auto;
+            width: 50%;
+        }
+
+        figcaption {
+            background-color: black;
+            color: white;
+            font-style: italic;
+            font-size: larger;
+            padding: 2px;
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <figure>：群組 -->
+    <!-- <img> -->
+    <!-- <figcaption>：群組說明 -->
+    <figure>
+        <img src="./media/cat.jpg">
+        <figcaption>figcaption: cat</figcaption>
+    </figure>
+
+    <!-- <video>: 嵌入影片檔案. 
+         ex: media/sayhi.mp4 -->
+    <video src="./media/sayhi.mp4" controls loop muted poster="./media/poster.png"></video>
+    <!-- controls, loop, muted, poster -->
+
+
+
+    <!-- 透過 <iframe> 嵌入 youtube 影片. 
+             ex: https://youtu.be/ewZ_YWbIWXI -->
+    <!-- 在 youtube 影片上點右鍵 -> 複製嵌入程式碼 -->
+    <iframe width="605" height="480" src="https://www.youtube.com/embed/ewZ_YWbIWXI" title="HTML Promo Video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <!-- 透過 <iframe> 嵌入 google 地圖-->
+    <!-- 在地圖點選分享 -> 嵌入地圖 -> 複製HTML -->
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14561.711287120002!2d120.63331067562105!3d24.15672439213057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34693decc17b9b53%3A0x27cb3fe826209051!2z5Y-w5Lit5pel5pyI5Y2D56an6YWS5bqX!5e0!3m2!1szh-TW!2stw!4v1725256104791!5m2!1szh-TW!2stw"
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="../_js/react.development.js"></script>
+    <script src="../_js/react-dom.development.js"></script>
+    <script src="../_js/babel.js"></script>
+    <style>
+        div {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        /* 10. 假設現在有四個元件: 首頁、會員、訂單、訂單明細
+                1. 這四個元件為父子關係
+                2. 有一份促銷資料建立在 首頁
+                3. 若其餘三個元件想要取得促銷資料的話，該如何傳值?
+        */
+        //一直往下傳
+        function MainPage() {
+            const [food, setFood] = React.useState('薑母鴨')
+            const func = () => { setFood('雞鴨鵝') }
+            return <div>
+                <p>首頁 - {food}</p>
+                <Member foodFromMainPage={food} func={func} />
+            </div>
+        }
+        function Member({ foodFromMainPage, func }) {
+            return <div>
+                <p>會員 - {foodFromMainPage}</p>
+                <Order foodFromMember={foodFromMainPage} func={func} />
+            </div>
+        }
+        function Order({ foodFromMember, func }) {
+            return <div>
+                <p>訂單 - {foodFromMember}</p>
+                <OrderDetail foodFromOrder={foodFromMember} func={func} />
+            </div>
+        }
+        function OrderDetail({ foodFromOrder, func }) {
+            return <div>
+                <p>明細 - {foodFromOrder}</p>
+                <button onClick={func}>換食物</button>
+            </div>
+        }
+
+        myReactRoot.render(
+            <MainPage />
+        );
+    </script>
+</body>
+
+</html>

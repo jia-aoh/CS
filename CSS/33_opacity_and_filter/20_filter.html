@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>filter</title>
+
+    <style>
+        img {
+            width: 300px;
+        }
+
+        input,
+        label {
+            margin:20px 5px;
+        }
+
+        /* 請在這邊測試各種濾鏡的效果 */
+        /* 注意不同濾鏡需要的參數單位不同 */
+        #ft1:checked~img {
+            filter: blur(5px);
+        }
+
+        #ft2:checked~img {
+            filter: saturate(10);
+        }
+
+        #ft3:checked~img {
+            filter: invert(100%);
+        }
+    </style>
+</head>
+
+<body>
+    <h3><a href='https://www.w3schools.com/cssref/css3_pr_filter.asp'>CSS filter Property</a></h3>
+    <h3><a href='https://www.w3schools.com/cssref/playit.asp?filename=playcss_filter&preval=none'>CSS Property Play
+            it</a></h3>
+    <hr>
+    <input id="ft1" name="ft" type="radio">
+    <label for="ft1">blur(5)</label><br>
+    <input id="ft2" name="ft" type="radio">
+    <label for="ft2">saturate(10)</label><br>
+    <input id="ft3" name="ft" type="radio">
+    <label for="ft3">invert(100%)</label><br>
+    <img src="../img/sunny.jpg">
+</body>
+
+</html>

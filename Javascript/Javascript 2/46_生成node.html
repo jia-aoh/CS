@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<style>
+</style>
+<script>
+  window.onload = () => {
+    const ul = document.querySelector('ul')
+    //生成新node: li
+    const li = document.createElement('li')
+
+    //li內容
+    li.innerHTML = `<label style="color:red">EEE</label>`
+    // li.textContent = 'EEE'
+
+    //li加到ul最後
+    ul.append(li)
+
+    //放到ul最前
+    //抓AAA
+    const target = ul.firstElementChild
+    //父.insertBefore(子，在誰前)
+    ul.insertBefore(li,target)
+
+  }
+</script>
+
+<body>
+  <ul>
+    <li>AAA</li>
+    <li>BBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+  <ul>
+    <li>AAA</li>
+    <li>BBBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+</body>
+
+</html>

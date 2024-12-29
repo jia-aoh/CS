@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lab</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="webcam.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+          <div id="cameraDiv"></div>
+          <!-- Button -->
+          <div class="form-group">
+            <label class="control-label" for="okButton"></label>
+            <div>
+              <button type="button" id="okButton" name="okButton" class="btn btn-primary">OK</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-4">
+            <canvas id="viewPort" width="320" height="240"></canvas>
+        </div>
+        <div class="col-sm-4">
+        </div>
+      </div>
+    
+    <pre id="reportHere"></pre>
+        
+</div>
+
+<script>
+
+$(document).ready(function () {
+
+    var report = function (lineData) {
+        $("#reportHere").append(lineData + "\r\n----------\r\n");
+    }
+
+    // WebCam 啟動程式
+    Webcam.set({
+        width: 320,
+        height: 240,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+    Webcam.attach('#cameraDiv');
+
+
+    $("#okButton").on("click", function () {
+        // Lab 練習的程式寫在這邊...
+        // cameraCanvas
+        var viewContext = viewPort.getContext('2d')
+
+        Webcam.snap(function (snappedImage) {
+            // console.log(snappedImage);
+            let bufferImage = new Image();
+            bufferImage.src = snappedImage;
+            bufferImage.onload = function () {
+              viewContext.drawImage(bufferImage, 0, 0, 320, 240);
+
+              // 將 Canvas 轉成 Blob，然後 POST 給 Face API:
+              
+            }
+
+        });  // End of Webcam.snap
+
+
+
+    });
+
+})
+
+</script>
+            
+</body>
+</html>

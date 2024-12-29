@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <!-- jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgreen;
+    width: 300px;
+    height: 300px;
+  }
+
+  .hstack {
+    display: flex;
+    background-color: pink;
+    height: 100%;
+    margin: 10px;
+  }
+
+  .hstack div {
+    display: flex;
+    background-color: lightgoldenrodyellow;
+    width: 100%;
+    font-size: 30px;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+<script>
+  $(() => {
+
+    const color = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'brown', 'cyan', 'pink']
+    const drawUI = (complete) => {
+      $('body')
+        .append('<button id="bn">random</button>')
+        .append('<button id="bn2">reset</button>')
+        .append('<br>')
+        .append('<div class="container"></div>')
+
+      $('.container') // 3 row
+        .append('<div class="hstack"></div>')
+        .append('<div class="hstack"></div>')
+        .append('<div class="hstack"></div>')
+
+      $('.hstack').each((index, hstack) => { // 3 col
+        $(hstack)
+          .append(`<div name="box" style="background-color: ${color[index * 3 + 0]}">${index * 3 + 1}</div>`)
+          .append(`<div name="box" style="background-color: ${color[index * 3 + 1]}">${index * 3 + 2}</div>`)
+          .append(`<div name="box" style="background-color: ${color[index * 3 + 2]}">${index * 3 + 3}</div>`)
+      })
+
+      complete($('#bn'), $('#bn2')) // 傳出complete
+    }
+
+    const getBoxes = () => {
+      return $('div[name="box"]')
+    }
+
+    const shuffle = (boxes) => {
+      for (m = 0; m < 9; m++) {
+        const i = 0
+        const rand = parseInt(Math.random() * boxes.length)
+        const tmp = boxes[i]
+        boxes[i] = boxes[rand]
+        boxes[rand] = tmp
+      }
+    } //因為陣列是call by reference所以裡面改了外面就改了不用設定為全域變數
+    const reset = (boxes) => {
+      boxes.sort((a, b) => {
+        return parseInt($(a).text()) - parseInt($(b).text())
+      })
+
+    }
+
+
+    const reload = (boxes) => {
+      $('.hstack').each((index, hstack) => { // 3 col
+        $(hstack)
+          .append($(boxes[index * 3 + 0])) // 因為boxes已存在，所以append會變成移動
+          .append($(boxes[index * 3 + 1]))
+          .append($(boxes[index * 3 + 2]))
+      })
+    }
+
+    drawUI((random_button, reset_button) => {
+      random_button.click(() => {
+        let boxes = getBoxes() //抓9個div
+        shuffle(boxes)
+        reload(boxes)
+      })
+
+      reset_button.click(() => {
+        let boxes = getBoxes() //抓9個div
+        reset(boxes)
+        reload(boxes)
+      })
+    }) //接complete
+
+
+
+
+  })
+  //   $(() => {
+  //    const color = ['red', 'blue', 'green', 'yellow', 'orange', 'purple', 'brown', 'cyan', 'pink']
+  //    const drawUI = (complete) => {
+  //        $('body')
+  //            .append('<button id="random">random</button>')
+  //            .append('</p>')
+  //            .append('<div class="container"></div>')
+
+
+  //        $('.container')
+  //            .append('<div class="hstack"></div>')
+  //            .append('<div class="hstack"></div>')
+  //            .append('<div class="hstack"></div>')
+
+
+  //        $('.hstack').each((index, hstack) => {
+  //            $(hstack)
+  //                .append(`<div name="box" style="background-color: ${color[index * 3 + 0]}">${index * 3 + 1}</div>`)
+  //                .append(`<div name="box" style="background-color: ${color[index * 3 + 1]}">${index * 3 + 2}</div>`)
+  //                .append(`<div name="box" style="background-color: ${color[index * 3 + 2]}">${index * 3 + 3}</div>`)
+  //        })
+
+
+  //        complete($('#random'))
+  //    }
+
+
+  //    const getBoxes = () => {
+  //        return $('div[name="box"]')
+  //    }
+
+
+  //    const shuffle = (boxes) => {
+  //        for (m = 0; m < 100; m++) {
+  //            const i = parseInt(Math.random() * boxes.length)
+  //            const j = parseInt(Math.random() * boxes.length)
+  //            const tmp = boxes[i]
+  //            boxes[i] = boxes[j]
+  //            boxes[j] = tmp
+  //        }
+  //    }
+
+
+  //    const reload = (boxes) => {
+  //        $('.hstack').each((index, hstack) => {
+  //            $(hstack)
+  //                .append($(boxes[index * 3 + 0]))
+  //                .append($(boxes[index * 3 + 1]))
+  //                .append($(boxes[index * 3 + 2]))
+  //        })
+  //    }
+
+
+  //    drawUI((random_button) => {
+  //        random_button.click(() => {
+  //            let boxes = getBoxes()
+  //            shuffle(boxes)
+  //            reload(boxes)
+  //        })
+  //    })
+  // })   
+
+</script>
+
+<body>
+</body>
+
+</html>

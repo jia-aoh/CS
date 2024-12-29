@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h4>JavaScript Destructuring</h4>
+    <p><a href='https://www.w3schools.com/js/js_destructuring.asp'>https://www.w3schools.com/js/js_destructuring.asp</a></p>
+    
+    <script>
+        let bento = {
+            bentoName: '舒肥雞胸肉',
+            price: 105,
+            drink: true,
+            contents:{
+                rice: '紫米飯',
+                vegetable: ['高麗菜', '豆芽菜', '空心菜']
+            }
+        }
+
+        // 10. 請用你所知道的方法取得便當的名稱還有便當的價格
+        // console.log(bento.bentoName)
+        // console.log(bento.price)
+
+        // 20. 透過解構賦值取得物件的屬性值 - 字串、數字等
+        //我要來自bento的{內容, 內容:{內容}}
+        let {bentoName, price, drink} = bento
+        console.log(bentoName)
+        console.log(price)
+        console.log(drink)
+        
+        // 25. 透過解構賦值取得物件的屬性值 - 物件
+        let {contents:{rice}} = bento
+        console.log(rice)
+
+        // 30. 透過解構賦值取得物件的屬性值 - 陣列
+        let {contents:{vegetable}} = bento
+        console.log(vegetable)
+
+        let [index0, index1, index2] = vegetable
+        console.log(index0)
+        console.log(index1)
+        console.log(index2)
+
+
+        
+    </script>
+</body>
+
+</html>

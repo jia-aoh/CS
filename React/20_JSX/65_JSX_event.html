@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // * 點擊事件 -> 事件物件 *
+        function funcA(value) {
+            console.log('value: ', value)
+            // react function 內建偵測event，不用再多一個變數
+            console.log('event: ', event)
+        }
+        function funcB(value) {
+            // 呼叫不給值，react不會undefine，會給另一個syntheticBaseEvent
+            console.log('value: ', value)
+            console.log('event: ', event)
+
+            let xa = value.target
+            let xb = event.target.innerHTML
+            console.log(xa)
+            console.log(xb)
+        }
+        console.clear
+        function funcC(props) {
+
+            let xc = props.target.value;
+            console.log(props.target.value)
+        }
+        ReactDOM
+            .createRoot(root)
+            .render(
+                <div>
+                    <button onClick={() => { funcA('我用一個arrow func把funcA包裝起來，這樣addEventListener就不會被觸發') }}>第一個</button>
+                    <button onClick={funcB}>第二個</button>
+                    <input onInput={funcC} />
+                </div>)
+
+        // 10. 在點擊事件發生的時候，呼叫函式(A)，並且傳入event關鍵字
+        //     a. 函式(A) 安排參數接收資料，並且查看資料
+        //     b. 函式(A) 查看 event 關鍵字
+
+        // 20. 在點擊事件發生的時候，指定函式(B)進行處理
+        //     a. 函式(B) 安排參數接收資料，並且查看資料
+        //     b. 函式(B) 直接查看 event 關鍵字
+
+    </script>
+</body>
+
+</html>

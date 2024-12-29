@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+</style>
+<script>
+  window.onload = () => {
+    const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/product.json'
+    let shoppingCart = null
+    function mainPage(){
+
+    }
+    function shoppingCartPage(){
+      
+    }
+    fetch(url)
+      .then(response => response.json())
+      .then(jsonObj => {
+        shoppingCart = jsonObj
+      })
+    bn.onclick = () => {
+      shoppingCart[1].quantity += 1
+      const string = JSON.stringify(shoppingCart[1])
+      console.log(string)
+    }
+
+  }
+</script>
+
+<body>
+
+  <button id="bn">+</button>
+
+</body>
+
+</html>

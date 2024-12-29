@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <div id="root3"></div>
+
+    <script type="text/babel">
+
+        // * ReactDOM.createRoot( 指定元素 ).render( 資料(或JSX) )
+
+        // 10. 宣告一個變數，存放h1標籤，並渲染到畫面上
+        let variation1 = '123'
+        let data1 = <p>{variation1}</p>
+        //JS內用物件方法render({變數})
+        ReactDOM
+            .createRoot(root1)
+            .render(
+                <div>
+                    <h3>{variation1.length}</h3>
+                </div>
+            )
+
+        // 20. 測試使用()包住h1標籤，觀察程式碼是否可以正常運行
+        let variation2 = ''
+        let data2 = (<p>測試資料2</p>)
+        ReactDOM
+            .createRoot(root2)
+            .render(data2)
+        // 30. 嘗試不透過變數，直接將標籤放在呼叫 render函式的小括弧中
+        ReactDOM
+            .createRoot(root3)
+            .render((<p>測試資料3</p>))
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    //async底層：Promise物件的resolve, reject, then方法
+    //if(){reject}else{resolve}
+    //.then(result).catch(reason)
+    function div(a, b) {
+      return new Promise((resolve, reject) => {
+        if (b == 0) {
+          reject('分母不能0')
+        } else {
+          resolve(a / b)
+        }
+      })
+    }
+
+    function inc(a) {
+      return a + 1
+    }
+
+    function task() {
+      //相當於Promise.then
+      //then內可return，由另一個.then繼續接
+      div(5, 2)
+      .then((result) => {
+        console.log(result)
+        return Math.ceil(result) //此return結果為promise
+      })
+      .then((result)=>{
+        console.log(result)
+      })
+      .catch((reason)=>{
+        console.log(reason)
+      })
+    }
+    task()
+    console.log('done')
+  }
+</script>
+
+<body>
+  <button id="bn">click</button>
+</body>
+
+</html>

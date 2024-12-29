@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<style>
+</style>
+<script>
+  window.onload = () => {
+      document
+      .querySelector('ul')
+
+      //child
+      .firstElementChild
+      // .firstChild 第一個node，tag與tag之間也有節點: ul與AAA之間
+      // .children[2]
+      // .childNodes[3] 
+      // 有包含標籤與標籤間的節點: 在AAA與BBB間
+      //若標籤間沒space or換行就沒node
+
+      //parent
+      // .parentElement
+      // .parentNode 上個node
+
+      //sibling
+      .nextElementSibling
+      .previousElementSibling
+      //element拿掉就是找node
+      .nextSibling
+      .nextSibling
+      .previousSibling
+      .previousSibling
+
+
+      .style
+      .backgroundColor = 'cyan'
+
+
+  }
+
+
+</script>
+
+<body>
+  <!-- 減少id的量 -->
+  <!-- 從target目標BBBB -->
+  <ul>
+    <li>AAA</li>
+    <li>BBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+  <ul>
+    <li>AAA</li>
+    <li>BBBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+</body>
+
+</html>

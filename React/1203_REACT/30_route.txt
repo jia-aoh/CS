@@ -1,0 +1,360 @@
+【前置作業】
+
+10. 已經透過 10_create_project.txt 確認過環境 OK
+
+15. 確認使用 Vite 進行專案建立完畢
+
+    npm create vite@latest
+    cd 你的專案名稱  
+    npm install 
+    npm run dev 
+    
+18. 請從 w3school 的 howto 獲得 導覽列 和 頁尾 的程式碼範例 
+
+    * 底下的 【建立元件】 中使用的 HTML標籤以及 CSS樣式 皆來自於此
+
+    How TO - Top Navigation
+    https://www.w3schools.com/howto/howto_js_topnav.asp
+
+    How TO - Fixed Footer
+    https://www.w3schools.com/howto/howto_css_fixed_footer.asp
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+
+【建立元件】
+
+20. 建立資料夾以及元件 - 頁首和頁尾
+
+    a. 資料夾: src\components 
+
+    b. 元件: MyNavigation.jsx 、 MyFooter.jsx
+
+    c. 使用底下程式碼 取代 MyNavigation.js 的回傳值
+
+    return (
+        <div className="topnav">
+            <a href="/Home">Home</a>
+            <a href="/News">News</a>
+            <a href="/Contact">Contact</a>
+        </div>
+    )
+
+    d. 使用底下程式碼 取代 MyFooter.js 的回傳值
+
+        return (
+            <div className="footer">
+                <p>MyFooter</p>
+            </div>
+        )
+
+
+23. w3school 的範例中包含 css 樣式，需要進行設定
+
+    a. 資料夾: src\css
+
+    b. 需要將目前專案原有的css引用註解掉
+
+    c. 建立 w3school.css 並且將底下的內容貼上
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: red;
+            color: white;
+            text-align: center;
+        }
+
+        /* Add a black background color to the top navigation */
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+            background-color: #04AA6D;
+            color: white;
+        }
+
+
+    d. 前往 APP.jsx 在上方進行引用
+    
+        import './css/w3school.css';
+
+
+25. 建立資料夾以及元件 - 首頁、最新消息、聯絡我們
+
+    a. 資料夾: src\pages 
+
+    b. 元件: Home.jsx 、 News.jsx 、 Contact.jsx
+
+    c. 生成元件雛型，稍後進行修改
+
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【建立 layout】
+1. 做排版layout>{children}
+nav, footer > 中間grid
+
+30. 建立資料夾以及元件 - 版型
+
+    a. 資料夾: src\layouts 
+
+    b. 元件: MyLayout.jsx
+
+    c. 引用 MyNavigation 和 MyFooter
+    
+        import MyNavigation from '../components/MyNavigation';
+        import MyFooter from '../components/MyFooter';
+
+    d. 安排接收 children
+
+    e. 使用下列程式碼取代元件的回傳值
+
+        return (
+            <>
+                <MyNavigation />
+                {children}
+                <MyFooter />
+            </>
+        )
+
+    完整程式碼
+        import React from 'react'
+        import MyNavigation from '../components/MyNavigation';
+        import MyFooter from '../components/MyFooter';
+
+        function MyLayout({children}) {
+            return (
+                <>
+                    <MyNavigation />
+                    {children}
+                    <MyFooter />
+                </>
+            )
+        }
+
+        export default MyLayout
+
+
+
+35. 修改 步驟25 所生成的三個元件
+
+    a. 引用 MyLayout.jsx
+    
+        import MyLayout from '../layouts/MyLayout';
+
+    b. 使用下列程式碼取代元件的回傳值
+
+        return (
+            <MyLayout>
+                <div>元件名稱</div>
+            </MyLayout>
+        )
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【路由】
+
+40. 確認專案內是否已經安裝 react-router-dom
+
+     npm list react-router-dom
+
+    * 若專案內沒有 react-router-dom，則執行下列指令安裝
+    
+        npm install react-router-dom
+
+
+45. 依照官方文件「Adding a Router」設置並解建立對應路由
+
+    https://reactrouter.com/en/main/start/tutorial#adding-a-router
+
+    a. 開啟 main.jsx
+
+    b. 在官方標示的位置加入對應的程式碼
+
+    c. 程式碼 (可以直接全選複製貼上)
+
+        import { StrictMode } from 'react'
+        import { createRoot } from 'react-dom/client'
+        import {
+            createBrowserRouter,
+            RouterProvider,
+        } from "react-router-dom";
+        // import './index.css'
+        import App from './App.jsx'
+
+        const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <div>Hello world!</div>,
+        },
+        ]);
+
+        createRoot(document.getElementById('root')).render(
+        <StrictMode>
+            <RouterProvider router={router} />
+        </StrictMode>,
+        )
+
+    d. 運行專案，觀察結果
+
+        -> 專案運行起來以後只剩下 Hello world! 了
+
+        -> 原本有渲染 <App/> 但現在沒有了
+
+    
+
+47. 調整 main.jsx
+
+    a. 加入引用，若資料夾、元件名稱不同，請自行調整
+    
+        import Home from './pages/Home.jsx'
+        import News from './pages/News.jsx'
+        import Contact from './pages/Contact.jsx'
+
+
+    b. 刪除現有 router變數，改以下列這段程式碼取代
+
+        const router = createBrowserRouter([
+            {
+                path: "/",
+                element: <App />
+            },
+            {
+                path: "/Home",
+                element: <Home />
+            },
+            {
+                path: "/News",
+                element: <News />
+            },
+            {
+                path: "/Contact",
+                element: <Contact />
+            },
+        ]);
+
+    c. 點擊導覽列，確認頁面是否可以正常切換
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【 取得路由參數 - useParams 】
+
+    * 實際開發時請不要使用 apple、bee 等變數名稱，依照需求命名
+
+
+50. 調整 router變數 加入 一組路由
+
+    { path: "/Home/:apple/:bee", element: <Home />},
+
+    勾路由
+
+
+53. 修改 Home.jsx；
+
+    a. 取得 useParams
+
+        import { useParams } from 'react-router-dom';
+
+    b. 在元件內部呼叫 useParams
+
+        const { apple, bee } = useParams();
+
+    c. 回傳時資料帶入 apple 和 bee 
+
+        <div>Home - {apple} - {bee} </div>
+
+
+    程式碼 (可以直接全選複製貼上)
+
+        import React from 'react'
+        import MyLayout from '../layouts/MyLayout';
+        import { useParams } from 'react-router-dom';
+
+        function Home() {
+            const { apple, bee } = useParams();
+            return (
+                <MyLayout>
+                <div>Home - {apple} - {bee} </div>
+                </MyLayout>
+            )
+        }
+        export default Home
+
+
+    d. 運行專案後，請使用下列URL進行測試
+
+        http://localhost:請填入專案運行時的port/Home
+        http://localhost:請填入專案運行時的port/Home/pika
+        http://localhost:請填入專案運行時的port/Home/pika/5566
+
+
+
+▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇
+
+【比較 <a> 和 <Link> 】
+link是刷新內部
+
+60. 確認 MyNavigation.jsx 元件的回傳值是否包含 <a>標籤 
+    
+    return (
+        <div className="topnav">
+            <a href="/Home">Home</a>
+            <a href="/News">News</a>
+            <a href="/Contact">Contact</a>
+        </div>
+    )
+
+63. 目前有三個 <a>標籤，請嘗試將其中一個換掉
+
+    a. 取得 Link元件
+
+        import { Link } from 'react-router-dom';
+
+
+    b. 修改回傳值
+
+        return (
+            <div className="topnav">
+                <a href="/Home">Home</a>
+                <a href="/News">News</a>
+                <Link to="/Contact">Contact</Link>
+            </div>
+        )
+
+
+65. 運行專案，點選導覽列
+
+    問題： 點選 Home 、 News 、 Contact 的時候，
+            除了畫面有呈現對應的內容外，還有什麼其他的現象？
+
+    答案：
+        <a> 刷新整個頁面，網頁前面的那個小圖一直在閃
+            -> 如果真的要離開專案，就還是用 <a href>
+
+        <Link> 單頁應用內部無刷新導航
+            -> 如果是專案內部的元件，建議用 <Link to>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <!-- jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+  // jQuery語法：
+
+  // 1. function：$(()=>{
+  // $('selector').func(() => {
+
+  // })
+  // }) -- window.onload 新唯一語法
+
+  $(() => {
+    // 1. function closure
+
+    $('#bn').click(() => {
+
+      // 聲明式語法(結構性強，只有一個主詞，事情一堆) vs 命令式語法(人喜歡)
+      // a. 聲明式語法(一行)
+      $('#label')
+        .html('hello,world') // innerHTML -> html, innerText -> text
+        .css('backgroundColor', 'orange')
+        .css('color', 'white')
+
+      // b. 命令式正規寫法
+      // const lb = document.getElementById('label')
+      // lb.innerHTML = 'hello'
+      // lb.style.backgroundColor = 'red'
+      // lb.style.color = 'white'
+
+      // b. 命令式語法
+      // label.innerHTML = 'hello'
+      // label.style.backgroundColor = 'red'
+      // label.style.color = 'white'
+    })
+
+    // 2. addEventListener: .on(() => {}) 在jQuery都是function，但在javascript不一樣
+    //    加event 
+
+    $('#bn').on('click', (event) => {
+      $('#label').html(event.offsetX)
+    })
+
+    // 3. 超連結：preventDefault - 可以知道網頁各個部分觸擊率、流量
+    $('a').click((event) => {
+      event.preventDefault()
+      if (confirm('即將連到外部連結')) {
+        const href = $(event.target).attr('href') //attr: 抓每個標籤裡的attr
+        location.href = href
+      }
+    })
+
+    // 1. JS 轉 jQuery
+
+    $(document.getElementById('label'))
+      .html('hello,world')
+      .css('backgroundColor', 'orange')
+      .css('color', 'white')
+
+    // 2. jQuery 轉 JS
+
+    const lb = $('#label').get(0) // 因為jQuery傳回值是一個陣列，官方建議用get(0)抓陣列第一筆資料
+    lb.innerHTML = 'hello'
+    lb.style.backgroundColor = 'red'
+    lb.style.color = 'white'
+
+  })
+</script>
+
+<body>
+  <button id="bn">click</button>
+  <label id="label"></label>
+  <p></p>
+  <a href="http://www.google.com">google</a>
+  <p></p>
+  <a href="http://www.apple.com">apple</a>
+</body>
+
+</html>

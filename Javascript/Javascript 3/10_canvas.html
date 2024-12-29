@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  //等比例縮放
+  const resize = (image, width)=>{
+    //除法運算注意結果為Int or Float
+    const ratio = image.width/ image.height
+    //用陣列一次帶入兩個數字
+    return [width, width / ratio]
+  }
+  window.onload = () => {
+    const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/elephant.jpg'
+    fetch(url)
+      //blob是二位元型態
+      .then(response => response.blob())
+      .then(blob => {
+        //new一個img標籤
+        const image = new Image()
+        //blob回來的資料產生一個暫時的網址
+        const url = URL.createObjectURL(blob)
+        image.src = url
+        //確保載入完後執行，用.addEventListener跟系統註冊函數
+        //不然因為img區域變數所以onload不會動
+        image.addEventListener('load', () => {
+          //在canvas上把img畫出來(要畫的圖,要畫的位置x,y,圖片長,寬)
+          // context.drawImage(image, 0, 10, image.width / 2, image.height / 2)
+          context.drawImage(image, 0, 10, ...resize(image,200))
+          draw()
+        })
+      })
+      
+    const canvas = document.getElementById('myCanvas')
+    //canvas標籤能夠畫圖的位置
+    const context = canvas.getContext('2d')
+    function draw() {
+      //畫筆設定
+      context.strokeStyle = 'green'
+      context.lineWidth = 5
+      //路徑
+      context.beginPath()
+      context.moveTo(100, 150)
+      context.lineTo(200, 300)
+      context.lineTo(400, 200)
+      //用設定好的畫筆畫出來
+      context.stroke()
+      //畫完
+
+      //畫圓
+      context.strokeStyle = 'blue'
+      context.lineWidth = 3
+      context.beginPath()
+      //園(x,y,半徑,,弧度)
+      context.arc(200, 300, 50, 0, 2 * Math.PI)
+      context.stroke()
+
+      //實心方塊(x,y,width,height)
+      context.fillStyle = 'orange'
+      context.beginPath()
+      context.fillRect(150, 350, 100, 80)
+
+    }
+
+  }
+</script>
+
+<body>
+  <!-- html5才出現的標籤 -->
+  <canvas id="myCanvas" width="500" height="600"></canvas>
+</body>
+
+</html>

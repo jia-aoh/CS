@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<script>
+    window.onload = () => {
+        const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/aqiv2.json'
+        fetch(url)
+            .then(response => response.json())
+            //map出所需資料，filter出台中市資料，return回來就已經會有[]
+            .then(jsonObj => {
+                const records = jsonObj.records.map(record => {
+                    return {
+                        sitename: record.sitename,
+                        county: record.county,
+                        aqi: parseInt(record.aqi)
+                    }
+                }) //.filter(record => record.county == '臺中市')
+
+                const county = new Set(records.map(record => record.county))
+                //c = 第幾筆的county資料
+                const newrecords = []
+                county.forEach(c => {
+                    const tmp = records.filter(fore => fore.county == c)
+                    const sumAQI = tmp.reduce((a, b) => a + b.aqi,0)
+                    const count = tmp.length
+                    const avgAQI = Math.round(sumAQI / count)
+                    const data = {
+                        county:c,
+                        avgAQI:avgAQI
+                    }
+                    newrecords.push(data)
+                })
+
+
+                new Chart(mycanvas, {
+                    type: 'bar',
+                    data: {
+                        labels: newrecords.map(p => p.county),
+                        datasets: [
+                            {
+                                label: 'AQI',
+                                data: newrecords.map(p => p.avgAQI)
+                            }
+                        ]
+                    }
+                })
+            })
+    }   
+</script>
+<style>
+    .container {
+        width: 600px;
+        background-color: antiquewhite;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <canvas id="mycanvas"></canvas>
+    </div>
+</body>
+
+</html>

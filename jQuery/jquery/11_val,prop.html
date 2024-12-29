@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery</title>
+  <!-- jQuery CDN-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<script>
+  // jQuery語法：
+
+  // 1. function：$(()=>{
+  // $('selector').func(() => {
+
+  // })
+  // }) -- window.onload 新唯一語法
+
+  $(() => {
+
+    $('#bn').click(() => {
+      // 1. 抓value：.val()
+      const uid = $('#uid').val() //value
+      console.log(uid)
+
+      // 2. checked 沒有value的補救：.prop('checked')
+      const ischecked = $('#done').prop('checked') //算property-有勾true，沒勾false
+      console.log(ischecked)
+
+      // 3.也可以.attr()抓到attribute裡的資料
+    })
+
+
+  })
+
+</script>
+
+<body>
+  <button id="bn">click</button>
+  uid: <input id="uid">
+  <!-- checked 當初在設計的時候console.log抓不到，所以亡羊補牢 -->
+  done: <input type="checkbox" id="done" checked>
+</body>
+
+</html>

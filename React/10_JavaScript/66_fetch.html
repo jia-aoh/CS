@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h4>JavaScript Fetch API</h4>
+    <p><a href="https://www.w3schools.com/jsref/api_fetch.asp">https://www.w3schools.com/jsref/api_fetch.asp</a></p>
+    <h4>Using Fetch</h4>
+    <p><a
+            href="https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch">https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch</a>
+    </p>
+
+    <button onclick="btn1()">no async</button>
+    <button onclick="btn2()">async</button>
+    <script>
+        function btn1() {
+            // 10. 透過 fetch() 取得 https://reqres.in/api/users/2 的資料
+            let p = fetch('https://reqres.in/api/users/2')
+            p.then(function (response) {
+                let p2 = response.json()
+
+                p2.then(function (jsonObj) {
+                    console.log(jsonObj)
+                })
+            })
+            // console.log(p)
+        }
+        async function btn2() {
+            let p = await fetch('https://reqres.in/api/users/2')
+            let p1 = await p.json()
+            console.log(p1)
+            
+
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+</head>
+
+<body>
+    <input id="input1" type="text">
+    <button id="btn1">botton1</button>
+
+    <script>
+        document.getElementById('btn1').onclick = () => {
+            let xa = $('#input1').prop('value') // 相當於input1.value, $('#apple').val()
+            console.log(xa)
+        }
+
+        // 10. 透過 $.ajax() 取得 https://reqres.in/api/users/2 的資料
+        // $.ajax({
+        //     method: "GET",
+        //     url: "https://reqres.in/api/users/2",
+        //     // data: { name: "John", location: "Boston" }
+        // })
+        //     .done(function (msg) {
+        //         console.log(msg);
+        //     });
+        $.ajax({
+            method: "POST",
+            url: "https://reqres.in/api/users",
+            data: { "userName": "John", "userPWD": "1234567890" }
+        })
+            .done(function (msg) {
+                console.log(msg);
+            });
+
+
+    </script>
+</body>
+
+</html>

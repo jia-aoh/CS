@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let shoppingCart = []
+    let productList = null
+
+
+    const shoppingCartPage = () => {
+        let html = ''
+        shoppingCart.forEach(product => {
+            html += `
+           <div id="${product.pid}">
+               ${product.name}
+               <label>${product.quantity}</label>
+               <button onclick="
+                   let quantity = parseInt(this.previousElementSibling.innerText);
+                   this.previousElementSibling.innerText = quantity + 1;
+                   addShoppingCart('${product.pid}', '${product.name}', 1);
+               ">Inc</button>
+               <button onclick="
+                   let quantity = parseInt(this.previousElementSibling.previousElementSibling.innerText);
+                   this.previousElementSibling.previousElementSibling.innerText = quantity - 1;
+                   addShoppingCart('${product.pid}', '${product.name}', -1);
+               ">Dec</button>
+           </div>
+       `
+        })
+        html += '<button onclick="mainPage()">繼續購物</button>'
+        root.innerHTML = html
+    }
+
+
+    const mainPage = () => {
+        let html = ''
+        html += '<button onclick="shoppingCartPage()">🛒</button>'
+        productList.forEach(product => {
+            html += `
+           <div id="${product.pid}">
+               ${product.pid}
+               ${product.name}
+               ${product.price}
+               ${product.quantity}
+               <button onclick="addShoppingCart('${product.pid}', '${product.name}')">加入購物車</button>
+           </div>
+       `
+        })
+        root.innerHTML = html
+    }
+
+
+    const addShoppingCart = (pid, name, inc = 1) => {
+        const product = shoppingCart.find(product => product.pid == pid)
+        if (product == undefined) {
+            shoppingCart.unshift({
+                pid: pid,
+                name: name,
+                quantity: 1
+            })
+        } else {
+            product.quantity += inc
+        }
+    }
+
+
+    window.onload = () => {
+        const url = 'https://raw.githubusercontent.com/kirkchu/mongodb/refs/heads/main/product.json'
+        fetch(url)
+            .then(response => response.json())
+            .then(jsonObj => {
+                productList = jsonObj
+                mainPage()
+            })
+    }
+</script>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>

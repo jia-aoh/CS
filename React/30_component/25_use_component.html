@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root"></div>
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+        // 10. 元件可以重複使用
+        function Root() {
+            return <div><Func1/><Func2/></div>
+        }
+        function Func1() {
+            return <h1>標題</h1>
+        }
+        function Func2() {
+            return <span>內文</span>
+        }
+
+        // 20. 可以在 A元件裡面取得/使用其他元件
+
+        myReactRoot.render(<Root />); 
+    </script>
+</body>
+
+</html>

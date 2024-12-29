@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+<style>
+</style>
+<script>
+  window.onload = () => {
+    //定義一個表格
+    const table = document.createElement('table')
+    //所有HTML標籤都可以用setAttribute()設定屬性
+    table.setAttribute('border', '1')
+    //加入tr標籤，tr內有一個td
+    const tr = table.insertRow()
+    const td = tr.insertCell()
+    td.innerHTML = 'Hello, world'
+
+    //插入table
+    const ul = document.body.firstElementChild
+    document.body.insertBefore(table, ul)
+    //元件不能用textContent
+  }
+</script>
+
+<body>
+  <ul>
+    <li>AAA</li>
+    <li>BBB</li>
+    <li>CCC</li>
+    <li>DDD</li>
+  </ul>
+</body>
+
+</html>

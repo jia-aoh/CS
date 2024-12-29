@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+
+    <div id="root1"></div>
+    <div id="root2"></div>
+    <script type="text/babel">
+
+        // 10. 在 JSX 中
+        //      a. 原設定 style 屬性值的型態為字串 改為 物件(A)
+        //      b. 在上一個物件(A)中再次放置一個物件(B)，
+        //          並且在物件(B)的裡面以 key:"value" 的方式，進行CSS樣式設定
+        ReactDOM
+            .createRoot(root1)
+            .render(<h1 style={{ color: "green" }}>try</h1>) //red沒""會被認為是變數
+        let red = { color: "red" }
+        ReactDOM
+            .createRoot(root2)
+            .render(<h1 style={red}>try</h1>) 
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 第三方函式庫圖表 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 到官網查 -->
+    <!-- 可甘特圖 -->
+</head>
+<script>
+    window.onload = () => {
+        const data = [
+            { year: 2010, count: 10, value: 30, color: 'red' },
+            { year: 2011, count: 20, value: 35, color: 'red' },
+            { year: 2012, count: 15, value: 40, color: 'red' },
+            { year: 2013, count: 25, value: 43, color: 'red' },
+            { year: 2014, count: 22, value: 28, color: 'red' },
+            { year: 2015, count: 30, value: 20, color: 'green' },
+            { year: 2016, count: 28, value: 26, color: 'green' },
+        ];
+
+        //畫圖表(要畫在哪,{圖表有關的所有用object表示})
+        new Chart(mycanvas, {
+            //bar,line,radar
+            type: 'bar',
+            //圖表調整
+            options: {
+                //長橫的
+                indexAxis: 'y'
+            },
+            data: {
+                //x軸，item只是代用
+                labels: data.map(item => item.year),
+                //y軸[{資料1},{資料2}]
+                datasets: [
+                    {
+                        //y軸label名稱data數據[]
+                        label: '銷售金額',
+                        data: data.map(item => item.count),
+                        //改顏色[]
+                        backgroundColor: data.map(item => item.color)
+                    },
+                    {
+                        label: '銷售目標',
+                        data: data.map(item => item.value)
+                    }
+                ]
+            }
+        })
+        new Chart(mycanvas1, {
+            type: 'radar',
+            options: {
+                //改變範圍
+                scales: {
+                    r: {
+                        min: 0,
+                        max: 100
+                    }
+                }
+            },
+            data: {
+                labels: ['A', 'B', 'C', 'D', 'E'],
+                datasets: [
+                    {
+                        label: 'p1',
+                        data: [10, 30, 80, 70, 65]
+                    },
+                    {
+                        label: 'p2',
+                        data: [30, 70, 70, 60, 65]
+                    },
+                    {
+                        label: 'p3',
+                        data: [90, 80, 80, 70, 78]
+                    }
+                ]
+            }
+        })
+
+
+    }   
+</script>
+<style>
+    .container {
+        width: 600px;
+        background-color: antiquewhite;
+    }
+</style>
+
+<body>
+    <!-- 用div套canvas編輯canvas輪廓 -->
+    <div class="container">
+        <canvas id="mycanvas"></canvas>
+    </div>
+    <div class="container">
+        <canvas id="mycanvas1"></canvas>
+    </div>
+</body>
+
+</html>

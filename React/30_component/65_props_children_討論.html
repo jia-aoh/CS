@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <style>
+        .station {
+            background-color: aqua;
+        }
+
+        .train {
+            background-color: bisque;
+        }
+
+        .seat {
+            background-color: chartreuse;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 這裡是範本 -->
+    <div class="station">
+        我是車站(範本)
+        <div class="train">
+            <div class="seat">椅子</div>
+            <div class="seat">椅子</div>
+            <div class="seat">椅子</div>
+        </div>
+    </div>
+    <!-- 這裡是範本 -->
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // ** 請留意檔案需要 #root 元素 
+        let myReactRoot = ReactDOM.createRoot(document.getElementById('root'));
+
+
+        // 10. HTML 有什麼，JSX就搬走什麼
+        function Demo1() {
+            return (
+                <div className="station">
+                    我是車站(Demo1)
+                    <div className="train">
+                        <div className="seat">椅子</div>
+                        <div className="seat">椅子</div>
+                        <div className="seat">椅子</div>
+                    </div>
+                </div>
+            )
+        }
+        // 20. 將 .train ，以及 .train 的內容 變成一個元件
+        function Demo2() {
+            return (
+                <div className="station">
+                    我是車站(Demo2)
+                    <Demo3>
+                        <Seats/>
+                        <Seats/>
+                        <Seats/>
+                    </Demo3>
+                </div>
+            )
+        }
+
+
+        // 25. 只將 .train ，變成一個元件
+        function Demo3({children}) {
+            return (
+                <div className="train">
+                </div>
+            )
+        }
+        function Seats() {
+            return <div className="seat">椅子</div>
+
+        }
+
+
+        // ** 為了操作方便，底下先放入 div標籤，可視情況移除
+        myReactRoot.render(<div>
+            <Demo1 />
+            <hr />
+            <Demo2 />
+            <hr />
+            <Demo3 />
+        </div>);
+    </script>
+</body>
+
+</html>

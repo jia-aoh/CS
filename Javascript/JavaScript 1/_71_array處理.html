@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  window.onload = () => {
+    a = [1, 2, 3, 4]
+    //加入數
+    a.push(5)
+    a.unshift(0)
+    console.log(a)
+    //拿掉數
+    const popValue = a.pop()
+    console.log(popValue)
+    const shiftValue = a.shift()
+    console.log(shiftValue)
+    console.log(a)
+    //後到前
+    a.unshift(a.pop())
+    console.log(a)
+    //是否包含，在索引幾
+    console.log(`a includes 5: ${a.includes(5)}`)
+    console.log(`a includes 2: ${a.includes(2)}`)
+    console.log(`2 is in index: ${a.indexOf(2)}`)
+    console.log(`5 is in index: ${a.indexOf(5)}`)
+
+    //
+    //排序
+    a.sort((a, b) => {
+      return b - a //a-b順序，b-1倒敘
+    })
+    console.log(a)
+
+
+    //刪掉，插入
+    //delete只是內容變empty，array.length不變
+    delete a[2]
+    console.log(a)
+    //splice(從a的位置拿掉b個插入內容'c')
+    const valueSplice = a.splice(2, 1)
+    console.log(valueSplice)
+    console.log(a)
+    //複製slice(從索引a到索引b.optional(不含b))
+    const newa = a.slice(1)
+    console.log(newa)
+    //可負索引
+    a = [1, 2, 3, 4, 5]
+    console.log(a.slice(-2))
+    console.log(a.slice(0, 3))
+    console.log(a.slice(3))
+    //splice加入內容
+    a.splice(3, 1, 7, 8)
+    console.log(a)
+    a.splice(1, 0, 6)
+    console.log(a)
+
+    //基本語法...
+    //陣列結合...就是頭尾中括號拿掉
+    b = [10, 11, 12]
+    a = [...a, ...b]
+    console.log(a)
+    //...基本語法替代push(),unshift()
+    a = [...a, 20]
+    console.log(a)
+    a = [30, ...a]
+    console.log(a)
+    //array全部做某件事 = forEach同時做另一件事
+    a = [1, 2, 3, 4]
+    b = a.map(value => {
+      return value * value
+    })
+    console.log(b)
+
+    //map多算得多, join多併得一, reduce多算得一
+    //map舉例
+    let str = ['a', 'b', 'c', 'd']
+    let upperStr = str.map(value => value.toUpperCase())
+    console.log(upperStr)
+    //把陣列合成字串.join('分隔符號')
+    let joinStr = str.join('-')
+    console.log(joinStr)
+    console.log(a.join(''))
+    //將陣列全部處理成一個值.reduce((初始,現在值)=>{},初始值可省)
+    let complete = a.reduce((result, value) => {
+      return result + value
+    }, 0)
+    //省掉return{},0
+    console.log(complete)
+    let avg = a.reduce((result, value) => result + value) / a.length
+    console.log(avg)
+
+    //亂數練習（避免陣列越界-一定當）
+    console.log(Math.random())
+    let i = Math.trunc(Math.random() * str.length)
+    console.log(str[Math.floor(Math.random() * str.length)])
+    console.log(str[parseInt(Math.random() * str.length)])
+    //60-100
+    console.log(parseInt(Math.random() * 41 + 60))
+    //交換
+    let tmp = str[i]
+    str[i] = str[0]
+    str[0] = tmp
+    console.log(str)
+    //洗牌
+    let str2 = ['a', 'b', 'c', 'd', 'e']
+    for (i = str2.length - 1; i > 1; i--) {
+      let rand = Math.trunc(Math.random() * i)
+      let tmp = str2[i]
+      str2[i] = str2[rand]
+      str2[rand] = tmp
+    }
+    console.log(str2)
+    //換牌
+    let str3 = ['A', 'J', 'Q', 'K']
+    for (i = 2; i <= 10; str3.push(i++)) ; //沒內容的for回圈，步進值內加','，能繼續寫程式碼，要加;
+    //生成整組排
+    pk1 = str3.map(value=>`♠${value}`)
+    pk2 = str3.map(value=>`♥${value}`)
+    pk3 = str3.map(value=>`♦${value}`)
+    pk4 = str3.map(value=>`♣${value}`)
+    pk52 = [...pk1,...pk2,...pk3,...pk4]
+//洗牌
+    for (i = pk52.length - 1; i > 1; i--) {
+      let rand = Math.trunc(Math.random() * i)
+      let tmp = pk52[i]
+      pk52[i] = pk52[rand]
+      pk52[rand] = tmp
+    }    
+    console.log(pk52)
+  }    
+</script>
+
+<body>
+
+</body>
+
+</html>

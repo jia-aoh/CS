@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script>
+    let list = ['apple', 'banana', 'cherry'];
+
+    console.group("jQuery")
+    $.each(list, function (index, y) {
+      console.log(y);
+    })
+    console.groupEnd("jQuery")
+
+    console.group("map")
+    list.map(element => console.log(element))
+    console.groupEnd("map")
+
+    console.group("forEach")
+    list.forEach(element => console.log(element))
+    console.groupEnd("forEach")
+
+    console.group("for loop")
+    for (i = 0; i < list.length; i++) {
+      console.log(list[i]);
+    }
+    console.groupEnd("for loop")
+
+    console.group("for in")
+    for (let index in list) {
+      console.log(list[index]);
+    }
+    console.groupEnd("for in")
+
+    console.group("for of")
+    for (let index of list) {
+      console.log(index);
+    }
+    console.groupEnd("for of")
+
+
+
+
+
+    // var i=0;
+    // while(i<list.length){
+    //   console.log(list[i]);
+    //   i++;
+    // }
+  </script>
+</body>
+
+</html>

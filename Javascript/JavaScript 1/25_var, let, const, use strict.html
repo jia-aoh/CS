@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script>
+  'use strict' //strict mode：所有變數與常數都必須經過宣告
+  //嚴謹度const>let>var
+  window.onload = function () {
+    bn1.onclick = function () {
+      var a = 5
+      let b = 3
+      let b = 10 //不能重複宣告
+      const ans = a + b
+      ans = 20 //常數不能改動
+      console.log(ans)
+    }
+    //都不改內容就設定為const
+    bn2.onclick = function () {
+      const a = 5
+      const b = 3
+      const b = 10
+      const ans = a + b
+      console.log(ans)
+    }
+
+  }
+</script>
+
+<body>
+  <button id="bn1">bn1</button>
+  <button id="bn2">bn2</button>
+</body>
+
+</html>
