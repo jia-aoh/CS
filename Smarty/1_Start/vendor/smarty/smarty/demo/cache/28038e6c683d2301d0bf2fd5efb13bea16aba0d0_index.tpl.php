@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 5.4.3, created on 2024-12-29 18:18:59
+/* Smarty version 5.4.3, created on 2024-12-29 18:36:05
   from 'file:index.tpl' */
 
 /* @var \Smarty\Template $_smarty_tpl */
 if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   'version' => '5.4.3',
-  'unifunc' => 'content_67712213867356_81108633',
+  'unifunc' => 'content_677126155d9fa2_92330631',
   'has_nocache_code' => true,
   'file_dependency' => 
   array (
@@ -30,7 +30,7 @@ if ($_smarty_tpl->getCached()->isFresh($_smarty_tpl, array (
   ),
   'cache_lifetime' => 120,
 ))) {
-function content_67712213867356_81108633 (\Smarty\Template $_smarty_tpl) {
+function content_677126155d9fa2_92330631 (\Smarty\Template $_smarty_tpl) {
 $_smarty_current_dir = '/Applications/XAMPP/xamppfiles/htdocs/CS/Smarty/1_Start/vendor/smarty/smarty/demo/templates';
 ?>
 <HTML>
@@ -44,7 +44,7 @@ $_smarty_current_dir = '/Applications/XAMPP/xamppfiles/htdocs/CS/Smarty/1_Start/
 
     <b>                Title: Welcome To Smarty!
         </b>
-    The current date and time is 2024-12-29 18:18:59
+    The current date and time is 2024-12-29 18:36:05
 
     Example of accessing server environment variable SERVER_NAME: localhost
 
@@ -59,7 +59,7 @@ variable modifier example of {$Name|upper}
 
 An example of a section loop:
 
-                        1 * John Doe
+                        1 * ohn Doe
                                     2 * Mary Smith
                                     3 . James Johnson
                                     4 . Henry Case
@@ -192,7 +192,7 @@ This is an example of the html_select_time function:
 <option value="15">15</option>
 <option value="16">16</option>
 <option value="17">17</option>
-<option value="18" selected="selected">18</option>
+<option value="18">18</option>
 <option value="19">19</option>
 <option value="20">20</option>
 <option value="21">21</option>
@@ -210,7 +210,7 @@ This is an example of the html_select_time function:
 <option value="33">33</option>
 <option value="34">34</option>
 <option value="35">35</option>
-<option value="36">36</option>
+<option value="36" selected="selected">36</option>
 <option value="37">37</option>
 <option value="38">38</option>
 <option value="39">39</option>
@@ -241,7 +241,7 @@ This is an example of the html_select_time function:
 <option value="02">02</option>
 <option value="03">03</option>
 <option value="04">04</option>
-<option value="05">05</option>
+<option value="05" selected="selected">05</option>
 <option value="06">06</option>
 <option value="07">07</option>
 <option value="08">08</option>
@@ -295,7 +295,7 @@ This is an example of the html_select_time function:
 <option value="56">56</option>
 <option value="57">57</option>
 <option value="58">58</option>
-<option value="59" selected="selected">59</option>
+<option value="59">59</option>
 </select>
 <select name="Time_Meridian">
 <option value="am">AM</option>

@@ -34,7 +34,13 @@
   1. require   |  require($baseURL + "vendor/smarty/smarty/libs/Smarty.class.php");
   2. use       |  use Smarty\Smarty;
   3. new       |  $smarty = new Smarty();
-  *. XXS       |  $smarty->setEscapeHtml(true);
+
+  // XXS       |  $smarty->setEscapeHtml(true);
+  // console   |  $smarty->debugging = true;
+  // cache     |  $smarty->caching = true;
+  // cache     |  $smarty->caching = Smarty::CACHING_LIFETIME_CURRENT; -- 每次請求都檢查緩存
+  // cache     |  $smarty->cache_lifetime = 120;
+
   4. setDir    |  $smarty->setCompileDir('./templates_c'); -- 還有其他Dir
   5. assign    |  $smarty->assign('name', 'Ned');
   6. display   |  $smarty->display('index.tpl');
