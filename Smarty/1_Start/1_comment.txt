@@ -1,0 +1,64 @@
+10_ 穩定版
+
+  composer require smarty/smarty
+
+20_ .php require: baseURL + "vendor/smarty/smarty/libs/Smarty.class.php"
+
+  require("../libs/Smarty.class.php");
+  use Smarty\Smarty;
+  $smarty = new Smarty();
+
+30_ 檔案系統
+
+        cache:   770, owner:daemon
+      configs:
+    templates:
+  templates_c:   770, owner:daemon
+
+31_ 更改檔案系統，並測試是否有正確寫入權限
+
+  require("../libs/Smarty.class.php");
+  use Smarty\Smarty;
+  $smarty = new \Smarty\Smarty;
+  $smarty->setTemplateDir('./templates');
+  $smarty->setConfigDir('./configs');
+  $smarty->setCompileDir('./templates_c');
+  $smarty->setCacheDir('./cache');
+
+  $smarty->testInstall();
+
+40_ .tpl html排版render
+
+41_ .php 給邏輯
+
+  1. require   |  require($baseURL + "vendor/smarty/smarty/libs/Smarty.class.php");
+  2. use       |  use Smarty\Smarty;
+  3. new       |  $smarty = new Smarty();
+  *. XXS       |  $smarty->setEscapeHtml(true);
+  4. setDir    |  $smarty->setCompileDir('./templates_c'); -- 還有其他Dir
+  5. assign    |  $smarty->assign('name', 'Ned');
+  6. display   |  $smarty->display('index.tpl');
+
+50_ 將表格作為新物件
+
+class My_GuestBook extends Smarty {
+
+  public function __construct()
+  {
+    parent::__construct();
+    $this->setTemplateDir('/guestbook/templates/');
+    $this->setCompileDir('/guestbook/templates_c/');
+    $this->setConfigDir('/guestbook/configs/');
+    $this->setCacheDir('/guestbook/cache/');
+    
+    $this->setEscapeHtml(true);
+    $this->caching = Smarty::CACHING_LIFETIME_CURRENT; -- 設置緩存
+    $this->assign('app_name', 'Guest Book');
+  }
+}
+
+51_ 使用物件
+
+  $smarty = new My_GuestBook();
+  $smarty->assign('name', 'Ned');
+  $smarty->display('index.tpl');
