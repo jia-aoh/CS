@@ -7,7 +7,7 @@ try
 	echo "<br>test Flag 1";
 	$result = $x / $y; // Warning and go ahead.
 	echo "<br>test Flag 2";
-	trigger_error("My Erorr Message", E_USER_ERROR);
+	trigger_error("My Erorr Message", E_USER_ERROR); // E_USER_WARNING, E_USER_NOTICE
 }
 catch (Exception $err)
 {
