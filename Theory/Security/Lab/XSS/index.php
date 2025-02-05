@@ -1,11 +1,17 @@
 <?php
 $data = "";
+$clean_html = "";
 if (isset ( $_POST ["btnWriteCookie"] )) {
 	setcookie ( "cookieUser", "Derek Jeter" );
 }
 
 if (isset ( $_POST ["btnOK"] )) {
 	$data = $_POST ["txtData"];
+
+	require_once 'vendor/autoload.php';
+	$config = HTMLPurifier_Config::createDefault();
+	$purifier = new HTMLPurifier($config);
+	$clean_html = $purifier->purify($data);
 }
 
 ?>
@@ -26,7 +32,7 @@ if (isset ( $_POST ["btnOK"] )) {
 		<div data-role="content">
 			<form method="post" action="index.php">
 				Your name: <input type="text" name="txtData" value="" />
-				<Label>Hello! <?php echo htmlspecialchars($data); ?></Label>
+				<Label>Hello! <?php echo $clean_html; ?></Label>
 				<div class="ui-grid-a">
 					<div class="ui-block-a">
 						<input type="submit" name="btnOK" value="OK" />
