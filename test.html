@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XSS</title>
+  <meta http-equiv="Content-Security-Policy" content="
+  default-src 'self'; 
+  script-src 'self' 'nonce-a2b5zs' 'sha256-bhHHL3z2vDgxUt0W3dWQOrprscmda2Y5pLsLg4GF+pI=' 'strict-dynamic';
+  base-uri 'none';
+  report-uri /csp-violation-report-endpoint/">
+</head>
+
+<body>
+
+  <!-- 無防護 -->
+  <!-- 
+  <script>alert(1)</script> 
+  -->
+
+  <!-- innerHTML：只要能塞能動的html就可以 -->
+  <!-- 
+  <button/onclick=alert(1)>try button</button>
+  <a href=javascript:alert(1)>try a</a>
+  <img src="x" onerror="alert(1)">
+  <svg/onload=alert(2)></svg>
+  <a href=javascript:void(0)>Link</a> 
+
+  <iframe src="javascript:alert(1);console.log('youtube.com')" width="500" height="300"></iframe> 繞過網址檢查
+  <iframe srcdoc=<script>alert(1)</script>"></iframe>
+  %3Ciframe%20srcdoc%3D %22 %3C script%3Ealert(1)%3C%2Fscript%3E%22%3E%3C%2Fiframe%3E
+
+
+  -->
+
+
+  <!-- example 1: -->
+
+  <!-- <div>
+    Hello, <span id="name"></span>
+  </div>
+  <script>
+    const qs = new URLSearchParams(window.location.search)
+    const name = qs.get('name')
+    document.querySelector('#name').innerHTML = name
+  </script>  -->
+
+
+
+
+  <!-- example 2:  -->
+  <!-- <div id="content"></div>
+  <script>
+    const qs = new URLSearchParams(window.location.search)
+    const clazz = qs.get('clazz')
+    document.querySelector('#content').innerHTML = `
+        <div class="${clazz}">
+          Demo
+        </div>
+      `
+  </script> -->
+  <!-- "><img src=not_exist onerror=alert(1)> -->
+  <script nonce=a2b5zs>
+    console.log(new URL('javascript:alert(1)'))
+
+  </script>
+
+  <!-- 搭配meta sha256 用於cdn -->
+  <script>alert(1)</script>
+
+
+</body>
+
+</html>

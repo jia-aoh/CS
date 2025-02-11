@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="對網頁的說明">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="John Doe">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    // 安全性CSP
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+
+    
+
+    <title>頁籤標題</title>
+    <link rel="icon" href="img/頁籤icon.png">
+    <link rel="stylesheet" href="css/myStyle.css">
+
+    <style>
+
+        table {
+            border-collapse: collapse;
+
+            & th,
+            & td {
+                border: 1px solid #AC915D;
+                color: #AC915D;
+            }
+        }
+
+        selector
+
+        combinator
+
+        a.class | class
+        a#id    | id
+        a>h1    | 子
+        a h1    | 子孫
+        a+h1    | 相鄰兄弟
+        a~h1    | 全體兄弟
+
+        psuudo
+
+        a:link    |  未連結時
+        a:visited |  已連結過
+        a:hover   |  滑鼠移至上方時
+        a:active  |  點選當下
+
+        td:first-child       |  第一欄
+        td:last-child        |  最後一欄
+        tr:not(:first-child) |  第一列之外
+        tr:nth-child(4)      |  第四列
+        p:nth-of-type(1)     |  
+        :only-child
+
+        a::before {content: "";}   | 前面加內容
+        a::after {content: "";}    | 後面加內容
+        p::first-line              | 第一行
+
+        a[attr]                   | 有attr
+        a[href^="http"]           | attr開頭
+        a[href*="pseudo"]         | attr包含
+        a[href$="selectors.asp"]  | attr結尾
+        a[target="_blank"]        | attr等於
+        a[class~="special"]       | attr含
+
+        input[type="radio"]:hover                     
+        input[type="tel"]:focus                   | 游標在這              
+        input[type="tel"]:valid                   | 驗通過
+        input[type="email"]:invalid               | 驗不通過
+        input[type="text"]:valid+#text::after     | 驗證通過後面顯示
+        input[type="email"]:invalid+#email::after | 驗證不通過後面顯示
+
+        .checkbox:checked+label | 選中
+
+        // 看css11號資料夾10,20檔案
+        @import "./css/style_1.css";
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+        @font-face
+
+        div{
+
+          邊界樣式
+          border: inherit;
+          border-width: 0 0 0 5px;
+          border-style: outset dashed dotted double;
+          border-color: blue;
+          border-radius: 20px 5px 5px ;
+
+          margin: auto;
+          padding: 20px;
+
+          尺寸
+          width: calc(100% - 200px);
+          height: 100px;
+
+          維持總寬度
+          box-sizing: border-box;
+          overflow-wrap: break-word;
+          overflow: auto; // visible(default)、hidden、scroll、auto
+
+          背景顏色
+          background-color: lightgreen;
+
+          background-image: url(../img/logo.png);
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-position: right center;
+          
+          背景尺寸
+          background-clip: border-box; // padding-box, content-box
+
+
+          修圖
+          object-fit: scale-down; // fill, cover, none
+          opacity: 1;
+          filter: blur(5px);
+          filter: saturate(10);
+          filter: invert(100%);
+
+          字
+          font-family: Arial, Helvetica, sans-serif;
+          color: initial;
+          text-shadow: 2px 2px 5px red, (x y blur color)
+            6px 6px 5px orange, 
+            10px 10px 5px yellow, 
+            14px 14px 5px green, 
+            18px 18px 5px blue, 
+            22px 22px 5px indigo, 
+            26px 26px 5px violet ;
+          text-align: center;
+          font-size: 3em; em父倍數, rem root倍數
+          line-height: 10px;
+
+---------------------------------------------------------
+
+          排版
+          display: block, inline-block, inline, none
+
+          display: flex;
+          flex: 1; // 佔一塊
+
+          display: grid;
+          grid-template-columns: auto auto auto;
+          grid-template-rows: 100px 200px 300px;
+
+          固定
+          position: static > relative > absolute > fixed;
+          top: 0
+          bottom: 0;
+          right: 0;
+          left: 0;
+
+---------------------------------------------------------
+
+          template 
+          html {
+            box-sizing: border-box;
+          }
+
+          *,
+          *::before,
+          *::after {
+            box-sizing: inherit;
+          }
+
+          RWD
+          思考切分公式
+          :root {
+            --cols: 12;
+          }
+
+          /* For mobile phones: */
+
+          [class*="col-"] {
+            width: 100%;
+          }
+
+          /* For tablets: */
+          @media only screen and (min-width: 600px) {
+            .col-s-1 {width: calc(100% / var(--cols) * 1);}
+            .col-s-2 {width: calc(100% / var(--cols) * 2);}
+            .col-s-3 {width: calc(100% / var(--cols) * 3);}
+            .col-s-4 {width: calc(100% / var(--cols) * 4);}
+            .col-s-5 {width: calc(100% / var(--cols) * 5);}
+            .col-s-6 {width: calc(100% / var(--cols) * 6);}
+            .col-s-7 {width: calc(100% / var(--cols) * 7);}
+            .col-s-8 {width: calc(100% / var(--cols) * 8);}
+            .col-s-9 {width: calc(100% / var(--cols) * 9);}
+            .col-s-10 {width: calc(100% / var(--cols) * 10);}
+            .col-s-11 {width: calc(100% / var(--cols) * 11);}
+            .col-s-12 {width: calc(100% / var(--cols) * 12);}
+          }
+
+          /* For desktop: */
+          @media only screen and (min-width: 768px) {
+            .col-1 {width: calc(100% / var(--cols) * 1);}
+            .col-2 {width: calc(100% / var(--cols) * 2);}
+            .col-3 {width: calc(100% / var(--cols) * 3);}
+            .col-4 {width: calc(100% / var(--cols) * 4);}
+            .col-5 {width: calc(100% / var(--cols) * 5);}
+            .col-6 {width: calc(100% / var(--cols) * 6);}
+            .col-7 {width: calc(100% / var(--cols) * 7);}
+            .col-8 {width: calc(100% / var(--cols) * 8);}
+            .col-9 {width: calc(100% / var(--cols) * 9);}
+            .col-10 {width: calc(100% / var(--cols) * 10);}
+            .col-11 {width: calc(100% / var(--cols) * 11);}
+            .col-12 {width: calc(100% / var(--cols) * 12);}
+          }
+
+        }
+
+    </style>
+
+</head>
+
+---------------------------------------------------------
+
+<body>
+    <!-- 10. HTML Entity -->
+    <div>&nbsp; &lt; &gt;</div>
+    <!-- <b>粗體 <i>斜體 <s>刪除線 <u>底線 -->
+    <!-- <strong>帶語氣 <em> <del> <ins> -->
+
+    <ul style="list-style-type: disc, circle, square, none;">
+        <li>WHO'S TEA 鬍子茶</li>
+        <li>布萊恩紅茶</li>
+    </ul>
+
+---------------------------------------------------------
+
+    <ol type="I" start="2" reversed>
+        <li value="10">預習</li>
+        <li>練習</li>
+    </ol>
+
+    <dl>
+        <dt>JavaScript</dt>
+        <dd>通常縮寫為JS，一種程式語言，能夠使網頁動態更新內容、控制多媒體，處理網頁前端的邏輯判斷等等</dd>
+        <dt>jQuery</dt>
+        <dd>是一個函式庫</dd>
+    </dl>
+
+---------------------------------------------------------
+
+    <href>看10資料夾60檔案</href>
+
+---------------------------------------------------------
+
+    <img src="file:/Users/alex/Desktop/html/HTML/10_HTML5/img/kitty.jpg" alt="kitty">
+    <img src="./puppy.jpg" style="width: 50px; height: 10%;">
+
+---------------------------------------------------------
+
+    圖片, youtube, 地圖嵌入
+    <figure>看20資料夾20檔案</figure>
+    <figurecaption>看20資料夾20檔案</figurecaption>
+    <video>看20資料夾20檔案</video>
+    <iframe>看20資料夾20檔案</iframe>
+
+---------------------------------------------------------
+
+    看 table
+
+    <table>
+        <tr>
+            <th colspan="2">A</th>
+            <!-- <th>B</th> -->
+            <th colspan="2">C</th>
+            <!-- <th>D</th> -->
+        </tr>
+        <tr>
+            <td rowspan="3">A1</td>
+            <td>B1</td>
+            <td>C1</td>
+            <td>D1</td>
+        </tr>
+        <tr>
+            <!-- <td>A2</td> -->
+            <td>B2</td>
+            <td>C2</td>
+            <td>D2</td>
+        </tr>
+        <tr>
+            <!-- <td>A3</td> -->
+            <td>B3</td>
+            <td>C3</td>
+            <td>D3</td>
+        </tr>
+    </table>
+
+---------------------------------------------------------
+
+    <label for="phone2">手機型號</label>
+    <select id="phone2">
+        <optgroup label="Apple">
+            <option>iPhone15</option>
+            <option>iPhone14</option>
+        </optgroup>
+        <optgroup label="Google">
+            <option value="">Pixel8</option>
+            <option value="">Pixel7</option>
+        </optgroup>
+    </select>
+    
+
+    <label for="movie">請輸入喜歡的電影</label>
+    <input id="movie" type="text" list="movielist">
+    <datalist id="movielist">
+        <option value="spiderman"></option>
+        <option value="ironman"></option>
+        <option value="batman"></option>
+    </datalist>
+
+    <input>看40資料夾</input>
+    <input type="tel" pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="####-###-###"><span id="num"></span>
+
+    <button type="submit" formaction="/submit1">Submit 1</button>
+
+
+---------------------------------------------------------
+
+    <script>
+        function showMsg() {
+            alert("hello, world");
+        }
+    </script>
+
+</body>
+
+</html>
